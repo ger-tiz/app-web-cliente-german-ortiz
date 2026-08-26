@@ -11,12 +11,10 @@
  
 <!-- encabezado-->
     <header>
-           <h1>Bienvenido a Brutal Gaming</h1>
-           <p>¡Encontrá las mejores ofertas en videojuegos del mercado!</p>
-     <!-- div es un elemento semantico, sirve para agrupar elementos en la pagina. -->
+     <!-- div es un elemento genérico de agrupación. Se utiliza para agrupar elementos que no tienen un significado semántico específico. -->
      <div class="brand">
         <div>LOGO</div>
-        <div>Brutal Gaming Argentina</div>
+        <span>Brutal Gaming Argentina</span>
      </div>
      <!-- nav es un elemento semantico, sirve para agrupar enlaces de navegacion, en este caso los enlaces a las diferentes secciones de la pagina web. -->     
         <nav class="navigation">
@@ -29,9 +27,11 @@
             </ul>
         </nav>
         <div class="user-actions">
+            <ul>
              <li><a href="buscar.html">Buscar</a></li>
              <li><a href="carrito.html">Carrito</a></li>
-             <li><a href="micuenta.html">Mi Cuenta</a></li>
+             <li><a href="micuenta.html">Mi cuenta</a></li>
+            </ul>
         </div>
     </header>
         <!-- main es el componente esencial de la pagina contiene todo el contenido principal, solo puede haber uno por pagina. Es el contenido central de la pagina -->
@@ -44,6 +44,40 @@
                 </div>
                 <div class="hero-image">
                     <img src="imagen de cyberpunk 2077" alt="Cyberpunk 2077"></div>
+        </section>
+
+        <section class="best-sellers">
+            <h2>Más vendidos</h2>
+
+            <ul class="game-list">
+                <li>
+                    <article class="game-card">
+                        <div class="game-cover">
+                            <img src="image/elden-ring.jpg" alt="Elden Ring">
+                            <span class="badge">-30%</span>
+                        </div>
+                        
+                        <div class="game-information">
+                            <h3>Elden Ring</h3>
+                            
+                            <div class="game-price">$47200
+                                <del>$67500</del>
+                                <strong>$47200</strong>
+                            </div>
+                            
+                            <ul class="game-categories">
+                                <li>rpg</li>
+                                <li>accion</li>
+                                <li>mundo abierto</li>
+                            </ul>
+                        </div>
+
+                        <div class="game-actions">
+                            <a href="enlace a elden ring.html">Ver juego</a>
+                        </div>
+                    </article>
+                </li>
+            </ul>
         </section>
         <section>
             <h2>Destacados de la semana</h2>
