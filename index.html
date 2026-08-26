@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--el link vincula el archivo de estilo -->
+    <link rel="stylesheet" href="style.css">
+    <title>Brutal Gaming Argentina</title>
+</head>
+<body>
+ 
+<!-- encabezado-->
+    <header>
+     <!-- div es un elemento genérico de agrupación. Se utiliza para agrupar elementos que no tienen un significado semántico específico. -->
+     <div class="brand">
+        <div>LOGO</div>
+        <span>Brutal Gaming Argentina</span>
+     </div>
+     <!-- nav es un elemento semantico, sirve para agrupar enlaces de navegacion, en este caso los enlaces a las diferentes secciones de la pagina web. -->     
+        <nav class="navigation">
+            <ul>
+                <li><a href="inicio.html">Inicio</a></li>
+                <li><a href="tienda.html">Tienda</a></li>
+                <li><a href="ofertas.html">Ofertas</a></li>
+                <li><a href="categorias.html">Categorías</a></li>
+                <li><a href="proximos-lanzamientos.html">Próximos lanzamientos</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <ul>
+             <li><a href="buscar.html">Buscar</a></li>
+             <li><a href="carrito.html">Carrito</a></li>
+             <li><a href="micuenta.html">Mi cuenta</a></li>
+            </ul>
+        </div>
+    </header>
+        <!-- main es el componente esencial de la pagina contiene todo el contenido principal, solo puede haber uno por pagina. Es el contenido central de la pagina -->
+    <main>
+        <section class="hero-banner">
+            <div class="hero-content">
+                <h2>Cyberpunk 2077</h2>
+                <p>Vive y respira Night city, un juego desarrollado por CD Projekt RED.</p>
+                <a href="enlace a cyberpunk-2077.html">Comprar ahora</a>
+                </div>
+                <div class="hero-image">
+                    <img src="imagen de cyberpunk 2077" alt="Cyberpunk 2077"></div>
+        </section>
+
+        <section class="best-sellers">
+            <h2>Más vendidos</h2>
+
+            <ul class="game-list">
+                <li>
+                    <article class="game-card">
+                        <div class="game-cover">
+                            <img src="image/elden-ring.jpg" alt="Elden Ring">
+                            <span class="badge">-30%</span>
+                        </div>
+                        
+                        <div class="game-information">
+                            <h3>Elden Ring</h3>
+                            
+                            <div class="game-price">$47200
+                                <del>$67500</del>
+                                <strong>$47200</strong>
+                            </div>
+                            
+                            <ul class="game-categories">
+                                <li>rpg</li>
+                                <li>accion</li>
+                                <li>mundo abierto</li>
+                            </ul>
+                        </div>
+
+                        <div class="game-actions">
+                            <a href="enlace a elden ring.html">Ver juego</a>
+                        </div>
+                    </article>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h2>Destacados de la semana</h2>
+            
+        </section>
+
+        <section>
+            <h2>Mistery keys</h2>
+        </section>
+
+        <section>
+            <h2>Key boxes</h2>
+        </section>
+       
+    </main>
+     <footer>
+            <a href="contacto.html">Contacto</a>
+            <p>&copy; 2026 Brutal Gaming Argentina. Todos los derechos reservados.</p>
+        </footer>
+</body>
+</html>
