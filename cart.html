@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito -Brutal Gaming Argentina</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+     <!-- div es un elemento genérico de agrupación. Se utiliza para agrupar elementos que no tienen un significado semántico específico. -->
+     <div class="brand">
+        <div>LOGO</div>
+        <span>Brutal Gaming Argentina</span>
+     </div>
+     <!-- nav es un elemento semantico, sirve para agrupar enlaces de navegacion, en este caso los enlaces a las diferentes secciones de la pagina web. -->     
+        <nav class="navigation">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="store.html">Tienda</a></li>
+                <li><a href="offers.html">Ofertas</a></li>
+                <li><a href="categories.html">Categorías</a></li>
+                <li><a href="upcoming-releases.html">Próximos lanzamientos</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <ul>
+             <li><a href="search.html">Buscar</a></li>
+             <li><a href="cart.html">Carrito</a></li>
+             <li><a href="my-account.html">Mi cuenta</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+    <section class="cart">
+        <header>
+            <h1>Carrito</h1>
+        </header>
+        <section>
+            <header>
+                <h2>Tu carrito está vacío</h2>
+                <p>Agregá algunos juegos para comenzar tu compra.</p>
+            </header>
+
+            <a href="store.html" class="continue-shopping">Ir a la tienda</a>
+        </section>
+        <ul class="cart-list">
+            <li>
+                <article class="cart-item">
+                    <div class="cart-item-image">
+                        <img src="imagen del juego" alt="Nombre del juego">
+                    </div>
+
+                    <div class="cart-item-information">
+                        <h2>Elden Ring</h2>
+                        <p class="cart-item-price">$47200</p>
+                    </div>
+
+                    <div class="cart-item-quantity">
+                        <button type="button" class="quantity-decrease">-</button>
+                        <span>1</span>
+                        <button type="button" class="quantity-increase">+</button>
+                    </div>
+
+                    <div class="cart-item-subtotal">
+                        <strong>$47200</strong>
+                    </div>
+
+                    <div class="cart-item-remove">
+                        <button type="button">Eliminar</button>
+                    </div>
+
+                </article>
+            </li>
+        </ul>
+        <aside class="cart-summary">
+            <h2>Resumen del carrito</h2>
+
+            <p>
+                Subtotal: 
+                <strong class="cart-subtotal">$47200</strong>
+            </p>
+
+            <p>
+                Total: 
+                <strong class="cart-total">$47200</strong>
+            </p>
+
+            <button type="button">Comprar</button>
+        </aside>
+    </section>
+    </main>
+
+    <footer>
+            <a href="contact.html">Contacto</a>
+            <p>&copy; 2026 Brutal Gaming Argentina. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
