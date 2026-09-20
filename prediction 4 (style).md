@@ -1,0 +1,1 @@
+Se comenzará a crear el estilo que llevará la página, la idea es crear un estilo synthwave con colores luminososy efectos de neón. En esta predicción de estilo se comienza con el logo, el nav y los user action dándoles efectos de luminosidad y una pequeña animación con hover.
