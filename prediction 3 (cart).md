@@ -1,0 +1,1 @@
+Crearé una página de carrito.html con botones para agregar o quitar unidades, con un total o subtotal (dependiendo de si hay descuento o iva) y un botón para redireccionar al index.html

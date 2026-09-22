@@ -1,0 +1,1 @@
+Crearé un formulario de contacto para la página con inputs para las áreas de Nombre e Email, así también un <select id> con <option value> para mostrar varias opciones con el fin de marcar diversos problemas y finalmente un <text area> para que la persona pueda escribir su mensaje.

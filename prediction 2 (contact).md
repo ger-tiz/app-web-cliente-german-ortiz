@@ -1,0 +1,1 @@
+Se creará un formulario de contacto con inputs para nombre e email, un select id con options y un text area para que el cliente pueda escribir alguna queja o duda.
