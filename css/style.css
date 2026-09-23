@@ -9,6 +9,7 @@ html{
 body{
     margin:0;
     font-family: Arial, sans-serif;
+    background-color: #0a0a0a;
 }
 
 .site-header{
@@ -48,9 +49,6 @@ main{
     padding: 0;
 }
 
-.user-actions{
-    width: 100%;
-}
 .user-actions ul {
     display: flex;
     flex-wrap: wrap;
@@ -116,6 +114,7 @@ main{
 }
 
 .user-actions {
+    width: 100%;
     font-size: 0.9rem;
     font-weight: 700;
 }
@@ -160,16 +159,16 @@ main{
     box-shadow: 0 0 10px #00ffff;
 }
 
-.hero-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
 .hero-image {
     flex: 1;
     overflow: hidden;
     border-radius: 8px;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .best-sellers {
@@ -196,19 +195,29 @@ main{
     gap: 15px;
     padding: 15px;
     background-color: #111;
-    border: 1px solid #333;
+    border: 1px solid #444;
     border-radius: 10px;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    border-color: #ff00ff;
+    box-shadow: 0 0 15px #ff00ff;
 }
 
 .game-cover {
     position: relative;
     overflow: hidden;
     border-radius: 8px;
+    aspect-ratio: 16 / 9;
+    background-color: #000;
 }
 
 .game-cover img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
     display: block;
 }
 
@@ -301,16 +310,13 @@ main{
     .user-actions ul {
         justify-content: flex-end;
     }
-}
 
-@media (min-width: 768px) {
     .hero-banner {
         flex-direction: row;
     }
-}
 
-@media (min-width: 768px) {
     .game-list {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
     }
 }
