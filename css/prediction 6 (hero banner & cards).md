@@ -1,0 +1,1 @@
+Crearé el estilo del hero banner y de las cards usando el mismo diseño synthwave del nav, añadiendo los efectos en botones y haciendo la parte responsive de ambas partes.
