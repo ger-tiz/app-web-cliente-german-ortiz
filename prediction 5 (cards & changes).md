@@ -1,0 +1,1 @@
+Crearé las cards del sitio, las cards tendrán 2 estados, uno donde se encuentren en oferta y otro donde no. Adicionalmente se cambiarán fragmentos de código para mejorar el orden, la arquitectura y la legibilidad. También se cambiarán los nombres en español a inglés con el fin de mejorar el uso de buenas prácticas.
