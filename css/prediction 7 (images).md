@@ -1,0 +1,1 @@
+Se insertarán las imágenes correspondientes a las cards, se cambiará el color del fondo del sitio y se ordenan media queries y reglas de css que se encontraban duplicadas. Debido a que las imágenes de las cards no encajaban bien se trata de acomodarlas y reducir el tamaño de las cards.
