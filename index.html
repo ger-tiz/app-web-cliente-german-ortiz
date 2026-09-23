@@ -4,34 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--el link vincula el archivo de estilo -->
-    <link rel="stylesheet" href="style.css">
     <title>Brutal Gaming Argentina</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
  
 <!-- encabezado-->
-    <header>
-     <!-- div es un elemento genérico de agrupación. Se utiliza para agrupar elementos que no tienen un significado semántico específico. -->
-     <div class="brand">
-        <div>LOGO</div>
-        <span>Brutal Gaming Argentina</span>
-     </div>
-     <!-- nav es un elemento semantico, sirve para agrupar enlaces de navegacion, en este caso los enlaces a las diferentes secciones de la pagina web. -->     
-        <nav class="navigation">
-            <ul>
-                <li><a href="inicio.html">Inicio</a></li>
-                <li><a href="tienda.html">Tienda</a></li>
-                <li><a href="ofertas.html">Ofertas</a></li>
-                <li><a href="categorias.html">Categorías</a></li>
-                <li><a href="proximos-lanzamientos.html">Próximos lanzamientos</a></li>
-            </ul>
-        </nav>
-        <div class="user-actions">
-            <ul>
-             <li><a href="buscar.html">Buscar</a></li>
-             <li><a href="carrito.html">Carrito</a></li>
-             <li><a href="micuenta.html">Mi cuenta</a></li>
-            </ul>
+    <header class="site-header">
+        <div class="header-container">
+            <!-- div es un elemento genérico de agrupación. Se utiliza para agrupar elementos que no tienen un significado semántico específico. -->
+            <a href="index.html" class="brand">
+                <div class="brand-logo">
+                    LOGO
+                </div>
+                <span class="brand-name">Brutal Gaming Argentina</span>
+            </a>
+            <!-- nav es un elemento semantico, sirve para agrupar enlaces de navegacion, en este caso los enlaces a las diferentes secciones de la pagina web. -->     
+                <nav class="navigation">
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="store.html">Tienda</a></li>
+                        <li><a href="offers.html">Ofertas</a></li>
+                        <li><a href="categories.html">Categorías</a></li>
+                        <li><a href="upcoming-releases.html">Próximos lanzamientos</a></li>
+                    </ul>
+                </nav>
+                <div class="user-actions">
+                    <ul>
+                    <li><a href="search.html">Buscar</a></li>
+                    <li><a href="cart.html">Carrito</a></li>
+                    <li><a href="my-account.html">Mi cuenta</a></li>
+                    </ul>
+                </div>
         </div>
     </header>
         <!-- main es el componente esencial de la pagina contiene todo el contenido principal, solo puede haber uno por pagina. Es el contenido central de la pagina -->
@@ -43,7 +47,7 @@
                 <a href="enlace a cyberpunk-2077.html">Comprar ahora</a>
                 </div>
                 <div class="hero-image">
-                    <img src="imagen de cyberpunk 2077" alt="Cyberpunk 2077"></div>
+                    <img src="image/cyberpunk-2077.jpg" alt="Cyberpunk 2077"></div>
         </section>
 
         <section class="best-sellers">
@@ -52,28 +56,82 @@
             <ul class="game-list">
                 <li>
                     <article class="game-card">
+                        
                         <div class="game-cover">
                             <img src="image/elden-ring.jpg" alt="Elden Ring">
-                            <span class="badge">-30%</span>
                         </div>
                         
                         <div class="game-information">
                             <h3>Elden Ring</h3>
                             
-                            <div class="game-price">$47200
-                                <del>$67500</del>
+                            <div class="game-price">
                                 <strong>$47200</strong>
                             </div>
                             
                             <ul class="game-categories">
-                                <li>rpg</li>
-                                <li>accion</li>
-                                <li>mundo abierto</li>
+                                <li>RPG</li>
+                                <li>Acción</li>
+                                <li>Mundo abierto</li>
                             </ul>
                         </div>
 
                         <div class="game-actions">
                             <a href="enlace a elden ring.html">Ver juego</a>
+                        </div>
+                    </article>
+                </li>
+                <li>
+                    <article class="game-card on-sale">
+                        
+                        <div class="game-cover">
+                            <img src="image/cyberpunk-2077.jpg" alt="Cyberpunk 2077">
+                            <span class="sale-badge">-25%</span>
+                        </div>
+
+                        <div class="game-information">
+                            <h3>Cyberpunk 2077</h3>
+
+                            <div class="game-price">
+                                <del>$30000</del>
+                                <strong>$25000</strong>
+                            </div>
+
+                            <ul class="game-categories">
+                                <li>RPG</li>
+                                <li>Acción</li>
+                                <li>Mundo abierto</li>
+                            </ul>
+                        </div>
+
+                            <div class="game-actions">
+                                <a href="enlace a cyberpunk 2077.html">Ver juego</a>
+                            </div>
+                    </article>
+                </li>
+
+                <li>
+                    <article class="game-card">
+                        
+                        <div class="game-cover">
+                            <img src="image/hades.jpg" alt="Hades">
+                        </div>
+                        
+                        <div class="game-information">
+                            <h3>Hades</h3>
+                            
+                            <div class="game-price">
+                                <strong>$30000</strong>
+                            </div>
+                            
+                            <ul class="game-categories">
+                                <li>RPG</li>
+                                <li>Acción</li>
+                                <li>Mundo abierto</li>
+                            </ul>
+                        </div>
+
+                        <div class="game-actions">
+                            <a href="enlace a hades.html">Ver juego</a>
                         </div>
                     </article>
                 </li>
@@ -94,7 +152,7 @@
        
     </main>
      <footer>
-            <a href="contacto.html">Contacto</a>
+            <a href="contact.html">Contacto</a>
             <p>&copy; 2026 Brutal Gaming Argentina. Todos los derechos reservados.</p>
         </footer>
 </body>
