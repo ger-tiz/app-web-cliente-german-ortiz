@@ -1,0 +1,1 @@
+Crearé la sección de mystery keys, eliminaré la sección de mystery boxes (se unificarán ambos contenidos) y crearé las cards con sus respectivos efectos, hover y tratando de mantener el diseño responsive.
