@@ -228,10 +228,12 @@ main{
 .game-information h3 {
     margin: 0;
     color: #fff;
+    text-align: center;
 }
 
 .game-price {
     margin-top: 10px;
+    text-align: center;
 }
 
 .game-price strong {
@@ -260,6 +262,7 @@ main{
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    justify-content: center;
     list-style: none;
     margin: 10px 0 0;
     padding: 0;
@@ -275,6 +278,7 @@ main{
 
 .game-actions {
     margin-top: auto;
+    text-align: center;
 }
 
 .game-actions a {
@@ -290,6 +294,88 @@ main{
 .game-actions a:hover {
     background-color: #00ffff;
     box-shadow: 0 0 10px #00ffff;
+}
+
+.featured-games {
+    margin-top: 40px;
+}
+
+.featured-games h2 {
+    color: #fff;
+    margin: 0 0 20px;
+}
+
+.featured-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.featured-card {
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #111;
+    border: 1px solid #444;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.featured-card:hover {
+    transform: translateY(-5px);
+    border-color: #00ff66;
+    box-shadow: 0 0 15px #00ff66;
+}
+
+.featured-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    display: block;
+}
+
+.featured-card a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.featured-info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 20px;
+
+    background: linear-gradient(
+        to top,
+        rgba(0, 255, 102, 0.9),
+        rgba(0, 255, 102, 0)
+    );
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.featured-card:hover .featured-info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.featured-info h3 {
+    margin: 0;
+    color: #fff;
+}
+
+.featured-info strong {
+    display: block;
+    margin-top: 5px;
+    color: #fff;
 }
 
 @media (min-width: 768px) {
@@ -318,5 +404,9 @@ main{
     .game-list {
         grid-template-columns: repeat(3, 1fr);
         gap: 15px;
+    }
+
+    .featured-list {
+    grid-template-columns: repeat(3, 1fr);
     }
 }
