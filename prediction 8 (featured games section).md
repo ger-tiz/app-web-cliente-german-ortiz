@@ -1,0 +1,1 @@
+Se creará la sección destacados de la semana, con imágenes de productos y botones que lleven directamente hacia la página de venta del mismo. Así también se le dará el estilo correspondiente.
