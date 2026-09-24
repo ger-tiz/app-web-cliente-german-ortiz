@@ -480,6 +480,35 @@ main{
     border-radius: 6px;
 }
 
+footer {
+    margin-top: 40px;
+    padding: 30px 20px;
+    background-color: #111;
+    border-top: 1px solid #ff00ff;
+    text-align: center;
+}
+
+footer a {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #ff00ff;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+footer a:hover {
+    background-color: #00ffff;
+    box-shadow: 0 0 10px #00ffff;
+}
+
+footer p {
+    margin: 15px 0 0;
+    color: #fff;
+}
+
 @media (min-width: 768px) {
     .header-container {
         flex-direction: row;
