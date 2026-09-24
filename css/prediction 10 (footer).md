@@ -1,0 +1,1 @@
+Se modificará el footer con el mismo estilo del sitio, el enlace de contacto estará contenido en un botón para más visibilidad, se corregirá el color del texto a blanco para generar contraste.
