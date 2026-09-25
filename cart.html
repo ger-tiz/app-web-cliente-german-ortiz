@@ -3,41 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito -Brutal Gaming Argentina</title>
+    <title>Carrito - Brutal Gaming Argentina</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <header>
-     <!-- div es un elemento genérico de agrupación. Se utiliza para agrupar elementos que no tienen un significado semántico específico. -->
-     <div class="brand">
-        <div>LOGO</div>
-        <span>Brutal Gaming Argentina</span>
-     </div>
-     <!-- nav es un elemento semantico, sirve para agrupar enlaces de navegacion, en este caso los enlaces a las diferentes secciones de la pagina web. -->     
-        <nav class="navigation">
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="store.html">Tienda</a></li>
-                <li><a href="offers.html">Ofertas</a></li>
-                <li><a href="categories.html">Categorías</a></li>
-                <li><a href="upcoming-releases.html">Próximos lanzamientos</a></li>
-            </ul>
-        </nav>
-        <div class="user-actions">
-            <ul>
-             <li><a href="search.html">Buscar</a></li>
-             <li><a href="cart.html">Carrito</a></li>
-             <li><a href="my-account.html">Mi cuenta</a></li>
-            </ul>
-        </div>
-    </header>
+        <header class="site-header">
+            <div class="header-container">
+
+                <a href="index.html" class="brand">
+                    <div class="brand-logo">
+                        LOGO
+                    </div>
+
+                    <span class="brand-name">
+                        Brutal Gaming Argentina
+                    </span>
+                </a>
+
+                <nav class="navigation">
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="store.html">Tienda</a></li>
+                        <li><a href="offers.html">Ofertas</a></li>
+                        <li><a href="categories.html">Categorías</a></li>
+                        <li><a href="upcoming-releases.html">Próximos lanzamientos</a></li>
+                    </ul>
+                </nav>
+
+                <div class="user-actions">
+                    <ul>
+                        <li><a href="search.html">Buscar</a></li>
+                        <li><a href="cart.html">Carrito</a></li>
+                        <li><a href="my-account.html">Mi cuenta</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </header>
     <main>
     <section class="cart">
         <header>
             <h1>Carrito</h1>
         </header>
-        <section>
+        <section class="cart-empty" hidden>
             <header>
                 <h2>Tu carrito está vacío</h2>
                 <p>Agregá algunos juegos para comenzar tu compra.</p>
@@ -49,7 +58,7 @@
             <li>
                 <article class="cart-item">
                     <div class="cart-item-image">
-                        <img src="imagen del juego" alt="Nombre del juego">
+                        <img src="images/games/elden-ring/cover.jpg" alt="Elden Ring">
                     </div>
 
                     <div class="cart-item-information">
