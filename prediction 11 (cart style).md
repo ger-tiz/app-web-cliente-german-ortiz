@@ -1,0 +1,1 @@
+Crearé el estilo del carrito manteniendo el diseño responsive y la identidad visual del sitio. Mantendré la card que se encuentra en el cart a modo de ejemplo hasta que le aplique js.
