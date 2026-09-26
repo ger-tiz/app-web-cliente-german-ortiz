@@ -1,42 +1,120 @@
-<section class="contact">
-    <header>
-        <h1>Contacto</h1>
-        <p>Si tenés alguna pregunta, sugerencia o comentario, no dudes en ponerte en contacto con nosotros. Estaremos encantados de ayudarte.</p>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Brutal Gaming Argentina</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+
+            <a href="index.html" class="brand">
+                <div class="brand-logo">
+                    LOGO
+                </div>
+                <span class="brand-name">Brutal Gaming Argentina</span>
+            </a>
+
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="store.html">Tienda</a></li>
+                    <li><a href="upcoming-releases.html">Próximos lanzamientos</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-actions">
+                <ul>
+                    <li><a href="search.html">Buscar</a></li>
+                    <li><a href="cart.html">Carrito</a></li>
+                    <li><a href="my-account.html">Mi cuenta</a></li>
+                </ul>
+            </div>
+
+        </div>
     </header>
-    <form>
-        <!--la etiqueta label se utiliza para asociar un texto descriptivo con un elemento de formulario, como un campo de entrada o un área de texto. El atributo for del label debe coincidir con el atributo id del elemento de formulario correspondiente. Esto mejora la accesibilidad y la usabilidad del formulario, ya que permite a los usuarios hacer clic en el texto del label para enfocar el campo de entrada asociado.-->
-        <fieldset>
-            <legend>Formulario de contacto</legend>
-            <div>
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" placeholder="Ingresá tu nombre" autocomplete="name" required>
-            </div>
 
-            <div>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Ingresa tu email" autocomplete="email" required>
-            </div>
+    <main>
 
-            <div>
-            <label for="subject">Asunto:</label>
-            <select id="subject" name="subject" required>
-                <option value="">Selecciona una opción</option>
-                <option value="purchase">Problema con una compra</option>
-                <option value="payment">Problema con un pago</option>
-                <option value="key">Problema con una clave</option>
-                <option value="refund">Devolución / Reembolso</option>
-                <option value="account">Problema con mi cuenta</option>
-                <option value="other">Otro</option>
-            </select>
-            </div>
+        <section class="contact">
 
-            <div>
-            <label for="message">Mensaje:</label>
-            <textarea id="message" name="message" placeholder="Escribí tu consulta" required></textarea>
-            </div>
-        </fieldset>
+            <header>
+                <h1>Contacto</h1>
+                <p>
+                    Si tenés alguna pregunta, sugerencia o comentario,
+                    no dudes en ponerte en contacto con nosotros.
+                    Estaremos encantados de ayudarte.
+                </p>
+            </header>
 
-        <button type="submit">Enviar</button>
-    </form>
-        <a href="index.html" class="index-button">Ir al inicio</a>
-</section>
+            <form>
+                <fieldset>
+
+                    <legend>Formulario de contacto</legend>
+
+                    <div>
+                        <label for="name">Nombre:</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Ingresá tu nombre"
+                            autocomplete="name"
+                            required>
+                    </div>
+
+                    <div>
+                        <label for="email">Email:</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Ingresá tu email"
+                            autocomplete="email"
+                            required>
+                    </div>
+
+                    <div>
+                        <label for="subject">Asunto:</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Seleccioná una opción</option>
+                            <option value="purchase">Problema con una compra</option>
+                            <option value="payment">Problema con un pago</option>
+                            <option value="key">Problema con una clave</option>
+                            <option value="refund">Devolución / Reembolso</option>
+                            <option value="account">Problema con mi cuenta</option>
+                            <option value="other">Otro</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="message">Mensaje:</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="6"
+                            placeholder="Escribí tu consulta"
+                            required></textarea>
+                    </div>
+
+                </fieldset>
+
+                <button type="submit">Enviar</button>
+            </form>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Brutal Gaming Argentina. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+
+</html>
