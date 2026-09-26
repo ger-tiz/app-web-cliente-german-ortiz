@@ -126,6 +126,7 @@ main{
     padding: 20px;
     border-radius: 12px;
     background-color: #111;
+    border: 1px solid #444;
 }
 
 .hero-content {
@@ -133,6 +134,11 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
+}
+
+.hero-content p span {
+    white-space: nowrap;
 }
 
 .hero-content h2{
@@ -768,6 +774,94 @@ footer p {
     box-shadow: 0 0 10px #00ffff;
 }
 
+.game-filters {
+    margin-top: 40px;
+    padding: 15px;
+    background-color: #111;
+    border: 1px solid #444;
+    border-radius: 10px;
+}
+
+.game-search {
+    margin-bottom: 20px;
+}
+
+.game-search label {
+    display: block;
+    margin-bottom: 8px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.game-search input {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: #222;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.price-filter {
+    margin: 0;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 8px;
+}
+
+.price-filter input[type="range"] {
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.price-filter output {
+    display: block;
+    margin-top: 10px;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+}
+
+.category-filter {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 8px;
+}
+
+.category-filter > div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.game-filters h2 {
+    margin: 0 0 15px;
+    color: #fff;
+    text-align: center;
+}
+
+.price-filter legend,
+.category-filter legend {
+    color: #fff;
+}
+
+.category-filter label {
+    color: #fff;
+}
+
+.price-filter label {
+    color: #fff;
+}
+
+.store-layout {
+    display: grid;
+}
+
+
 @media (min-width: 768px) {
     .header-container {
         flex-direction: row;
@@ -803,37 +897,49 @@ footer p {
     .mystery-list {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .cart-item {
-    flex-direction: row;
-    align-items: center;
+        flex-direction: row;
+        align-items: center;
     }
 
     .cart-item-image {
-    flex: 0 0 180px;
-    height: 126px;
+        flex: 0 0 180px;
+        height: 126px;
     }
 
     .cart-item-information {
-    flex: 1;
+        flex: 1;
     }
 
     .cart-item-quantity {
-    flex-shrink: 0;
+        flex-shrink: 0;
     }
 
     .cart-item-subtotal {
-    flex-shrink: 0;
-    min-width: 100px;
+        flex-shrink: 0;
+        min-width: 100px;
     }
 
     .cart-item-remove {
-    flex-shrink: 0;
+        flex-shrink: 0;
     }
 
     .cart-summary {
-    max-width: 400px;
-    margin-left: auto;
+        max-width: 400px;
+        margin-left: auto;
+    }
+
+    .store-layout {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr);
+        gap: 30px;
+    }
+
+    .game-filters {
+    position: sticky;
+    top: 20px;
+    align-self: start;
     }
 
 }
@@ -842,4 +948,5 @@ footer p {
     .mystery-list {
         grid-template-columns: repeat(5, 1fr);
     }
+
 }

@@ -24,14 +24,12 @@
                     <ul>
                         <li><a href="index.html">Inicio</a></li>
                         <li><a href="store.html">Tienda</a></li>
-                        <li><a href="offers.html">Ofertas</a></li>
-                        <li><a href="categories.html">Categorías</a></li>
                         <li><a href="upcoming-releases.html">Próximos lanzamientos</a></li>
                     </ul>
                 </nav>
                 <div class="user-actions">
                     <ul>
-                    <li><a href="search.html">Buscar</a></li>
+
                     <li><a href="cart.html">Carrito</a></li>
                     <li><a href="my-account.html">Mi cuenta</a></li>
                     </ul>
@@ -40,10 +38,101 @@
     </header>
         <!-- main es el componente esencial de la pagina contiene todo el contenido principal, solo puede haber uno por pagina. Es el contenido central de la pagina -->
     <main>
-        <section class="hero-banner">
+        <div class="store-layout">
+            <section class="game-filters">
+                            <header>
+                                <h2>Buscar juegos</h2>
+                            </header>
+
+                            <div class="game-search">
+                                <label for="game-search">Nombre:</label>
+                                <input
+                                    type="search"
+                                    id="game-search"
+                                    name="game-search"
+                                    placeholder="Buscá un juego por nombre">
+                            </div>
+
+                            <aside class="filter-options">
+
+                                <fieldset class="price-filter">
+                                    <legend>Precio</legend>
+
+                                    <label for="price-range">Precio máximo:</label>
+                                    <input
+                                        type="range"
+                                        id="price-range"
+                                        name="price-range"
+                                        min="0"
+                                        max="50000"
+                                        step="500"
+                                        value="50000">
+
+                                    <output id="price-value" for="price-range">
+                                        $50000
+                                    </output>
+                                </fieldset>
+
+                                <fieldset class="category-filter">
+                                    <legend>Categorías</legend>
+
+                                    <div>
+                                        <input
+                                            type="checkbox"
+                                            id="category-action"
+                                            name="category"
+                                            value="action">
+                                        <label for="category-action">Acción</label>
+                                    </div>
+
+                                    <div>
+                                        <input
+                                            type="checkbox"
+                                            id="category-rpg"
+                                            name="category"
+                                            value="rpg">
+                                        <label for="category-rpg">RPG</label>
+                                    </div>
+
+                                    <div>
+                                        <input
+                                            type="checkbox"
+                                            id="category-horror"
+                                            name="category"
+                                            value="horror">
+                                        <label for="category-horror">Terror</label>
+                                    </div>
+
+                                    <div>
+                                        <input
+                                            type="checkbox"
+                                            id="category-strategy"
+                                            name="category"
+                                            value="strategy">
+                                        <label for="category-strategy">Estrategia</label>
+                                    </div>
+
+                                    <div>
+                                        <input
+                                            type="checkbox"
+                                            id="category-simulation"
+                                            name="category"
+                                            value="simulation">
+                                        <label for="category-simulation">Simulación</label>
+                                    </div>
+                                </fieldset>
+
+                            </aside>
+                </section>
+            <div class="store-content">
+        
+                <section class="hero-banner">
             <div class="hero-content">
                 <h2>Cyberpunk 2077</h2>
-                <p>Vive y respira Night city, un juego desarrollado por CD Projekt RED.</p>
+                <p>
+                    Recorre las enormes calles de Night City, su historia y personajes.
+                    <span>Forja tu historia, conviértete en leyenda.</span>
+                </p>
                 <a href="enlace a cyberpunk-2077.html">Comprar ahora</a>
                 </div>
                 <div class="hero-image">
@@ -51,139 +140,141 @@
                 </div>
         </section>
 
+                    
         <section class="best-sellers">
-            <h2>Más vendidos</h2>
+                <h2>Más vendidos</h2>
 
-            <ul class="game-list">
-                <li>
-                    <article class="game-card">
-                        
-                        <div class="game-cover">
-                            <img src="images/games/elden-ring/cover.jpg" alt="Elden Ring">
-                        </div>
-                        
-                        <div class="game-information">
-                            <h3>Elden Ring</h3>
+                <ul class="game-list">
+                    <li>
+                        <article class="game-card">
                             
-                            <div class="game-price">
-                                <strong>$47200</strong>
+                            <div class="game-cover">
+                                <img src="images/games/elden-ring/cover.jpg" alt="Elden Ring">
                             </div>
                             
-                            <ul class="game-categories">
-                                <li>RPG</li>
-                                <li>Acción</li>
-                                <li>Mundo abierto</li>
-                            </ul>
-                        </div>
-
-                        <div class="game-actions">
-                            <a href="enlace a elden ring.html">Ver juego</a>
-                        </div>
-                    </article>
-                </li>
-                <li>
-                    <article class="game-card on-sale">
-                        
-                        <div class="game-cover">
-                            <img src="images/games/cyberpunk/cover.jpg" alt="Cyberpunk 2077">
-                            <span class="sale-badge">-25%</span>
-                        </div>
-
-                        <div class="game-information">
-                            <h3>Cyberpunk 2077</h3>
-
-                            <div class="game-price">
-                                <del>$30000</del>
-                                <strong>$25000</strong>
+                            <div class="game-information">
+                                <h3>Elden Ring</h3>
+                                
+                                <div class="game-price">
+                                    <strong>$47200</strong>
+                                </div>
+                                
+                                <ul class="game-categories">
+                                    <li>RPG</li>
+                                    <li>Acción</li>
+                                    <li>Mundo abierto</li>
+                                </ul>
                             </div>
-
-                            <ul class="game-categories">
-                                <li>RPG</li>
-                                <li>Acción</li>
-                                <li>Mundo abierto</li>
-                            </ul>
-                        </div>
 
                             <div class="game-actions">
-                                <a href="enlace a cyberpunk 2077.html">Ver juego</a>
+                                <a href="enlace a elden ring.html">Ver juego</a>
                             </div>
-                    </article>
-                </li>
-
-                <li>
-                    <article class="game-card">
-                        
-                        <div class="game-cover">
-                            <img src="images/games/hades/cover.jpg" alt="Hades">
-                        </div>
-                        
-                        <div class="game-information">
-                            <h3>Hades</h3>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="game-card on-sale">
                             
-                            <div class="game-price">
-                                <strong>$30000</strong>
+                            <div class="game-cover">
+                                <img src="images/games/cyberpunk/cover.jpg" alt="Cyberpunk 2077">
+                                <span class="sale-badge">-25%</span>
+                            </div>
+
+                            <div class="game-information">
+                                <h3>Cyberpunk 2077</h3>
+
+                                <div class="game-price">
+                                    <del>$30000</del>
+                                    <strong>$25000</strong>
+                                </div>
+
+                                <ul class="game-categories">
+                                    <li>RPG</li>
+                                    <li>Acción</li>
+                                    <li>Mundo abierto</li>
+                                </ul>
+                            </div>
+
+                                <div class="game-actions">
+                                    <a href="enlace a cyberpunk 2077.html">Ver juego</a>
+                                </div>
+                        </article>
+                    </li>
+
+                    <li>
+                        <article class="game-card">
+                            
+                            <div class="game-cover">
+                                <img src="images/games/hades/cover.jpg" alt="Hades">
                             </div>
                             
-                            <ul class="game-categories">
-                                <li>RPG</li>
-                                <li>Acción</li>
-                                <li>Mundo abierto</li>
-                            </ul>
-                        </div>
+                            <div class="game-information">
+                                <h3>Hades</h3>
+                                
+                                <div class="game-price">
+                                    <strong>$30000</strong>
+                                </div>
+                                
+                                <ul class="game-categories">
+                                    <li>RPG</li>
+                                    <li>Acción</li>
+                                    <li>Mundo abierto</li>
+                                </ul>
+                            </div>
 
-                        <div class="game-actions">
-                            <a href="enlace a hades.html">Ver juego</a>
-                        </div>
-                    </article>
-                </li>
-            </ul>
-        </section>
+                            <div class="game-actions">
+                                <a href="enlace a hades.html">Ver juego</a>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+            </section>
+
        <section class="featured-games">
-    <h2>Destacados de la semana</h2>
+                <h2>Destacados de la semana</h2>
 
-    <ul class="featured-list">
+                <ul class="featured-list">
 
-        <li>
-            <article class="featured-card">
-                <a href="#">
-                    <img src="images/games/wardogs/cover.png" alt="Wardogs">
-                </a>
-                <div class="featured-info">
-                    <h3>Wardogs</h3>
-                <strong>$35000</strong>
-            </div>
-            </article>
-        </li>
+                    <li>
+                        <article class="featured-card">
+                            <a href="#">
+                                <img src="images/games/wardogs/cover.png" alt="Wardogs">
+                            </a>
+                            <div class="featured-info">
+                                <h3>Wardogs</h3>
+                            <strong>$35000</strong>
+                        </div>
+                        </article>
+                    </li>
 
-        <li>
-            <article class="featured-card">
-                <a href="#">
-                    <img src="images/games/silent-hill/cover.webp" alt="Silent Hill">
-                </a>
-                <div class="featured-info">
-                    <h3>Silent Hill</h3>
-                    <strong>$50000</strong>
-                </div>
-            </article>
-        </li>
+                    <li>
+                        <article class="featured-card">
+                            <a href="#">
+                                <img src="images/games/silent-hill/cover.webp" alt="Silent Hill">
+                            </a>
+                            <div class="featured-info">
+                                <h3>Silent Hill</h3>
+                                <strong>$50000</strong>
+                            </div>
+                        </article>
+                    </li>
 
-        <li>
-            <article class="featured-card">
-                <a href="#">
-                    <img src="images/games/ace-combat/cover.jpg" alt="Ace Combat">
-                </a>
-                <div class="featured-info">
-                    <h3>Ace Combat</h3>
-                    <strong>$44000</strong>
-                </div>
-            </article>
-        </li>
+                    <li>
+                        <article class="featured-card">
+                            <a href="#">
+                                <img src="images/games/ace-combat/cover.jpg" alt="Ace Combat">
+                            </a>
+                            <div class="featured-info">
+                                <h3>Ace Combat</h3>
+                                <strong>$44000</strong>
+                            </div>
+                        </article>
+                    </li>
 
-    </ul>
-</section>
-            </ul>
+                </ul>
         </section>
 
+            </div>
+        </div>
         <section class="mystery-keys">
             <h2>Mistery keys</h2>
             
