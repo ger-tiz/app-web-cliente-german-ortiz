@@ -1,0 +1,1 @@
+Crearé el estilo de la página de contacto, usando el mismo diseño del sitio, intentando darle diseño responsive y funcionalidad.
