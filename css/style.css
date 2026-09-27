@@ -862,6 +862,132 @@ footer p {
     display: grid;
 }
 
+.store-page > header {
+    margin-bottom: 30px;
+}
+
+.store-page > header h1 {
+    margin: 0;
+    color: #fff;
+    text-align: center;
+}
+
+.store-page > header p {
+    margin-top: 10px;
+    color: #ccc;
+    text-align: center;
+}
+
+.game-product {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.game-product .game-cover {
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #000;
+}
+
+.game-product .game-cover img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.game-product .game-price strong {
+    font-size: 2rem;
+}
+
+.game-product .game-categories {
+    justify-content: flex-start;
+    margin-top: 15px;
+}
+
+.game-page-header h1 {
+    color: #fff;
+}
+
+.game-page-header p {
+    color: #ccc;
+}
+
+.game-description h2 {
+    color: #fff;
+}
+
+.game-description p {
+    color: #ccc;
+}
+
+.game-details h2 {
+    color: #fff;
+}
+
+.game-details dt {
+    color: #fff;
+}
+
+.game-details dd {
+    color: #ccc;
+}
+
+.game-product .game-description {
+    margin-top: 25px;
+}
+
+.game-product .game-description h2 {
+    margin: 0 0 10px;
+    font-size: 1.4rem;
+}
+
+.game-product .game-description p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.game-product .game-actions {
+    margin-top: 30px;
+}
+
+.game-product .game-actions a {
+    padding: 12px 24px;
+    font-size: 1rem;
+}
+
+.game-details {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #111;
+    border: 1px solid #444;
+    border-radius: 10px;
+}
+
+.game-details dl {
+    display: grid;
+    gap: 12px;
+    margin: 20px 0 0;
+}
+
+.game-details dl > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 0;
+    border-bottom: 1px solid #333;
+}
+
+.game-details dt {
+    font-weight: 600;
+}
+
+.game-details dd {
+    margin: 0;
+    text-align: right;
+}
+
 
 @media (min-width: 768px) {
     .header-container {
@@ -942,6 +1068,24 @@ footer p {
     top: 20px;
     align-self: start;
     }
+
+    .game-product {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .game-product .game-cover {
+    flex: 1;
+    }
+
+    .game-product .game-information {
+    flex: 1;
+    }
+
+    .game-product .game-price {
+    margin-top: 0;
+    }
+
 
 }
 
