@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda - Brutal Gaming Argentina</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+
+            <a href="index.html" class="brand">
+                <div class="brand-logo">LOGO</div>
+                <span class="brand-name">Brutal Gaming Argentina</span>
+            </a>
+
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="store.html">Tienda</a></li>
+                    <li><a href="upcoming-releases.html">Próximos lanzamientos</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-actions">
+                <ul>
+                    <li><a href="cart.html">Carrito</a></li>
+                    <li><a href="my-account.html">Mi cuenta</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+
+
+    <main>
+
+        <section class="store-page">
+
+            <header>
+                <h1>Tienda</h1>
+                <p>Explorá nuestro catálogo de juegos.</p>
+            </header>
+
+
+            <div class="store-layout">
+
+                <section class="game-filters">
+
+                    <header>
+                        <h2>Buscar juegos</h2>
+                    </header>
+
+                    <div class="game-search">
+
+                        <label for="game-search">
+                            Nombre:
+                        </label>
+
+                        <input
+                            type="search"
+                            id="game-search"
+                            name="game-search"
+                            placeholder="Buscá un juego por nombre">
+
+                    </div>
+
+
+                    <aside class="filter-options">
+
+                        <fieldset class="price-filter">
+
+                            <legend>Precio</legend>
+
+                            <label for="price-range">
+                                Precio máximo:
+                            </label>
+
+                            <input
+                                type="range"
+                                id="price-range"
+                                name="price-range"
+                                min="0"
+                                max="50000"
+                                step="500"
+                                value="50000">
+
+                            <output
+                                id="price-value"
+                                for="price-range">
+                                $50000
+                            </output>
+
+                        </fieldset>
+
+
+                        <fieldset class="category-filter">
+
+                            <legend>Categorías</legend>
+
+
+                            <div>
+                                <input
+                                    type="checkbox"
+                                    id="category-action"
+                                    name="category"
+                                    value="action">
+
+                                <label for="category-action">
+                                    Acción
+                                </label>
+                            </div>
+
+
+                            <div>
+                                <input
+                                    type="checkbox"
+                                    id="category-rpg"
+                                    name="category"
+                                    value="rpg">
+
+                                <label for="category-rpg">
+                                    RPG
+                                </label>
+                            </div>
+
+
+                            <div>
+                                <input
+                                    type="checkbox"
+                                    id="category-horror"
+                                    name="category"
+                                    value="horror">
+
+                                <label for="category-horror">
+                                    Terror
+                                </label>
+                            </div>
+
+
+                            <div>
+                                <input
+                                    type="checkbox"
+                                    id="category-strategy"
+                                    name="category"
+                                    value="strategy">
+
+                                <label for="category-strategy">
+                                    Estrategia
+                                </label>
+                            </div>
+
+
+                            <div>
+                                <input
+                                    type="checkbox"
+                                    id="category-simulation"
+                                    name="category"
+                                    value="simulation">
+
+                                <label for="category-simulation">
+                                    Simulación
+                                </label>
+                            </div>
+
+                        </fieldset>
+
+                    </aside>
+
+                </section>
+
+
+                <div class="store-content">
+
+                    <section class="store-catalog">
+
+                        <header>
+                            <h2>Todos los juegos</h2>
+                        </header>
+
+
+                        <ul class="game-list">
+
+
+                            <!-- Elden Ring -->
+
+                            <li>
+
+                                <article class="game-card">
+
+                                    <div class="game-cover">
+
+                                        <img
+                                            src="images/games/elden-ring/cover.jpg"
+                                            alt="Portada de Elden Ring">
+
+                                    </div>
+
+                                    <div class="game-information">
+
+                                        <h3>Elden Ring</h3>
+
+                                        <p class="game-price">
+                                            <strong>$39999</strong>
+                                        </p>
+
+                                        <ul class="game-categories">
+                                            <li>RPG</li>
+                                            <li>Acción</li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="game-actions">
+
+                                        <a href="#">
+                                            Ver juego
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </li>
+
+
+                            <!-- Cyberpunk 2077 -->
+
+                            <li>
+
+                                <article class="game-card">
+
+                                    <div class="game-cover">
+
+                                        <img
+                                            src="images/games/cyberpunk/cover.jpg"
+                                            alt="Portada de Cyberpunk 2077">
+
+                                    </div>
+
+                                    <div class="game-information">
+
+                                        <h3>Cyberpunk 2077</h3>
+
+                                        <p class="game-price">
+                                            <strong>$29999</strong>
+                                        </p>
+
+                                        <ul class="game-categories">
+                                            <li>RPG</li>
+                                            <li>Acción</li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="game-actions">
+
+                                        <a href="#">
+                                            Ver juego
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </li>
+
+
+                            <!-- Hades -->
+
+                            <li>
+
+                                <article class="game-card">
+
+                                    <div class="game-cover">
+
+                                        <img
+                                            src="images/games/hades/cover.jpg"
+                                            alt="Portada de Hades">
+
+                                    </div>
+
+                                    <div class="game-information">
+
+                                        <h3>Hades</h3>
+
+                                        <p class="game-price">
+                                            <strong>$14999</strong>
+                                        </p>
+
+                                        <ul class="game-categories">
+                                            <li>Acción</li>
+                                            <li>RPG</li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="game-actions">
+
+                                        <a href="#">
+                                            Ver juego
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </li>
+
+
+                            <!-- War Dogs -->
+
+                            <li>
+
+                                <article class="game-card">
+
+                                    <div class="game-cover">
+
+                                        <img
+                                            src="images/games/wardogs/cover.png"
+                                            alt="Portada de War Dogs">
+
+                                    </div>
+
+                                    <div class="game-information">
+
+                                        <h3>War Dogs</h3>
+
+                                        <p class="game-price">
+                                            <strong>$19999</strong>
+                                        </p>
+
+                                        <ul class="game-categories">
+                                            <li>Acción</li>
+                                            <li>Estrategia</li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="game-actions">
+
+                                        <a href="#">
+                                            Ver juego
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </li>
+
+
+                            <!-- Silent Hill -->
+
+                            <li>
+
+                                <article class="game-card">
+
+                                    <div class="game-cover">
+
+                                        <img
+                                            src="images/games/silent-hill/cover.webp"
+                                            alt="Portada de Silent Hill">
+
+                                    </div>
+
+                                    <div class="game-information">
+
+                                        <h3>Silent Hill</h3>
+
+                                        <p class="game-price">
+                                            <strong>$24999</strong>
+                                        </p>
+
+                                        <ul class="game-categories">
+                                            <li>Terror</li>
+                                            <li>RPG</li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="game-actions">
+
+                                        <a href="#">
+                                            Ver juego
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </li>
+
+
+                            <!-- Ace Combat -->
+
+                            <li>
+
+                                <article class="game-card">
+
+                                    <div class="game-cover">
+
+                                        <img
+                                            src="images/games/ace-combat/cover.jpg"
+                                            alt="Portada de Ace Combat">
+
+                                    </div>
+
+                                    <div class="game-information">
+
+                                        <h3>Ace Combat</h3>
+
+                                        <p class="game-price">
+                                            <strong>$17999</strong>
+                                        </p>
+
+                                        <ul class="game-categories">
+                                            <li>Acción</li>
+                                            <li>Simulación</li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="game-actions">
+
+                                        <a href="#">
+                                            Ver juego
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </li>
+
+
+                            <!-- Warhammer 40,000: Space Marine 2 -->
+
+                            <li>
+
+                                <article class="game-card">
+
+                                    <div class="game-cover">
+
+                                        <img
+                                            src="images/games/space-marine-2/cover.avif"
+                                            alt="Portada de Warhammer 40,000: Space Marine 2">
+
+                                    </div>
+
+                                    <div class="game-information">
+
+                                        <h3>Warhammer 40,000: Space Marine 2</h3>
+
+                                        <p class="game-price">
+                                            <strong>$29999</strong>
+                                        </p>
+
+                                        <ul class="game-categories">
+                                            <li>Acción</li>
+                                            <li>Acción de disparos</li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="game-actions">
+
+                                        <a href="#">
+                                            Ver juego
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </li>
+
+
+                            <!-- Graveyard Keeper 2 -->
+
+                            <li>
+
+                                <article class="game-card">
+
+                                    <div class="game-cover">
+
+                                        <img
+                                            src="images/games/graveyard-keeper-2/cover.jpg"
+                                            alt="Portada de Graveyard Keeper 2">
+
+                                    </div>
+
+                                    <div class="game-information">
+
+                                        <h3>Graveyard Keeper 2</h3>
+
+                                        <p class="game-price">
+                                            <strong>$24999</strong>
+                                        </p>
+
+                                        <ul class="game-categories">
+                                            <li>Simulación</li>
+                                            <li>RPG</li>
+                                            <li>Estrategia</li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="game-actions">
+
+                                        <a href="#">
+                                            Ver juego
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </li>
+
+
+                            <!-- Ori and the Blind Forest -->
+
+                            <li>
+
+                                <article class="game-card">
+
+                                    <div class="game-cover">
+
+                                        <img
+                                            src="images/games/ori-and-the-blind-forest/cover.jpg"
+                                            alt="Portada de Ori and the Blind Forest">
+
+                                    </div>
+
+                                    <div class="game-information">
+
+                                        <h3>Ori and the Blind Forest</h3>
+
+                                        <p class="game-price">
+                                            <strong>$12999</strong>
+                                        </p>
+
+                                        <ul class="game-categories">
+                                            <li>Acción</li>
+                                            <li>Aventura</li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="game-actions">
+
+                                        <a href="#">
+                                            Ver juego
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </li>
+
+
+                            <!-- BioShock: The Collection -->
+
+                            <li>
+
+                                <article class="game-card">
+
+                                    <div class="game-cover">
+
+                                        <img
+                                            src="images/games/bioshock-collection/cover.jpg"
+                                            alt="Portada de BioShock: The Collection">
+
+                                    </div>
+
+                                    <div class="game-information">
+
+                                        <h3>BioShock: The Collection</h3>
+
+                                        <p class="game-price">
+                                            <strong>$19999</strong>
+                                        </p>
+
+                                        <ul class="game-categories">
+                                            <li>Acción</li>
+                                            <li>Terror</li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="game-actions">
+
+                                        <a href="#">
+                                            Ver juego
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </li>
+
+
+                            <!-- The Witcher 3 -->
+
+                            <li>
+
+                                <article class="game-card">
+
+                                    <div class="game-cover">
+
+                                        <img
+                                            src="images/games/the-witcher-3/cover.jpg"
+                                            alt="Portada de The Witcher 3">
+
+                                    </div>
+
+                                    <div class="game-information">
+
+                                        <h3>The Witcher 3</h3>
+
+                                        <p class="game-price">
+                                            <strong>$21999</strong>
+                                        </p>
+
+                                        <ul class="game-categories">
+                                            <li>RPG</li>
+                                            <li>Acción</li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="game-actions">
+
+                                        <a href="#">
+                                            Ver juego
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </li>
+
+
+                            <!-- Fallout: New Vegas -->
+
+                            <li>
+
+                                <article class="game-card">
+
+                                    <div class="game-cover">
+
+                                        <img
+                                            src="images/games/fallout-new-vegas/cover.jpeg"
+                                            alt="Portada de Fallout: New Vegas">
+
+                                    </div>
+
+                                    <div class="game-information">
+
+                                        <h3>Fallout: New Vegas</h3>
+
+                                        <p class="game-price">
+                                            <strong>$14999</strong>
+                                        </p>
+
+                                        <ul class="game-categories">
+                                            <li>RPG</li>
+                                            <li>Acción</li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="game-actions">
+
+                                        <a href="#">
+                                            Ver juego
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </li>
+
+
+                            <!-- Dead Space -->
+
+                            <li>
+
+                                <article class="game-card">
+
+                                    <div class="game-cover">
+
+                                        <img
+                                            src="images/games/dead-space/cover.jpg"
+                                            alt="Portada de Dead Space">
+
+                                    </div>
+
+                                    <div class="game-information">
+
+                                        <h3>Dead Space</h3>
+
+                                        <p class="game-price">
+                                            <strong>$19999</strong>
+                                        </p>
+
+                                        <ul class="game-categories">
+                                            <li>Terror</li>
+                                            <li>Acción</li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="game-actions">
+
+                                        <a href="#">
+                                            Ver juego
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </li>
+
+
+                            <!-- Alien: Isolation -->
+
+                            <li>
+
+                                <article class="game-card">
+
+                                    <div class="game-cover">
+
+                                        <img
+                                            src="images/games/alien-isolation/cover.avif"
+                                            alt="Portada de Alien: Isolation">
+
+                                    </div>
+
+                                    <div class="game-information">
+
+                                        <h3>Alien: Isolation</h3>
+
+                                        <p class="game-price">
+                                            <strong>$17999</strong>
+                                        </p>
+
+                                        <ul class="game-categories">
+                                            <li>Terror</li>
+                                            <li>Acción</li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="game-actions">
+
+                                        <a href="#">
+                                            Ver juego
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </li>
+
+
+                            <!-- XCOM 2 -->
+
+                            <li>
+
+                                <article class="game-card">
+
+                                    <div class="game-cover">
+
+                                        <img
+                                            src="images/games/xcom-2/cover.jpg"
+                                            alt="Portada de XCOM 2">
+
+                                    </div>
+
+                                    <div class="game-information">
+
+                                        <h3>XCOM 2</h3>
+
+                                        <p class="game-price">
+                                            <strong>$12999</strong>
+                                        </p>
+
+                                        <ul class="game-categories">
+                                            <li>Estrategia</li>
+                                            <li>Acción</li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="game-actions">
+
+                                        <a href="#">
+                                            Ver juego
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </li>
+
+
+                            <!-- Stardew Valley -->
+
+                            <li>
+
+                                <article class="game-card">
+
+                                    <div class="game-cover">
+
+                                        <img
+                                            src="images/games/stardew-valley/cover.avif"
+                                            alt="Portada de Stardew Valley">
+
+                                    </div>
+
+                                    <div class="game-information">
+
+                                        <h3>Stardew Valley</h3>
+
+                                        <p class="game-price">
+                                            <strong>$9999</strong>
+                                        </p>
+
+                                        <ul class="game-categories">
+                                            <li>Simulación</li>
+                                            <li>RPG</li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="game-actions">
+
+                                        <a href="#">
+                                            Ver juego
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </li>
+
+
+                            <!-- Hollow Knight -->
+
+                            <li>
+
+                                <article class="game-card">
+
+                                    <div class="game-cover">
+
+                                        <img
+                                            src="images/games/hollow-knight/cover.webp"
+                                            alt="Portada de Hollow Knight">
+
+                                    </div>
+
+                                    <div class="game-information">
+
+                                        <h3>Hollow Knight</h3>
+
+                                        <p class="game-price">
+                                            <strong>$11999</strong>
+                                        </p>
+
+                                        <ul class="game-categories">
+                                            <li>Acción</li>
+                                            <li>Aventura</li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="game-actions">
+
+                                        <a href="#">
+                                            Ver juego
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </li>
+
+
+                            <!-- Disco Elysium: The Final Cut -->
+
+                            <li>
+
+                                <article class="game-card">
+
+                                    <div class="game-cover">
+
+                                        <img
+                                            src="images/games/disco-elysium/cover.jpg"
+                                            alt="Portada de Disco Elysium: The Final Cut">
+
+                                    </div>
+
+                                    <div class="game-information">
+
+                                        <h3>Disco Elysium: The Final Cut</h3>
+
+                                        <p class="game-price">
+                                            <strong>$14999</strong>
+                                        </p>
+
+                                        <ul class="game-categories">
+                                            <li>RPG</li>
+                                            <li>Aventura</li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="game-actions">
+
+                                        <a href="#">
+                                            Ver juego
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </li>
+
+
+                        </ul>
+
+                    </section>
+
+                </div> <!-- store-content -->
+
+            </div> <!-- store-layout -->
+
+        </section> <!-- store-page -->
+
+    </main>
+
+
+    <footer>
+
+        <a href="contact.html">
+            Contacto
+        </a>
+
+        <p>
+            © 2026 Brutal Gaming Argentina
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
