@@ -1,0 +1,1 @@
+Crearé los filtros para búsqueda en la página de inicio, se eliminarán las secciones Ofertas y Categorías, ya que no es necesario filtrar por ofertas y categorías puede ir en un filtro sin tener que ser una sección. Aún no usaré js para los filtros. 
