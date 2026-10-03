@@ -1,3 +1,14 @@
+:root {
+    --color-primary: #ff00ff;
+    --color-secondary: #00ffff;
+    --color-background: #0a0a0a;
+    --color-surface: #111;
+    --color-surface-light: #222;
+    --color-border: #444;
+    --color-text: #fff;
+    --color-text-muted: #ccc;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -9,14 +20,14 @@ html{
 body{
     margin:0;
     font-family: Arial, sans-serif;
-    background-color: #0a0a0a;
+    background-color: var(--color-background);
 }
 
 .site-header{
     padding: 20px;
     min-height: 90px;
-    background-color: #111;
-    border-bottom: 1px solid #ff00ff;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-primary);
 }
 
 main{
@@ -73,28 +84,28 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #222;
+    background-color: var(--color-surface-light);
     border-radius: 8px;
-    border: 2px solid #ff00ff;
+    border: 2px solid var(--color-primary);
     transition: border-color 0.5s ease, box-shadow 0.5s ease;
-    box-shadow: 0 0 10px #ff00ff;
+    box-shadow: 0 0 10px var(--color-primary);
 }
 
 .brand:hover .brand-logo {
-    border-color: #00ffff;
-    box-shadow: 0 0 10px #00ffff;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 10px var(--color-secondary);
 }
 
 .brand-name {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--color-text);
     transition: color 0.5s ease, text-shadow 0.5s ease;
 }
 
 .brand:hover .brand-name {
-    color: #ff00ff;
-    text-shadow: 0 0 8px #ff00ff;
+    color: var(--color-primary);
+    text-shadow: 0 0 8px var(--color-primary);
 }
 
 .navigation a,
@@ -102,14 +113,14 @@ main{
     text-decoration: none;
     font-weight: 600;
     transition: color 0.5s ease, transform 0.5s ease;
-    color:#fff;
+    color: var(--color-text);
     display: inline-block;
 }
 
 .navigation a:hover,
 .user-actions a:hover {
-    color: #ff00ff;
-    text-shadow: 0 0 8px #ff00ff;
+    color: var(--color-primary);
+    text-shadow: 0 0 8px var(--color-primary);
     transform: translateY(-2px);
 }
 
@@ -125,8 +136,8 @@ main{
     gap: 20px;
     padding: 20px;
     border-radius: 12px;
-    background-color: #111;
-    border: 1px solid #444;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
 }
 
 .hero-content {
@@ -142,27 +153,27 @@ main{
 }
 
 .hero-content h2{
-    color: #fff;
+    color: var(--color-text);
 }
 
 .hero-content p{
-    color: #ccc;
+    color: var(--color-text-muted);
 }
 
 .hero-content a {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #ff00ff;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-text);
     text-decoration: none;
     border-radius: 6px;
     transition: background-color 0.5s ease, box-shadow 0.5s ease;
-    box-shadow: 0 0 10px #ff00ff;
+    box-shadow: 0 0 10px var(--color-primary);
 }
 
 .hero-content a:hover {
-    background-color: #00ffff;
-    box-shadow: 0 0 10px #00ffff;
+    background-color: var(--color-secondary);
+    box-shadow: 0 0 10px var(--color-secondary);
 }
 
 .hero-image {
@@ -182,7 +193,7 @@ main{
 }
 
 .best-sellers h2 {
-    color: #fff;
+    color: var(--color-text);
     margin: 0 0 20px;
 }
 
@@ -201,16 +212,85 @@ main{
     gap: 15px;
     height: 100%;
     padding: 15px;
-    background-color: #111;
-    border: 1px solid #444;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: 10px;
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 1.5s ease-out forwards;
+}
+
+.game-list li:nth-child(2) .game-card {
+    animation-delay: 0.1s;
+}
+
+.game-list li:nth-child(3) .game-card {
+    animation-delay: 0.2s;
+}
+
+.game-list li:nth-child(4) .game-card {
+    animation-delay: 0.3s;
+}
+
+.game-list li:nth-child(5) .game-card {
+    animation-delay: 0.4s;
+}
+
+.game-list li:nth-child(6) .game-card {
+    animation-delay: 0.5s;
+}
+
+.game-list li:nth-child(7) .game-card {
+    animation-delay: 1.3s;
+}
+
+.game-list li:nth-child(8) .game-card {
+    animation-delay: 1.4s;
+}
+
+.game-list li:nth-child(9) .game-card {
+    animation-delay: 1.5s;
+}
+
+.game-list li:nth-child(10) .game-card {
+    animation-delay: 1.6s;
+}
+
+.game-list li:nth-child(11) .game-card {
+    animation-delay: 1.7s;
+}
+
+.game-list li:nth-child(12) .game-card {
+    animation-delay: 1.8s;
+}
+
+.game-list li:nth-child(13) .game-card {
+    animation-delay: 1.9s;
+}
+
+.game-list li:nth-child(14) .game-card {
+    animation-delay: 2s;
+}
+
+.game-list li:nth-child(15) .game-card {
+    animation-delay: 2.1s;
+}
+
+.game-list li:nth-child(16) .game-card {
+    animation-delay: 2.2s;
+}
+
+.game-list li:nth-child(17) .game-card {
+    animation-delay: 2.3s;
+}
+
+.game-list li:nth-child(18) .game-card {
+    animation-delay: 2.4s;
 }
 
 .game-card:hover {
     transform: translateY(-5px);
-    border-color: #ff00ff;
-    box-shadow: 0 0 15px #ff00ff;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 15px var(--color-primary);
 }
 
 .game-cover {
@@ -234,7 +314,7 @@ main{
 
 .game-information h3 {
     margin: 0;
-    color: #fff;
+    color: var(--color-text);
     text-align: center;
 }
 
@@ -244,7 +324,7 @@ main{
 }
 
 .game-price strong {
-    color: #fff;
+    color: var(--color-text);
     font-size: 1.2rem;
 }
 
@@ -258,8 +338,8 @@ main{
     top: 10px;
     right: 10px;
     padding: 5px 8px;
-    background-color: #ff00ff;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-text);
     font-size: 0.8rem;
     font-weight: 700;
     border-radius: 4px;
@@ -277,8 +357,8 @@ main{
 
 .game-categories li {
     padding: 4px 8px;
-    background-color: #222;
-    color: #ccc;
+    background-color: var(--color-surface-light);
+    color: var(--color-text-muted);
     border-radius: 4px;
     font-size: 0.85rem;
 }
@@ -291,16 +371,16 @@ main{
 .game-actions a {
     display: inline-block;
     padding: 8px 16px;
-    background-color: #ff00ff;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-text);
     text-decoration: none;
     border-radius: 6px;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .game-actions a:hover {
-    background-color: #00ffff;
-    box-shadow: 0 0 10px #00ffff;
+    background-color: var(--color-secondary);
+    box-shadow: 0 0 10px var(--color-secondary);
 }
 
 .featured-games {
@@ -308,7 +388,7 @@ main{
 }
 
 .featured-games h2 {
-    color: #fff;
+    color: var(--color-text);
     margin: 0 0 20px;
 }
 
@@ -324,8 +404,8 @@ main{
 .featured-card {
     overflow: hidden;
     border-radius: 10px;
-    background-color: #111;
-    border: 1px solid #444;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     position: relative;
 }
@@ -376,13 +456,13 @@ main{
 
 .featured-info h3 {
     margin: 0;
-    color: #fff;
+    color: var(--color-text);
 }
 
 .featured-info strong {
     display: block;
     margin-top: 5px;
-    color: #fff;
+    color: var(--color-text);
 }
 
 .mystery-keys {
@@ -390,7 +470,7 @@ main{
 }
 
 .mystery-keys h2 {
-    color: #fff;
+    color: var(--color-text);
     margin: 0 0 20px;
 }
 
@@ -409,8 +489,8 @@ main{
     gap: 15px;
     padding: 15px;
 
-    background-color: #111;
-    border: 1px solid #444;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: 10px;
 
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
@@ -418,15 +498,15 @@ main{
 
 .mystery-card:hover {
     transform: translateY(-5px);
-    border-color: #ff00ff;
-    box-shadow: 0 0 15px #ff00ff;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 15px var(--color-primary);
 }
 
 .mystery-actions a {
     display: inline-block;
     padding: 8px 16px;
-    background-color: #ff00ff;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-text);
     text-decoration: none;
     border-radius: 6px;
 
@@ -434,8 +514,8 @@ main{
 }
 
 .mystery-actions a:hover {
-    background-color: #00ffff;
-    box-shadow: 0 0 10px #00ffff;
+    background-color: var(--color-secondary);
+    box-shadow: 0 0 10px var(--color-secondary);
 }
 
 .mystery-special:hover {
@@ -459,7 +539,7 @@ main{
 
 .mystery-information h3 {
     margin: 0;
-    color: #fff;
+    color: var(--color-text);
     text-align: center;
 }
 
@@ -469,7 +549,7 @@ main{
 }
 
 .mystery-price strong {
-    color: #fff;
+    color: var(--color-text);
     font-size: 1.2rem;
 }
 
@@ -481,8 +561,8 @@ main{
 .mystery-actions a {
     display: inline-block;
     padding: 8px 16px;
-    background-color: #ff00ff;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-text);
     text-decoration: none;
     border-radius: 6px;
 }
@@ -490,16 +570,16 @@ main{
 footer {
     margin-top: 40px;
     padding: 30px 20px;
-    background-color: #111;
-    border-top: 1px solid #ff00ff;
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-primary);
     text-align: center;
 }
 
 footer a {
     display: inline-block;
     padding: 8px 16px;
-    background-color: #ff00ff;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-text);
     text-decoration: none;
     font-weight: 600;
     border-radius: 6px;
@@ -507,13 +587,13 @@ footer a {
 }
 
 footer a:hover {
-    background-color: #00ffff;
-    box-shadow: 0 0 10px #00ffff;
+    background-color: var(--color-secondary);
+    box-shadow: 0 0 10px var(--color-secondary);
 }
 
 footer p {
     margin: 15px 0 0;
-    color: #fff;
+    color: var(--color-text);
 }
 
 .cart {
@@ -527,7 +607,7 @@ footer p {
 
 .cart > header h1 {
     margin: 0;
-    color: #fff;
+    color: var(--color-text);
     text-align: center;
 }
 
@@ -542,8 +622,8 @@ footer p {
     flex-direction: column;
     gap: 15px;
     padding: 15px;
-    background-color: #111;
-    border: 1px solid #444;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: 10px;
 }
 
@@ -563,12 +643,12 @@ footer p {
 
 .cart-item-information h2 {
     margin: 0;
-    color: #fff;
+    color: var(--color-text);
 }
 
 .cart-item-price {
     margin: 10px 0 0;
-    color: #ccc;
+    color: var(--color-text-muted);
 }
 
 .cart-item-quantity {
@@ -580,23 +660,23 @@ footer p {
 .cart-item-quantity button {
     width: 32px;
     height: 32px;
-    border: 1px solid #444;
+    border: 1px solid var(--color-border);
     border-radius: 4px;
-    background-color: #222;
-    color: #fff;
+    background-color: var(--color-surface-light);
+    color: var(--color-text);
     cursor: pointer;
 }
 
 .cart-item-quantity button:hover {
-    background-color: #ff00ff;
-    border-color: #ff00ff;
-    box-shadow: 0 0 8px #ff00ff;
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 8px var(--color-primary);
 }
 
 .cart-item-quantity span {
     min-width: 20px;
     text-align: center;
-    color: #fff;
+    color: var(--color-text);
     font-weight: 600;
 }
 
@@ -605,7 +685,7 @@ footer p {
 }
 
 .cart-item-subtotal strong {
-    color: #fff;
+    color: var(--color-text);
     font-size: 1.2rem;
 }
 
@@ -615,30 +695,30 @@ footer p {
 
 .cart-item-remove button {
     padding: 8px 16px;
-    background-color: #222;
-    color: #fff;
-    border: 1px solid #444;
+    background-color: var(--color-surface-light);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
     border-radius: 6px;
     cursor: pointer;
 }
 
 .cart-item-remove button:hover {
-    background-color: #ff00ff;
-    border-color: #ff00ff;
-    box-shadow: 0 0 8px #ff00ff;
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 8px var(--color-primary);
 }
 
 .cart-summary {
     margin-top: 30px;
     padding: 20px;
-    background-color: #111;
-    border: 1px solid #444;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: 10px;
 }
 
 .cart-summary h2 {
     margin: 0;
-    color: #fff;
+    color: var(--color-text);
 }
 
 .cart-summary p {
@@ -646,11 +726,11 @@ footer p {
     justify-content: space-between;
     align-items: center;
     margin: 15px 0 0;
-    color: #ccc;
+    color: var(--color-text-muted);
 }
 
 .cart-total {
-    color: #fff;
+    color: var(--color-text);
     font-size: 1.2rem;
 }
 
@@ -658,8 +738,8 @@ footer p {
     width: 100%;
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #ff00ff;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-text);
     border: none;
     border-radius: 6px;
     font-weight: 600;
@@ -667,8 +747,8 @@ footer p {
 }
 
 .cart-summary button:hover {
-    background-color: #00ffff;
-    box-shadow: 0 0 10px #00ffff;
+    background-color: var(--color-secondary);
+    box-shadow: 0 0 10px var(--color-secondary);
 }
 
 .contact {
@@ -682,13 +762,13 @@ footer p {
 
 .contact > header h1 {
     margin: 0;
-    color: #fff;
+    color: var(--color-text);
     text-align: center;
 }
 
 .contact > header p {
     margin: 15px 0 0;
-    color: #ccc;
+    color: var(--color-text-muted);
     text-align: center;
     line-height: 1.6;
 }
@@ -696,14 +776,14 @@ footer p {
 .contact fieldset {
     margin: 0;
     padding: 20px;
-    background-color: #111;
-    border: 1px solid #444;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: 10px;
 }
 
 .contact fieldset legend {
     padding: 0 10px;
-    color: #fff;
+    color: var(--color-text);
     font-size: 1.2rem;
     font-weight: 700;
 }
@@ -715,37 +795,37 @@ footer p {
 .contact fieldset label {
     display: block;
     margin-bottom: 8px;
-    color: #fff;
+    color:  var(--color-text);
     font-weight: 600;
 }
 
 .contact fieldset input {
     width: 100%;
     padding: 10px 12px;
-    background-color: #222;
-    border: 1px solid #444;
+    background-color: var(--color-surface-light);
+    border: 1px solid var(--color-border);
     border-radius: 6px;
-    color: #fff;
+    color: var(--color-text);
     font-size: 1rem;
 }
 
 .contact fieldset select {
     width: 100%;
     padding: 10px 12px;
-    background-color: #222;
-    border: 1px solid #444;
+    background-color: var(--color-surface-light);
+    border: 1px solid var(--color-border);
     border-radius: 6px;
-    color: #fff;
+    color: var(--color-text);
     font-size: 1rem;
 }
 
 .contact fieldset textarea {
     width: 100%;
     padding: 10px 12px;
-    background-color: #222;
-    border: 1px solid #444;
+    background-color: var(--color-surface-light);
+    border: 1px solid var(--color-border);
     border-radius: 6px;
-    color: #fff;
+    color: var(--color-text);
     font-size: 1rem;
     resize: vertical;
 }
@@ -754,16 +834,16 @@ footer p {
 .contact fieldset select:focus,
 .contact fieldset textarea:focus {
     outline: none;
-    border-color: #ff00ff;
-    box-shadow: 0 0 8px #ff00ff;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 8px var(--color-primary);
 }
 
 .contact form > button {
     width: 100%;
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #ff00ff;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-text);
     border: none;
     border-radius: 6px;
     font-weight: 600;
@@ -771,15 +851,15 @@ footer p {
 }
 
 .contact form > button:hover {
-    background-color: #00ffff;
-    box-shadow: 0 0 10px #00ffff;
+    background-color: var(--color-secondary);
+    box-shadow: 0 0 10px var(--color-secondary);
 }
 
 .game-filters {
     margin-top: 40px;
     padding: 15px;
-    background-color: #111;
-    border: 1px solid #444;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: 10px;
 }
 
@@ -790,24 +870,24 @@ footer p {
 .game-search label {
     display: block;
     margin-bottom: 8px;
-    color: #fff;
+    color: var(--color-text);
     font-weight: 600;
 }
 
 .game-search input {
     width: 100%;
     padding: 10px 12px;
-    background-color: #222;
-    border: 1px solid #444;
+    background-color: var(--color-surface-light);
+    border: 1px solid var(--color-border);
     border-radius: 6px;
-    color: #fff;
+    color: var(--color-text);
     font-size: 1rem;
 }
 
 .price-filter {
     margin: 0;
     padding: 10px;
-    border: 1px solid #444;
+    border: 1px solid var(--color-border);
     border-radius: 8px;
 }
 
@@ -820,7 +900,7 @@ footer p {
 .price-filter output {
     display: block;
     margin-top: 10px;
-    color: #fff;
+    color: var(--color-text);
     font-weight: 600;
     text-align: center;
 }
@@ -828,7 +908,7 @@ footer p {
 .category-filter {
     margin-top: 20px;
     padding: 10px;
-    border: 1px solid #444;
+    border: 1px solid var(--color-border);
     border-radius: 8px;
 }
 
@@ -841,21 +921,31 @@ footer p {
 
 .game-filters h2 {
     margin: 0 0 15px;
-    color: #fff;
+    color: var(--color-text);
     text-align: center;
+}
+
+.game-filters h2::after {
+    content: "";
+    display: block;
+    width: 180px;
+    height: 2px;
+    margin: 8px auto 0;
+    background-color: var(--color-primary);
+    box-shadow: 0 0 8px var(--color-primary);
 }
 
 .price-filter legend,
 .category-filter legend {
-    color: #fff;
+    color: var(--color-text);
 }
 
 .category-filter label {
-    color: #fff;
+    color: var(--color-text);
 }
 
 .price-filter label {
-    color: #fff;
+    color: var(--color-text);
 }
 
 .store-layout {
@@ -868,13 +958,13 @@ footer p {
 
 .store-page > header h1 {
     margin: 0;
-    color: #fff;
+    color: var(--color-text);
     text-align: center;
 }
 
 .store-page > header p {
     margin-top: 10px;
-    color: #ccc;
+    color: var(--color-text-muted);
     text-align: center;
 }
 
@@ -907,31 +997,31 @@ footer p {
 }
 
 .game-page-header h1 {
-    color: #fff;
+    color: var(--color-text);
 }
 
 .game-page-header p {
-    color: #ccc;
+    color: var(--color-text-muted);
 }
 
 .game-description h2 {
-    color: #fff;
+    color: var(--color-text);
 }
 
 .game-description p {
-    color: #ccc;
+    color: var(--color-text-muted);
 }
 
 .game-details h2 {
-    color: #fff;
+    color: var(--color-text);
 }
 
 .game-details dt {
-    color: #fff;
+    color: var(--color-text);
 }
 
 .game-details dd {
-    color: #ccc;
+    color: var(--color-text-muted);
 }
 
 .game-product .game-description {
@@ -960,8 +1050,8 @@ footer p {
 .game-details {
     margin-top: 40px;
     padding: 20px;
-    background-color: #111;
-    border: 1px solid #444;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: 10px;
 }
 
@@ -976,7 +1066,7 @@ footer p {
     justify-content: space-between;
     gap: 20px;
     padding: 12px 0;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--color-border);
 }
 
 .game-details dt {
@@ -986,6 +1076,18 @@ footer p {
 .game-details dd {
     margin: 0;
     text-align: right;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
