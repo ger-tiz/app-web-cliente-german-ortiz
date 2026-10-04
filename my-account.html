@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--el link vincula el archivo de estilo -->
+    <title>Brutal Gaming Argentina</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- encabezado-->
+    <header class="site-header">
+        <div class="header-container">
+
+            <!-- div es un elemento genérico de agrupación. Se utiliza para agrupar elementos que no tienen un significado semántico específico. -->
+            <a href="index.html" class="brand">
+                <div class="brand-logo">
+                    LOGO
+                </div>
+                <span class="brand-name">Brutal Gaming Argentina</span>
+            </a>
+
+            <!-- nav es un elemento semantico, sirve para agrupar enlaces de navegacion, en este caso los enlaces a las diferentes secciones de la pagina web. -->
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="store.html">Tienda</a></li>
+                    <li><a href="upcoming-releases.html">Próximos lanzamientos</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-actions">
+                <ul>
+                    <li><a href="cart.html">Carrito</a></li>
+                    <li><a href="my-account.html">Mi cuenta</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+        <section class="account-page">
+            <header>
+                <h1>Mi cuenta</h1>
+            </header>
+
+            <section class="account-login">
+                <header>
+                    <h2>Iniciar sesión</h2>
+                </header>
+
+                <form method="post">
+                    <div>
+                        <label for="login-email">Email:</label>
+                        <input
+                            type="email"
+                            id="login-email"
+                            name="email"
+                            required>
+                    </div>
+
+                    <div>
+                        <label for="login-password">Contraseña:</label>
+                        <input
+                            type="password"
+                            id="login-password"
+                            name="password"
+                            required>
+                    </div>
+
+                    <button type="submit">Iniciar sesión</button>
+                </form>
+
+                <p>
+                    ¿No tenés una cuenta?
+                    <a href="create-account.html">
+                        Creá una cuenta
+                    </a>
+                </p>
+            </section>
+
+        </section>
+    </main>
+
+    <footer>
+        <a href="contact.html">Contacto</a>
+        <p>&copy; 2026 Brutal Gaming Argentina. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
