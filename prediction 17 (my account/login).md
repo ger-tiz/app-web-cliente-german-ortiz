@@ -1,0 +1,1 @@
+Crearé la página de login y creación de cuenta para usuarios, por ahora será solo el html y el css, dejando js para luego introducir la funcionalidad dentro de las cuentas. La idea es mantener la semántica, identidad visual y diseño responsive tal como se viene trabajando.
