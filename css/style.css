@@ -1184,6 +1184,106 @@ footer p {
     width: 100%;
 }
 
+.account-registration {
+    padding: 25px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+}
+
+.account-registration > header {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.account-registration > header h2 {
+    margin: 0;
+    color: var(--color-text);
+}
+
+.account-registration form > div {
+    margin-bottom: 20px;
+}
+
+.account-registration form label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--color-text);
+}
+
+.account-registration form input[type="text"],
+.account-registration form input[type="email"],
+.account-registration form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text);
+    box-sizing: border-box;
+}
+
+.account-registration form input[type="text"]:focus,
+.account-registration form input[type="email"]:focus,
+.account-registration form input[type="password"]:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 8px var(--color-primary);
+}
+
+.account-registration form button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 6px;
+    color: var(--color-text);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.account-registration form button:hover {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 12px var(--color-secondary);
+}
+
+.account-registration > form > p {
+    width: 100%;
+    margin: 20px auto 0;
+    text-align: center;
+    color: var(--color-text);
+}
+
+.account-registration > form > p a {
+    color: #ffd700;
+    text-decoration: none;
+    position: relative;
+}
+
+.account-registration > form > p a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background-color: #ffd700;
+    box-shadow: 0 0 5px #ffd700, 0 0 12px #ffd700;
+    transition: width 0.3s ease;
+}
+
+.account-registration > form > p a:hover::after {
+    width: 100%;
+}
+
+.account-registration form input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
