@@ -1137,7 +1137,8 @@ footer p {
     box-shadow: 0 0 8px var(--color-primary);
 }
 
-.account-login form button {
+.account-login form button[type="submit"] {
+    display: block;
     width: 100%;
     padding: 12px;
     background-color: var(--color-primary);
@@ -1149,7 +1150,7 @@ footer p {
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.account-login form button:hover {
+.account-login form button[type="submit"]:hover {
     background-color: var(--color-secondary);
     border-color: var(--color-secondary);
     box-shadow: 0 0 12px var(--color-secondary);
@@ -1231,7 +1232,8 @@ footer p {
     box-shadow: 0 0 8px var(--color-primary);
 }
 
-.account-registration form button {
+.account-registration form button[type="submit"] {
+    display: block;
     width: 100%;
     padding: 12px;
     background-color: var(--color-primary);
@@ -1243,7 +1245,7 @@ footer p {
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.account-registration form button:hover {
+.account-registration form button[type="submit"]:hover {
     background-color: var(--color-secondary);
     border-color: var(--color-secondary);
     box-shadow: 0 0 12px var(--color-secondary);
@@ -1282,6 +1284,39 @@ footer p {
     margin-right: 8px;
     accent-color: var(--color-primary);
     cursor: pointer;
+}
+
+.toggle-password {
+    display: block;
+    width: fit-content;
+    padding: 5px 10px;
+    margin: 10px auto 0;
+    background-color: var(--color-surface-light);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.toggle-password:hover {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 12px var(--color-secondary);
+}
+
+.account-login form button[type="submit"]:hover {
+    background-color: #00ffff;
+    border-color: #00ffff;
+    box-shadow: 0 0 12px #00ffff;
+}
+
+#password-error {
+    color: #ff4444;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    text-align: center;
 }
 
 @keyframes fadeInUp {
