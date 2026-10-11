@@ -6,6 +6,7 @@
     <!--el link vincula el archivo de estilo -->
     <title>Brutal Gaming Argentina</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -69,6 +70,15 @@
                             id="login-password"
                             name="password"
                             required>
+
+                            <button type="button" id="toggle-password" class="toggle-password">
+                                Mostrar contraseña
+                            </button>
+
+                            <p id="password-error" role="alert" hidden>
+                                Las contraseñas no coinciden.
+                            </p>
+
                     </div>
 
                     <button type="submit">Iniciar sesión</button>
