@@ -1,0 +1,2 @@
+Se comenzará a introducir js de forma gradual y en interacciones pequeñas para entender la funcionalidad y poder probarla.
+La primer funcionalidad será mostrar y ocultar los campos de contraseña en la página de cuenta.
