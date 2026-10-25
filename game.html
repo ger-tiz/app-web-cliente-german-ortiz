@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elden Ring - Brutal Gaming Argentina</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -41,35 +42,41 @@
         <section class="game-page">
 
             <header class="game-page-header">
-                <h1>Elden Ring</h1>
-                <p>
+                <h1 id="game-title">Elden Ring</h1>
+                <p id="game-intro">
                     Explorá las Tierras Intermedias y su historia épica.
                     Del mismo creador de la aclamada saga Dark Souls.
                 </p>
             </header>
 
-            <div class="game-product">
+            <p id="game-error" role="alert" hidden>
+                No encontramos el juego que buscás. Volvé a la tienda para explorar nuestro catálogo.
+            </p>
+
+            <div class="game-product" id="game-product">
 
                 <div class="game-cover">
                     <img
+                        id="game-cover-img"
                         src="images/games/elden-ring/cover.jpg"
-                        alt="Portada de Elden Ring">
+                        alt="Portada de Elden Ring"
+                    >
                 </div>
 
                 <div class="game-information">
 
                     <p class="game-price">
-                        <strong>$39999</strong>
+                        <strong id="game-price">$39999</strong>
                     </p>
 
-                    <ul class="game-categories">
+                    <ul class="game-categories" id="game-categories">
                         <li>RPG</li>
                         <li>Acción</li>
                     </ul>
 
                     <div class="game-description">
                         <h2>Descripción</h2>
-                        <p>
+                        <p id="game-description">
                             Explorá las Tierras Intermedias, enfrentá enemigos
                             formidables y transformate en el próximo Elden Lord.
                         </p>
@@ -83,34 +90,32 @@
 
             </div>
 
-            <section class="game-details">
+            <section class="game-details" id="game-details">
 
                 <header>
                     <h2>Detalles del juego</h2>
                 </header>
 
                 <dl>
-
                     <div>
                         <dt>Plataforma</dt>
-                        <dd>PC</dd>
+                        <dd id="game-platform">PC</dd>
                     </div>
 
                     <div>
                         <dt>Género</dt>
-                        <dd>RPG, Acción</dd>
+                        <dd id="game-genre">RPG, Acción</dd>
                     </div>
 
                     <div>
                         <dt>Desarrollador</dt>
-                        <dd>FromSoftware</dd>
+                        <dd id="game-developer">FromSoftware</dd>
                     </div>
 
                     <div>
                         <dt>Fecha de lanzamiento</dt>
-                        <dd>25 de febrero de 2022</dd>
+                        <dd id="game-release-date">25 de febrero de 2022</dd>
                     </div>
-
                 </dl>
 
             </section>
