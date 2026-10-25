@@ -142,10 +142,20 @@ main{
 
 .hero-content {
     flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
+    color: var(--color-text);
+}
+
+#hero-slogan {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 20px;
+    color: var(--color-text-muted);
 }
 
 .hero-content p span {
@@ -184,7 +194,8 @@ main{
 
 .hero-image img {
     width: 100%;
-    height: auto;
+    height: 300px;
+    object-fit: contain;
     display: block;
 }
 
@@ -1318,6 +1329,126 @@ footer p {
     margin-top: 10px;
     text-align: center;
 }
+
+#game-error {
+    color: #ff4444;
+    background-color: var(--color-surface);
+    border: 1px solid #ff4444;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* Contenedor de la imagen y las flechas del carrusel */
+.hero-carousel {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+min-width: 0;
+}
+
+/* Imagen del banner */
+.hero-carousel .hero-image {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+
+.hero-carousel .hero-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 360px;
+    object-fit: contain;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+}
+
+.hero-carousel .hero-image img.is-changing {
+    opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-carousel .hero-image img {
+        transition: none;
+    }
+}
+
+
+/* Botones de navegación */
+.hero-carousel-button {
+display: flex;
+align-items: center;
+justify-content: center;
+flex: 0 0 40px;
+width: 40px;
+height: 40px;
+padding: 0;
+
+
+color: var(--color-cyan, #00f0ff);
+background: #111;
+border: 1px solid var(--color-magenta, #ff00ff);
+border-radius: 50%;
+
+font-size: 20px;
+cursor: pointer;
+
+transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+
+
+}
+
+/* Efecto al pasar el cursor */
+.hero-carousel-button:hover {
+color: #fff;
+background: var(--color-magenta, #ff00ff);
+box-shadow: 0 0 12px var(--color-magenta, #ff00ff);
+transform: scale(1.05);
+}
+
+/* Accesibilidad mediante teclado */
+.hero-carousel-button:focus-visible {
+outline: 2px solid var(--color-cyan, #00f0ff);
+outline-offset: 3px;
+}
+
+/* Adaptación para móviles */
+@media (max-width: 600px) {
+.hero-carousel {
+gap: 6px;
+}
+
+
+.hero-carousel-button {
+    flex-basis: 32px;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+}
+
+
+}
+
+/* Respeta las preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+.hero-carousel-button {
+transition: none;
+}
+}
+
 
 @keyframes fadeInUp {
     from {

@@ -1,0 +1,1 @@
+Se creará la funcionalidad del hero banner para que pueda destacar diferentes juegos sin recargar la página, usando id para que js pueda modificar los campos necesarios sin tener que crear contenido adicional nuevo.

@@ -6,6 +6,7 @@
     <!--el link vincula el archivo de estilo -->
     <title>Brutal Gaming Argentina</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
 </head>
 <body>
  
@@ -126,18 +127,52 @@
             <div class="store-content">
         
                 <section class="hero-banner">
-            <div class="hero-content">
-                <h2>Cyberpunk 2077</h2>
-                <p>
-                    Recorre las enormes calles de Night City, su historia y personajes.
-                    <span>Forja tu historia, conviértete en leyenda.</span>
-                </p>
-                <a href="enlace a cyberpunk-2077.html">Comprar ahora</a>
-                </div>
-                <div class="hero-image">
-                   <img src="images/games/cyberpunk/cover.jpg" alt="Cyberpunk 2077">
-                </div>
-        </section>
+                    <div class="hero-content" aria-live="polite">
+                        <h2 id="hero-title">Cyberpunk 2077</h2>
+
+                        <p id="hero-description">
+                            Recorre las enormes calles de Night City, su historia y personajes.
+                        </p>
+
+                        <span id="hero-slogan">Forja tu historia, conviértete en leyenda.</span>
+
+                        <a id="hero-link" href="game.html?game=cyberpunk-2077">
+                            Comprar ahora
+                        </a>
+
+                    </div>
+
+                    <div class="hero-carousel">
+                        <button
+                            class="hero-carousel-button hero-prev"
+                            id="hero-prev"
+                            type="button"
+                            aria-label="Mostrar juego anterior"
+                        >
+                            &#10094;
+                        </button>
+
+                    <div class="hero-image">
+                        <img
+                            id="hero-img"
+                            src="images/games/cyberpunk/cover.jpg"
+                            alt="Cyberpunk 2077"
+                        >
+                    </div>
+
+                    <button
+                        class="hero-carousel-button hero-next"
+                        id="hero-next"
+                        type="button"
+                        aria-label="Mostrar juego siguiente"
+                    >
+                        &#10095;
+                    </button>
+
+                    </div>
+                    
+
+                </section>
 
                     
         <section class="best-sellers">
@@ -166,7 +201,10 @@
                             </div>
 
                             <div class="game-actions">
-                                <a href="game.html?id=1">Ver juego</a>
+                                <a href="game.html?game=elden-ring">
+                                    Ver juego
+                                </a>
+
                             </div>
                         </article>
                     </li>
@@ -194,7 +232,7 @@
                             </div>
 
                                 <div class="game-actions">
-                                <a href="game.html?id=2">Ver juego</a>
+                                <a href="game.html?game=cyberpunk-2077">Ver juego</a>
                             </div>
                         </article>
                     </li>
