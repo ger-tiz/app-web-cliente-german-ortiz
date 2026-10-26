@@ -1344,6 +1344,22 @@ footer p {
     display: none !important;
 }
 
+/* Mensaje cuando no hay juegos que coincidan con los filtros */ 
+#no-results { 
+    color: #ffffff; 
+    background-color: #1a1a1a; 
+    padding: 20px; margin: 20px 0; 
+    border: 1px solid #444; 
+    border-radius: 8px; 
+    font-size: 16px; 
+    text-align: center; 
+}
+
+/* Mantener oculto el mensaje cuando hay resultados */ 
+#no-results[hidden] 
+{ display: none !important; 
+}
+
 /* Contenedor de la imagen y las flechas del carrusel */
 .hero-carousel {
 display: flex;
@@ -1438,7 +1454,6 @@ gap: 6px;
     height: 32px;
     font-size: 16px;
 }
-
 
 }
 
