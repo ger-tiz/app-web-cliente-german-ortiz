@@ -462,3 +462,156 @@ if (gameTitle) {
         }
     }
 }
+
+
+
+// ==================================================
+// 6. FILTROS DEL CATÁLOGO DE LA TIENDA
+// ==================================================
+
+const gameSearch = document.querySelector("#game-search");
+const gameList = document.querySelector(".game-list");
+const priceRange = document.querySelector("#price-range");
+const priceValue = document.querySelector("#price-value");
+const noResults = document.querySelector("#no-results");
+const categoryCheckboxes = document.querySelectorAll(
+    'input[name="category"]'
+);
+
+if (gameSearch && gameList && priceRange && priceValue) {
+
+    const gameItems = gameList.querySelectorAll(":scope > li");
+
+    // Actualizar el precio mostrado.
+    function updatePriceLabel() {
+        const formattedPrice = Number(priceRange.value)
+            .toLocaleString("es-AR");
+
+        priceValue.textContent = `$${formattedPrice}`;
+    }
+
+    // Obtener las categorías seleccionadas.
+    function getSelectedCategories() {
+        return Array.from(categoryCheckboxes)
+            .filter(function (checkbox) {
+                return checkbox.checked;
+            })
+            .map(function (checkbox) {
+                return checkbox.value;
+            });
+    }
+
+    // Comprobar si un juego pertenece a alguna categoría seleccionada.
+    function matchesSelectedCategories(item, selectedCategories) {
+
+        // Sin categorías seleccionadas, no se aplica este filtro.
+        if (selectedCategories.length === 0) {
+            return true;
+        }
+
+        const categoryElements = item.querySelectorAll(
+            ".game-categories li"
+        );
+
+        const gameCategories = Array.from(categoryElements)
+            .map(function (category) {
+                return category.textContent
+                    .trim()
+                    .toLowerCase();
+            });
+
+        const categoryMap = {
+            action: "acción",
+            rpg: "rpg",
+            horror: "terror",
+            strategy: "estrategia",
+            simulation: "simulación"
+        };
+
+        return selectedCategories.some(function (selectedCategory) {
+            const categoryName = categoryMap[selectedCategory];
+
+            return categoryName &&
+                gameCategories.includes(categoryName);
+        });
+    }
+
+    // Aplicar todos los filtros.
+
+function filterGames() {
+
+    const searchText = gameSearch.value
+        .trim()
+        .toLowerCase();
+
+    const maxPrice = Number(priceRange.value);
+    const selectedCategories = getSelectedCategories();
+
+    let visibleGames = 0;
+
+    gameItems.forEach(function (item) {
+
+        const titleElement = item.querySelector(".game-card h3");
+        const priceElement = item.querySelector(".game-price strong");
+
+        if (!titleElement || !priceElement) {
+            return;
+        }
+
+        const gameTitle = titleElement.textContent
+            .trim()
+            .toLowerCase();
+
+        const gamePrice = Number(
+            priceElement.textContent.replace(/\D/g, "")
+        );
+
+        const matchesName = gameTitle.includes(searchText);
+        const matchesPrice = gamePrice <= maxPrice;
+
+        const matchesCategories = matchesSelectedCategories(
+            item,
+            selectedCategories
+        );
+
+        const matchesAllFilters =
+            matchesName &&
+            matchesPrice &&
+            matchesCategories;
+
+        // Mostrar u ocultar la tarjeta.
+        item.hidden = !matchesAllFilters;
+
+        // Contar los juegos que cumplen todos los filtros.
+        if (matchesAllFilters) {
+            visibleGames++;
+        }
+    });
+
+    // Mostrar el mensaje únicamente si no quedan juegos visibles.
+    noResults.hidden = visibleGames > 0;
+}
+
+
+
+    // Eventos de búsqueda y precio.
+    gameSearch.addEventListener("input", filterGames);
+
+    priceRange.addEventListener("input", function () {
+        updatePriceLabel();
+        filterGames();
+    });
+
+    // Eventos de las categorías.
+    categoryCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener("change", filterGames);
+    });
+
+    // Inicializar los filtros.
+    updatePriceLabel();
+    filterGames();
+}
+
+
+
+
