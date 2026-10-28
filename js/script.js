@@ -285,7 +285,7 @@ const games = {
         description:
             "Explorá las Tierras Intermedias, enfrentá enemigos formidables y transformate en el próximo Elden Lord.",
         developer: "FromSoftware",
-        price: 39999,
+        price: 47200,
         platform: "PC",
         genre: "RPG, Acción",
         categories: ["RPG", "Acción"],
@@ -320,7 +320,217 @@ const games = {
         genre: "Acción, Aventura, Mundo abierto",
         categories: ["Acción", "Aventura", "Mundo abierto"],
         releaseDate: "5 de noviembre de 2019"
+    },
+
+        "hades": {
+        title: "Hades",
+        image: "images/games/hades/cover.jpg",
+        intro: "Descendé al inframundo y enfrentá los desafíos de la mitología griega.",
+        description: "Encarná a Zagreus, el príncipe del inframundo, y luchá para escapar del reino de Hades en una aventura de acción con elementos roguelike.",
+        developer: "Supergiant Games",
+        price: 14999,
+        platform: "PC",
+        genre: "Acción, RPG",
+        categories: ["Acción", "RPG"],
+        releaseDate: "17 de septiembre de 2020"
+    },
+
+    "war-dogs": {
+        title: "War Dogs",
+        image: "images/games/wardogs/cover.png",
+        intro: "Prepará tu estrategia y equipate para el combate.",
+        description: "Descubrí una experiencia de combate y estrategia en War Dogs.",
+        developer: "Bulkhead Interactive",
+        price: 19999,
+        platform: "PC",
+        genre: "Acción, Estrategia",
+        categories: ["Acción", "Estrategia"],
+        releaseDate: "10 de septiembre de 2026"
+    },
+
+        "silent-hill": {
+        title: "Silent Hill Townfall",
+        image: "images/games/silent-hill/cover.webp",
+        intro: "Adentrate en un pueblo inquietante lleno de misterios.",
+        description: "Explorá un entorno de terror psicológico, resolvé enigmas y enfrentá los horrores que esconde Silent Hill.",
+        developer: "Konami",
+        price: 24999,
+        platform: "PC",
+        genre: "Terror, RPG",
+        categories: ["Terror", "RPG"],
+        releaseDate: "24 de septiembre de 2026"
+    },
+
+    "ace-combat": {
+        title: "Ace Combat",
+        image: "images/games/ace-combat/cover.jpg",
+        intro: "Despegá y preparate para dominar los cielos.",
+        description: "Pilotá aviones de combate, participá en misiones aéreas y enfrentá desafíos en el campo de batalla.",
+        developer: "Bandai Namco",
+        price: 17999,
+        platform: "PC",
+        genre: "Acción, Simulación",
+        categories: ["Acción", "Simulación"],
+        releaseDate: "Por confirmar"
+    },
+
+        "space-marine-2": {
+        title: "Warhammer 40,000: Space Marine 2",
+        image: "images/games/space-marine-2/cover.avif",
+        intro: "Convertite en un Marine Espacial y defendé a la humanidad.",
+        description: "Enfrentá hordas de enemigos en combates intensos ambientados en el universo de Warhammer 40,000.",
+        developer: "Saber Interactive",
+        price: 29999,
+        platform: "PC",
+        genre: "Acción, Disparos",
+        categories: ["Acción"],
+        releaseDate: "9 de septiembre de 2024"
+    },
+
+    "graveyard-keeper-2": {
+        title: "Graveyard Keeper 2",
+        image: "images/games/graveyard-keeper-2/cover.jpg",
+        intro: "Administrá tu cementerio y descubrí los secretos de un mundo peculiar.",
+        description: "Explorá una aventura de gestión, fabricación y exploración en un mundo medieval lleno de posibilidades.",
+        developer: "Por confirmar",
+        price: 24999,
+        platform: "PC",
+        genre: "Simulación, RPG, Estrategia",
+        categories: ["Simulación", "RPG", "Estrategia"],
+        releaseDate: "Por confirmar"
+    },
+
+    "ori-and-the-blind-forest": {
+        title: "Ori and the Blind Forest",
+        image: "images/games/ori-and-the-blind-forest/cover.jpg",
+        intro: "Descubrí un bosque mágico en una aventura inolvidable.",
+        description: "Acompañá a Ori en una aventura de plataformas que combina exploración, desafíos y una historia emotiva.",
+        developer: "Moon Studios",
+        price: 12999,
+        platform: "PC",
+        genre: "Acción, Aventura, Plataformas",
+        categories: ["Acción", "Aventura"],
+        releaseDate: "11 de marzo de 2015"
+    },
+
+    "bioshock-collection": {
+        title: "BioShock: The Collection",
+        image: "images/games/bioshock-collection/cover.jpg",
+        intro: "Explorá mundos extraordinarios donde cada decisión tiene consecuencias.",
+        description: "Descubrí una colección de aventuras de acción en primera persona ambientadas en universos llenos de misterios.",
+        developer: "2K",
+        price: 19999,
+        platform: "PC",
+        genre: "Acción, Terror",
+        categories: ["Acción", "Terror"],
+        releaseDate: "16 de septiembre de 2016"
+    },
+
+        "the-witcher-3": {
+        title: "The Witcher 3",
+        image: "images/games/the-witcher-3/cover.jpg",
+        intro: "Convertite en Geralt de Rivia y recorré un mundo de fantasía lleno de peligros.",
+        description: "Emprendé una aventura de rol de mundo abierto, aceptá contratos de monstruos y seguí una historia marcada por tus decisiones.",
+        developer: "CD Projekt Red",
+        price: 21999,
+        platform: "PC",
+        genre: "RPG, Acción",
+        categories: ["RPG", "Acción"],
+        releaseDate: "19 de mayo de 2015"
+    },
+
+    "fallout-new-vegas": {
+        title: "Fallout: New Vegas",
+        image: "images/games/fallout-new-vegas/cover.jpeg",
+        intro: "Explorá el yermo de Mojave y decidí el destino de New Vegas.",
+        description: "Recorré un mundo posapocalíptico, conocé distintas facciones y tomá decisiones que pueden cambiar el futuro de la región.",
+        developer: "Obsidian Entertainment",
+        price: 14999,
+        platform: "PC",
+        genre: "RPG, Acción",
+        categories: ["RPG", "Acción"],
+        releaseDate: "19 de octubre de 2010"
+    },
+
+    "dead-space": {
+        title: "Dead Space",
+        image: "images/games/dead-space/cover.jpg",
+        intro: "Sobreviví al horror que acecha en una nave espacial abandonada.",
+        description: "Acompañá a Isaac Clarke en una experiencia de terror y supervivencia mientras investigás una nave infestada de criaturas aterradoras.",
+        developer: "EA Redwood Shores",
+        price: 19999,
+        platform: "PC",
+        genre: "Terror, Acción",
+        categories: ["Terror", "Acción"],
+        releaseDate: "27 de enero de 2023"
+    },
+
+    "alien-isolation": {
+        title: "Alien: Isolation",
+        image: "images/games/alien-isolation/cover.avif",
+        intro: "Escondete, explorá y sobreviví a una amenaza implacable.",
+        description: "Explorá una estación espacial y utilizá el sigilo y la estrategia para sobrevivir mientras una criatura te persigue.",
+        developer: "Creative Assembly",
+        price: 17999,
+        platform: "PC",
+        genre: "Terror, Acción",
+        categories: ["Terror", "Acción"],
+        releaseDate: "7 de octubre de 2014"
+    },
+
+    "xcom-2": {
+        title: "XCOM 2",
+        image: "images/games/xcom-2/cover.jpg",
+        intro: "Liderá la resistencia humana contra una fuerza alienígena.",
+        description: "Organizá escuadrones, administrá recursos y dirigí operaciones tácticas por turnos para combatir la ocupación alienígena.",
+        developer: "Firaxis Games",
+        price: 12999,
+        platform: "PC",
+        genre: "Estrategia, Acción",
+        categories: ["Estrategia", "Acción"],
+        releaseDate: "5 de febrero de 2016"
+    },
+
+    "stardew-valley": {
+        title: "Stardew Valley",
+        image: "images/games/stardew-valley/cover.avif",
+        intro: "Construí una nueva vida en una granja y descubrí los secretos del valle.",
+        description: "Cultivá la tierra, criá animales, conocé a los habitantes del pueblo y explorá las minas en una aventura de simulación y rol.",
+        developer: "ConcernedApe",
+        price: 9999,
+        platform: "PC",
+        genre: "Simulación, RPG",
+        categories: ["Simulación", "RPG"],
+        releaseDate: "26 de febrero de 2016"
+    },
+
+    "hollow-knight": {
+        title: "Hollow Knight",
+        image: "images/games/hollow-knight/cover.webp",
+        intro: "Explorá un reino subterráneo lleno de secretos y criaturas.",
+        description: "Aventurate por Hallownest en un juego de acción y plataformas con combates exigentes, exploración y un mundo interconectado.",
+        developer: "Team Cherry",
+        price: 11999,
+        platform: "PC",
+        genre: "Acción, Aventura",
+        categories: ["Acción", "Aventura"],
+        releaseDate: "24 de febrero de 2017"
+    },
+
+    "disco-elysium": {
+        title: "Disco Elysium: The Final Cut",
+        image: "images/games/disco-elysium/cover.jpg",
+        intro: "Investigá un asesinato en una ciudad marcada por sus conflictos.",
+        description: "Interpretá a un detective, interrogá personajes y tomá decisiones que definirán tu investigación y tu identidad.",
+        developer: "ZA/UM",
+        price: 14999,
+        platform: "PC",
+        genre: "RPG, Aventura",
+        categories: ["RPG", "Aventura"],
+        releaseDate: "30 de marzo de 2021"
     }
+
+
 };
 
 
@@ -464,9 +674,298 @@ if (gameTitle) {
 }
 
 
+// ==================================================
+// 6. CARRITO: ALMACENAMIENTO DE PRODUCTOS
+// ==================================================
+
+const CART_STORAGE_KEY = "brutalGamingCart";
+
+// Obtener los productos guardados.
+function getCart() {
+    try {
+        const cart = JSON.parse(
+            localStorage.getItem(CART_STORAGE_KEY)
+        );
+
+        return Array.isArray(cart) ? cart : [];
+    } catch (error) {
+        console.error("No se pudo leer el carrito:", error);
+        return [];
+    }
+}
+
+// Guardar los productos.
+function saveCart(cart) {
+    localStorage.setItem(
+        CART_STORAGE_KEY,
+        JSON.stringify(cart)
+    );
+}
+
+// Agregar un juego al carrito.
+function addToCart(gameId) {
+    const game = games[gameId];
+
+    if (!game) {
+        console.error("No se encontró el juego:", gameId);
+        return false;
+    }
+
+    const cart = getCart();
+
+    const existingItem = cart.find(function (item) {
+        return item.id === gameId;
+    });
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: gameId,
+            title: game.title,
+            image: game.image,
+            price: game.price,
+            quantity: 1
+        });
+    }
+
+    saveCart(cart);
+
+    return true;
+}
+
+
+// Conectar el botón de la ficha del juego.
+const addToCartButton = document.querySelector("#add-to-cart");
+
+if (addToCartButton && selectedGame) {
+    addToCartButton.addEventListener("click", function () {
+        const added = addToCart(gameId);
+
+        if (added) {
+            window.location.href = "cart.html";
+        }
+    });
+}
+
 
 // ==================================================
-// 6. FILTROS DEL CATÁLOGO DE LA TIENDA
+// 7. CARRITO: MOSTRAR PRODUCTOS
+// ==================================================
+
+function renderCart() {
+    // Obtener los elementos del HTML.
+    const cartList = document.querySelector(".cart-list");
+    const cartSubtotal = document.querySelector(".cart-subtotal");
+    const cartIva = document.querySelector(".cart-iva");
+    const cartTotal = document.querySelector(".cart-total");
+    const cartSummary = document.querySelector(".cart-summary");
+    const cartEmpty = document.querySelector(".cart-empty");
+
+    // Si no estamos en la página del carrito, salir.
+    if (
+        !cartList ||
+        !cartSubtotal ||
+        !cartTotal ||
+        !cartSummary ||
+        !cartEmpty
+    ) {
+        return;
+    }
+
+    // Obtener los productos guardados.
+    const cart = getCart();
+
+    // Limpiar la lista antes de mostrar los productos.
+    cartList.innerHTML = "";
+
+    // Calcular el subtotal.
+    let subtotal = 0;
+
+    // Mostrar el estado correspondiente del carrito.
+    if (cart.length === 0) {
+        cartEmpty.hidden = false;
+        cartSummary.hidden = true;
+        return;
+    }
+
+    cartEmpty.hidden = true;
+    cartSummary.hidden = false;
+
+// Crear un elemento por cada juego.
+    cart.forEach(function (item) {
+        const itemPrice = Number(item.price) || 0;
+        const quantity = Number(item.quantity) || 0;
+
+        subtotal += itemPrice * quantity;
+
+        // Contenedor principal del producto.
+        const listItem = document.createElement("li");
+        listItem.classList.add("cart-item");
+
+        // Imagen del juego.
+        const image = document.createElement("img");
+        image.src = item.image;
+        image.alt = item.title;
+
+        // Contenedor de la información.
+        const information = document.createElement("div");
+        information.classList.add("cart-item-information");
+
+        // Título del juego.
+        const title = document.createElement("h2");
+        title.textContent = item.title;
+
+        // Precio unitario.
+        const price = document.createElement("p");
+        price.classList.add("cart-item-price");
+        price.textContent =
+            "Precio unitario: " + formatPrice(itemPrice);
+
+    // Contenedor de los controles de cantidad.
+    const quantityControls = document.createElement("div");
+    quantityControls.classList.add("cart-quantity-controls");
+
+    // Texto de cantidad.
+    const quantityLabel = document.createElement("span");
+    quantityLabel.textContent = "Cantidad:";
+
+    // Botón para reducir la cantidad.
+    const decreaseButton = document.createElement("button");
+    decreaseButton.type = "button";
+    decreaseButton.textContent = "−";
+    decreaseButton.classList.add("cart-quantity-button");
+    decreaseButton.setAttribute("aria-label", "Reducir cantidad de " + item.title);
+
+    // Mostrar la cantidad actual.
+    const quantityText = document.createElement("span");
+    quantityText.classList.add("cart-item-quantity");
+    quantityText.textContent = quantity;
+
+    // Botón para aumentar la cantidad.
+    const increaseButton = document.createElement("button");
+    increaseButton.type = "button";
+    increaseButton.textContent = "+";
+    increaseButton.classList.add("cart-quantity-button");
+    increaseButton.setAttribute("aria-label", "Aumentar cantidad de " + item.title);
+
+    // Reducir la cantidad sin eliminar el producto.
+    decreaseButton.addEventListener("click", function () {
+    const updatedCart = getCart();
+    const product = updatedCart.find(function (cartItem) {
+        return cartItem.id === item.id;
+    });
+
+    if (!product || product.quantity <= 1) {
+        return;
+    }
+
+    product.quantity -= 1;
+
+    saveCart(updatedCart);
+    renderCart();
+
+    });
+
+
+    // Aumentar la cantidad.
+    increaseButton.addEventListener("click", function () {
+        const updatedCart = getCart();
+        const product = updatedCart.find(function (cartItem) {
+            return cartItem.id === item.id;
+        });
+
+        if (!product) return;
+
+        product.quantity += 1;
+
+        saveCart(updatedCart);
+        renderCart();
+    });
+
+    // Agrupar los controles.
+    quantityControls.append(
+        quantityLabel,
+        decreaseButton,
+        quantityText,
+        increaseButton
+    );
+
+    // Subtotal del juego.
+    const itemTotal = document.createElement("p");
+    itemTotal.classList.add("cart-item-total");
+    itemTotal.textContent =
+        "Subtotal del juego: " + formatPrice(itemPrice * quantity);
+
+    // Botón para eliminar el producto.
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.textContent = "Eliminar producto";
+    removeButton.classList.add("cart-remove-button");
+
+    removeButton.addEventListener("click", function () {
+        const updatedCart = getCart();
+
+        const remainingCart = updatedCart.filter(function (cartItem) {
+            return cartItem.id !== item.id;
+        });
+
+        saveCart(remainingCart);
+        renderCart();
+    });
+
+    // Agrupar toda la información.
+    information.append(
+        title,
+        price,
+        quantityControls,
+        itemTotal,
+        removeButton
+    );
+
+
+
+        // Agregar imagen e información al producto.
+        listItem.append(
+            image,
+            information
+        );
+
+        // Agregar el producto a la lista.
+        cartList.appendChild(listItem);
+    });
+
+    // Calcular el IVA incluido en los precios finales.
+    const iva = subtotal * 21 / 121;
+
+    // Calcular el subtotal sin IVA.
+    const subtotalSinIva = subtotal - iva;
+
+    // Actualizar los importes del resumen.
+    cartSubtotal.textContent = formatPrice(subtotalSinIva);
+    cartIva.textContent = formatPrice(iva);
+    cartTotal.textContent = formatPrice(subtotal);
+    }
+
+// Formatear importes en pesos argentinos.
+function formatPrice(amount) {
+    return new Intl.NumberFormat("es-AR", {
+        style: "currency",
+        currency: "ARS",
+        maximumFractionDigits: 0
+    }).format(amount);
+}
+
+// Ejecutar el renderizado al cargar la página.
+renderCart();
+
+
+
+
+
+
+// ==================================================
+// 7. FILTROS DEL CATÁLOGO DE LA TIENDA
 // ==================================================
 
 const gameSearch = document.querySelector("#game-search");

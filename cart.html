@@ -39,68 +39,63 @@
             </div>
         </header>
     <main>
-    <section class="cart">
-        <header>
-            <h1>Carrito</h1>
-        </header>
-        <section class="cart-empty" hidden>
+
+        <section class="cart">
+
             <header>
-                <h2>Tu carrito está vacío</h2>
-                <p>Agregá algunos juegos para comenzar tu compra.</p>
+                <h1>Carrito</h1>
             </header>
 
-            <a href="store.html" class="continue-shopping">Ir a la tienda</a>
+            <!-- Mensaje cuando el carrito está vacío -->
+            <section class="cart-empty" hidden>
+                <header>
+                    <h2>Tu carrito está vacío</h2>
+                    <p>Agregá algunos juegos para comenzar tu compra.</p>
+                </header>
+
+                <a href="store.html" class="continue-shopping">
+                    Ir a la tienda
+                </a>
+            </section>
+
+            <!-- Productos agregados mediante JavaScript -->
+            <ul class="cart-list"></ul>
+
+            <!-- Resumen de la compra -->
+                <aside class="cart-summary" hidden>
+
+                    <h2>Resumen de compra</h2>
+
+                    <p>
+                        Subtotal sin IVA:
+                        <strong class="cart-subtotal">$0</strong>
+                    </p>
+
+                    <p>
+                        IVA (21 %):
+                        <strong class="cart-iva">$0</strong>
+                    </p>
+
+                    <p>
+                        Total:
+                        <strong class="cart-total">$0</strong>
+                    </p>
+
+                    <button type="button" class="cart-checkout">
+                        Comprar
+                    </button>
+
+                </aside>
+
         </section>
-        <ul class="cart-list">
-            <li>
-                <article class="cart-item">
-                    <div class="cart-item-image">
-                        <img src="images/games/elden-ring/cover.jpg" alt="Elden Ring">
-                    </div>
 
-                    <div class="cart-item-information">
-                        <h2>Elden Ring</h2>
-                        <p class="cart-item-price">$47200</p>
-                    </div>
 
-                    <div class="cart-item-quantity">
-                        <button type="button" class="quantity-decrease">-</button>
-                        <span>1</span>
-                        <button type="button" class="quantity-increase">+</button>
-                    </div>
-
-                    <div class="cart-item-subtotal">
-                        <strong>$47200</strong>
-                    </div>
-
-                    <div class="cart-item-remove">
-                        <button type="button">Eliminar</button>
-                    </div>
-
-                </article>
-            </li>
-        </ul>
-        <aside class="cart-summary">
-            <h2>Resumen del carrito</h2>
-
-            <p>
-                Subtotal: 
-                <strong class="cart-subtotal">$47200</strong>
-            </p>
-
-            <p>
-                Total: 
-                <strong class="cart-total">$47200</strong>
-            </p>
-
-            <button type="button">Comprar</button>
-        </aside>
-    </section>
     </main>
 
     <footer>
             <a href="contact.html">Contacto</a>
             <p>&copy; 2026 Brutal Gaming Argentina. Todos los derechos reservados.</p>
     </footer>
+<script src="js/script.js"></script>
 </body>
 </html>
