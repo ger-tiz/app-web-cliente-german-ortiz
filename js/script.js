@@ -534,144 +534,178 @@ const games = {
 };
 
 
+
 // ==================================================
-// 5. CARGAR LA PÁGINA DEL JUEGO SELECCIONADO
+// 5. CARGAR LA PÁGINA DEL JUEGO DESDE SUPABASE
 // ==================================================
 
 const urlParams = new URLSearchParams(window.location.search);
 const gameId = urlParams.get("game");
-const selectedGame = games[gameId];
 
-console.log("Identificador del juego:", gameId);
-console.log("Juego seleccionado:", selectedGame);
+let selectedGame = null;
 
-// Detectamos la página de producto.
 const gameTitle = document.querySelector("#game-title");
 
-if (gameTitle) {
+async function cargarFichaJuego() {
+    // Si no estamos en game.html, no hacemos nada.
+    if (!gameTitle) {
+        return;
+    }
+
     const gameError = document.querySelector("#game-error");
     const gameHeader = document.querySelector(".game-page-header");
     const gameProduct = document.querySelector("#game-product");
     const gameDetails = document.querySelector("#game-details");
 
-    if (selectedGame) {
-        console.log("Actualizando la página con:", selectedGame.title);
+    function mostrarError() {
+        if (gameError) gameError.hidden = false;
+        if (gameHeader) gameHeader.hidden = true;
+        if (gameProduct) gameProduct.hidden = true;
+        if (gameDetails) gameDetails.hidden = true;
+    }
 
-        // Ocultamos el error y mostramos las secciones.
-        if (gameError) {
-            gameError.hidden = true;
-        }
+    if (!gameId) {
+        console.error("La URL no contiene el identificador del juego.");
+        mostrarError();
+        return;
+    }
 
-        if (gameHeader) {
-            gameHeader.hidden = false;
-        }
+    if (!window.supabaseClient) {
+        console.error("El cliente de Supabase no está disponible.");
+        mostrarError();
+        return;
+    }
 
-        if (gameProduct) {
-            gameProduct.hidden = false;
-        }
+    console.log("Buscando videojuego en Supabase:", gameId);
 
-        if (gameDetails) {
-            gameDetails.hidden = false;
-        }
+    const { data, error } = await window.supabaseClient
+        .from("games")
+        .select(`
+            slug,
+            title,
+            intro,
+            description,
+            developer,
+            price,
+            original_price,
+            image_url,
+            platform,
+            genre,
+            categories,
+            release_date
+        `)
+        .eq("slug", gameId)
+        .eq("is_published", true)
+        .maybeSingle();
 
-        // Actualizamos el título.
-        gameTitle.textContent = selectedGame.title;
+    if (error) {
+        console.error("Error al cargar la ficha:", error.message);
+        mostrarError();
+        return;
+    }
 
-        // Actualizamos la portada.
-        const productImage = document.querySelector("#game-cover-img");
+    if (!data) {
+        console.warn("No se encontró el juego publicado:", gameId);
+        mostrarError();
+        return;
+    }
 
-        if (productImage) {
-            productImage.src = selectedGame.image;
-            productImage.alt = "Portada de " + selectedGame.title;
-        }
+    // Guardamos el juego seleccionado para el carrito.
+    selectedGame = {
+        id: data.slug,
+        title: data.title,
+        image: data.image_url || "",
+        intro: data.intro || "",
+        description: data.description || "",
+        developer: data.developer || "No especificado",
+        price: Number(data.price) || 0,
+        platform: data.platform || "PC",
+        genre: data.genre || "",
+        categories: Array.isArray(data.categories)
+            ? data.categories
+            : [],
+        releaseDate: data.release_date || "Por confirmar"
+    };
 
-        // Actualizamos la introducción.
-        const productIntro = document.querySelector("#game-intro");
+    console.log("Juego cargado desde Supabase:", selectedGame);
 
-        if (productIntro) {
-            productIntro.textContent = selectedGame.intro;
-        }
+    // Mostrar las secciones de la ficha.
+    if (gameError) gameError.hidden = true;
+    if (gameHeader) gameHeader.hidden = false;
+    if (gameProduct) gameProduct.hidden = false;
+    if (gameDetails) gameDetails.hidden = false;
 
-        // Actualizamos la descripción.
-        const productDescription = document.querySelector(
-            "#game-description"
-        );
+    // Título e introducción.
+    gameTitle.textContent = selectedGame.title;
 
-        if (productDescription) {
-            productDescription.textContent = selectedGame.description;
-        }
+    const productIntro = document.querySelector("#game-intro");
+    if (productIntro) {
+        productIntro.textContent = selectedGame.intro;
+    }
 
-        // Actualizamos el precio.
-        const productPrice = document.querySelector("#game-price");
+    // Imagen de portada.
+    const productImage = document.querySelector("#game-cover-img");
+    if (productImage) {
+        productImage.src = selectedGame.image;
+        productImage.alt = "Portada de " + selectedGame.title;
+    }
 
-        if (productPrice) {
-            productPrice.textContent = "$" + selectedGame.price;
-        }
+    // Descripción.
+    const productDescription = document.querySelector("#game-description");
+    if (productDescription) {
+        productDescription.textContent = selectedGame.description;
+    }
 
-        // Actualizamos la plataforma.
-        const productPlatform = document.querySelector("#game-platform");
+    // Precio.
+    const productPrice = document.querySelector("#game-price");
+    if (productPrice) {
+        productPrice.textContent = new Intl.NumberFormat("es-AR", {
+            style: "currency",
+            currency: "ARS",
+            maximumFractionDigits: 0
+        }).format(selectedGame.price);
+    }
 
-        if (productPlatform) {
-            productPlatform.textContent = selectedGame.platform;
-        }
+    // Plataforma.
+    const productPlatform = document.querySelector("#game-platform");
+    if (productPlatform) {
+        productPlatform.textContent = selectedGame.platform;
+    }
 
-        // Actualizamos el género.
-        const productGenre = document.querySelector("#game-genre");
+    // Género.
+    const productGenre = document.querySelector("#game-genre");
+    if (productGenre) {
+        productGenre.textContent = selectedGame.genre;
+    }
 
-        if (productGenre) {
-            productGenre.textContent = selectedGame.genre;
-        }
+    // Categorías.
+    const gameCategories = document.querySelector("#game-categories");
+    if (gameCategories) {
+        gameCategories.replaceChildren();
 
-        // Actualizamos las categorías.
-        const gameCategories = document.querySelector("#game-categories");
+        selectedGame.categories.forEach(function (category) {
+            const categoryItem = document.createElement("li");
+            categoryItem.textContent = category;
+            gameCategories.appendChild(categoryItem);
+        });
+    }
 
-        if (gameCategories) {
-            gameCategories.innerHTML = "";
+    // Desarrollador.
+    const productDeveloper = document.querySelector("#game-developer");
+    if (productDeveloper) {
+        productDeveloper.textContent = selectedGame.developer;
+    }
 
-            selectedGame.categories.forEach(function (category) {
-                const categoryItem = document.createElement("li");
-                categoryItem.textContent = category;
-                gameCategories.appendChild(categoryItem);
-            });
-        }
-
-        // Actualizamos el desarrollador.
-        const productDeveloper = document.querySelector(
-            "#game-developer"
-        );
-
-        if (productDeveloper) {
-            productDeveloper.textContent = selectedGame.developer;
-        }
-
-        // Actualizamos la fecha de lanzamiento.
-        const productReleaseDate = document.querySelector(
-            "#game-release-date"
-        );
-
-        if (productReleaseDate) {
-            productReleaseDate.textContent = selectedGame.releaseDate;
-        }
-    } else {
-        console.log("El juego solicitado no existe en el catálogo.");
-
-        if (gameError) {
-            gameError.hidden = false;
-        }
-
-        if (gameHeader) {
-            gameHeader.hidden = true;
-        }
-
-        if (gameProduct) {
-            gameProduct.hidden = true;
-        }
-
-        if (gameDetails) {
-            gameDetails.hidden = true;
-        }
+    // Fecha de lanzamiento.
+    const productReleaseDate = document.querySelector("#game-release-date");
+    if (productReleaseDate) {
+        productReleaseDate.textContent = selectedGame.releaseDate;
     }
 }
+
+cargarFichaJuego();
+
+
 
 
 // ==================================================
@@ -735,18 +769,44 @@ function addToCart(gameId) {
 }
 
 
+
 // Conectar el botón de la ficha del juego.
 const addToCartButton = document.querySelector("#add-to-cart");
 
-if (addToCartButton && selectedGame) {
+if (addToCartButton) {
     addToCartButton.addEventListener("click", function () {
-        const added = addToCart(gameId);
-
-        if (added) {
-            window.location.href = "cart.html";
+        if (!selectedGame) {
+            console.error(
+                "No se puede agregar el juego porque todavía no se cargó."
+            );
+            return;
         }
+
+        const cart = getCart();
+
+        const existingItem = cart.find(function (item) {
+            return item.id === selectedGame.id;
+        });
+
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({
+                id: selectedGame.id,
+                title: selectedGame.title,
+                image: selectedGame.image,
+                price: selectedGame.price,
+                quantity: 1
+            });
+        }
+
+        saveCart(cart);
+
+        window.location.href = "cart.html";
     });
 }
+
+
 
 
 // ==================================================
@@ -960,26 +1020,21 @@ function formatPrice(amount) {
 renderCart();
 
 
-
-
-
-
-// ==================================================
-// 7. FILTROS DEL CATÁLOGO DE LA TIENDA
-// ==================================================
+// ============================================
+// FILTROS DEL CATÁLOGO DE LA TIENDA
+// ============================================
 
 const gameSearch = document.querySelector("#game-search");
 const gameList = document.querySelector(".game-list");
 const priceRange = document.querySelector("#price-range");
 const priceValue = document.querySelector("#price-value");
 const noResults = document.querySelector("#no-results");
+
 const categoryCheckboxes = document.querySelectorAll(
     'input[name="category"]'
 );
 
 if (gameSearch && gameList && priceRange && priceValue) {
-
-    const gameItems = gameList.querySelectorAll(":scope > li");
 
     // Actualizar el precio mostrado.
     function updatePriceLabel() {
@@ -1036,62 +1091,68 @@ if (gameSearch && gameList && priceRange && priceValue) {
     }
 
     // Aplicar todos los filtros.
+    function filterGames() {
 
-function filterGames() {
-
-    const searchText = gameSearch.value
-        .trim()
-        .toLowerCase();
-
-    const maxPrice = Number(priceRange.value);
-    const selectedCategories = getSelectedCategories();
-
-    let visibleGames = 0;
-
-    gameItems.forEach(function (item) {
-
-        const titleElement = item.querySelector(".game-card h3");
-        const priceElement = item.querySelector(".game-price strong");
-
-        if (!titleElement || !priceElement) {
-            return;
-        }
-
-        const gameTitle = titleElement.textContent
+        const searchText = gameSearch.value
             .trim()
             .toLowerCase();
 
-        const gamePrice = Number(
-            priceElement.textContent.replace(/\D/g, "")
-        );
+        const maxPrice = Number(priceRange.value);
+        const selectedCategories = getSelectedCategories();
 
-        const matchesName = gameTitle.includes(searchText);
-        const matchesPrice = gamePrice <= maxPrice;
+        let visibleGames = 0;
 
-        const matchesCategories = matchesSelectedCategories(
-            item,
-            selectedCategories
-        );
+        // Buscamos las tarjetas actuales cada vez que se ejecutan los filtros. Así también detectamos las creadas por Supabase.
+        const gameItems = gameList.querySelectorAll(":scope > li");
 
-        const matchesAllFilters =
-            matchesName &&
-            matchesPrice &&
-            matchesCategories;
+        gameItems.forEach(function (item) {
 
-        // Mostrar u ocultar la tarjeta.
-        item.hidden = !matchesAllFilters;
+            const titleElement = item.querySelector(".game-card h3");
+            const priceElement = item.querySelector(".game-price strong");
 
-        // Contar los juegos que cumplen todos los filtros.
-        if (matchesAllFilters) {
-            visibleGames++;
+            if (!titleElement || !priceElement) {
+                return;
+            }
+
+            const gameTitle = titleElement.textContent
+                .trim()
+                .toLowerCase();
+
+            const gamePrice = Number(
+                priceElement.textContent.replace(/\D/g, "")
+            );
+
+            const matchesName = gameTitle.includes(searchText);
+            const matchesPrice = gamePrice <= maxPrice;
+
+            const matchesCategories = matchesSelectedCategories(
+                item,
+                selectedCategories
+            );
+
+            const matchesAllFilters =
+                matchesName &&
+                matchesPrice &&
+                matchesCategories;
+
+            // Mostrar u ocultar la tarjeta.
+            item.hidden = !matchesAllFilters;
+
+            // Contar los juegos que cumplen todos los filtros.
+            if (matchesAllFilters) {
+                visibleGames++;
+            }
+        });
+
+        // Mostrar el mensaje únicamente si no quedan juegos visibles.
+        if (noResults) {
+            noResults.hidden = visibleGames > 0;
         }
-    });
+    }
 
-    // Mostrar el mensaje únicamente si no quedan juegos visibles.
-    noResults.hidden = visibleGames > 0;
-}
-
-
+    // Permitir que otros archivos, como supabase-client.js,
+    // vuelvan a ejecutar los filtros después de cargar los juegos.
+    window.filterGames = filterGames;
 
     // Eventos de búsqueda y precio.
     gameSearch.addEventListener("input", filterGames);
@@ -1110,7 +1171,4 @@ function filterGames() {
     updatePriceLabel();
     filterGames();
 }
-
-
-
 

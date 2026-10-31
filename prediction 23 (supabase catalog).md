@@ -1,0 +1,1 @@
+Se preparará la estructura de datos y revisará el código antes de conectar el proyecto con Supabase. La migración debe ser gradual y conservar las funcionalidades que están creadas.
