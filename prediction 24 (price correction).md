@@ -1,0 +1,2 @@
+Se corregirán los precios y cards de la sección más vendidos para que sean consultados y traídos directamente por supabase en lugar de estar alojados en local.
+Anteriormente se añadieron el resto de productos al catálogo. Si bien en el pr anterior se mencionaba que se habían colocado 3 productos a modo de prueba, se terminó completando el catálogo. (Esa decisión se tomó para mantener el total de estructura en una sola rama)
