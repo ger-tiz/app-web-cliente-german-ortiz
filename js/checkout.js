@@ -580,36 +580,15 @@ async function processPayment(event) {
 
         localStorage.removeItem(CHECKOUT_CART_KEY);
 
+        // Marcar la compra como aprobada.
+
         checkoutApproved = true;
 
-        showCheckoutMessage(
-            "¡Compra de demostración aprobada! No se realizó ningún cobro.",
-            "success"
-        );
+        // Redirigir a la pantalla de confirmación.
 
-        // Limpiar formulario.
+        window.location.href = "order-confirmation.html";
 
-        checkoutForm.reset();
-
-        updatePaymentPanel();
-
-        clearCardFields();
-
-        // Limpiar resumen.
-
-        checkoutItems.replaceChildren();
-
-        checkoutSubtotal.textContent = "$0";
-
-        checkoutIva.textContent = "$0";
-
-        checkoutTotal.textContent = "$0";
-
-        // Actualizar botón.
-
-        checkoutSubmit.textContent = "Compra aprobada";
-
-        checkoutSubmit.disabled = true;
+        return;
 
     } catch (error) {
 
