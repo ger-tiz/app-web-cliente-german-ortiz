@@ -1,0 +1,270 @@
+/* ========================================
+   ORDER CONFIRMATION
+======================================== */
+
+.confirmation-main {
+    width: 100%;
+    padding: 50px 20px;
+}
+
+.confirmation-container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 35px;
+    background-color: #101010;
+    border: 1px solid #333;
+    border-radius: 12px;
+}
+
+/* Contenido principal */
+
+.confirmation-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #00e5ff;
+    border-radius: 50%;
+    color: #00e5ff;
+    font-size: 38px;
+}
+
+.confirmation-container h1 {
+    margin-bottom: 15px;
+    color: #00e5ff;
+    text-align: center;
+}
+
+.confirmation-message {
+    margin-bottom: 12px;
+    color: #fff;
+    text-align: center;
+}
+
+.confirmation-note {
+    margin-bottom: 35px;
+    color: #aaa;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Información del pedido */
+
+.order-information {
+    padding: 25px;
+    background-color: #181818;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.order-information h2 {
+    margin-bottom: 20px;
+    color: #00e5ff;
+}
+
+.order-information h3 {
+    margin: 25px 0 15px;
+    color: #fff;
+}
+
+.order-details p {
+    margin-bottom: 12px;
+    color: #ccc;
+}
+
+.order-details strong {
+    color: #fff;
+}
+
+/* Productos */
+
+.order-items {
+    padding: 0;
+    list-style: none;
+}
+
+.order-items li {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 0;
+    border-bottom: 1px solid #333;
+    color: #ccc;
+}
+
+/* Totales */
+
+.order-totals {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+}
+
+.order-totals p {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    color: #ccc;
+}
+
+.order-totals .order-total {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #444;
+    color: #00e5ff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Botones */
+
+.confirmation-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.confirmation-actions a {
+    display: inline-block;
+    padding: 12px 22px;
+    border: 1px solid #00e5ff;
+    border-radius: 6px;
+    color: #00e5ff;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.confirmation-actions a:hover {
+    background-color: #00e5ff;
+    color: #000;
+}
+
+/* Error */
+
+.confirmation-error {
+    padding: 30px;
+    text-align: center;
+}
+
+.confirmation-error h2 {
+    margin-bottom: 15px;
+    color: #ff5555;
+}
+
+.confirmation-error p {
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.confirmation-error a {
+    color: #00e5ff;
+}
+
+/* ========================================
+   CORRECCIÓN DE VISIBILIDAD DE DATOS
+======================================== */
+
+/* Información general del pedido */
+
+.order-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+    color: #ccc;
+}
+
+.order-detail span {
+    color: #aaa;
+}
+
+.order-detail strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Estado de aprobación */
+
+.order-approved {
+    color: #00e676 !important;
+}
+
+/* Productos adquiridos */
+
+.order-items li {
+    color: #fff;
+}
+
+.order-items li strong {
+    color: #00e5ff;
+}
+
+/* Resumen de pago */
+
+.order-final-total {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #444;
+}
+
+.order-final-total span,
+.order-final-total strong {
+    color: #00e5ff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Mensajes */
+
+.confirmation-message {
+    color: #fff;
+}
+
+.confirmation-note {
+    color: #aaa;
+}
+
+/* Información general */
+
+.order-information {
+    margin-bottom: 15px;
+}
+
+.order-information h2 {
+    color: #00e5ff;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+    .confirmation-main {
+        padding: 25px 12px;
+    }
+
+    .confirmation-container {
+        padding: 20px 15px;
+    }
+
+    .order-information {
+        padding: 18px 12px;
+    }
+
+    .order-items li {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .confirmation-actions {
+        flex-direction: column;
+    }
+
+    .confirmation-actions a {
+        text-align: center;
+    }
+}

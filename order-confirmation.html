@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Compra confirmada - Brutal Gaming Argentina</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/order-confirmation.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+
+        <div class="header-container">
+
+            <a href="index.html" class="brand">
+                <div class="brand-logo">LOGO</div>
+                <span class="brand-name">Brutal Gaming Argentina</span>
+            </a>
+
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="store.html">Tienda</a></li>
+                    <li><a href="upcoming-releases.html">Próximos lanzamientos</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-actions">
+                <ul>
+                    <li><a href="cart.html">Carrito</a></li>
+                    <li><a href="my-account.html">Mi cuenta</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main class="confirmation-main">
+
+        <section class="confirmation-container">
+
+            <div id="confirmation-content">
+
+                <div class="confirmation-icon">✓</div>
+
+                <h1>¡Compra confirmada!</h1>
+
+                <p class="confirmation-message">
+                    Tu compra de demostración fue aprobada correctamente.
+                </p>
+
+                <p class="confirmation-note">
+                    Esta operación es una simulación. No se realizó ningún cobro.
+                </p>
+
+
+                <section class="order-information">
+
+                    <h2>Información del pedido</h2>
+
+                    <div class="order-detail">
+                        <span>Número de pedido</span>
+                        <strong id="order-id"></strong>
+                    </div>
+
+                    <div class="order-detail">
+                        <span>Fecha</span>
+                        <strong id="order-date"></strong>
+                    </div>
+
+                    <div class="order-detail">
+                        <span>Estado</span>
+                        <strong class="order-approved">Aprobado</strong>
+                    </div>
+
+                    <div class="order-detail">
+                        <span>Método de pago</span>
+                        <strong id="order-payment"></strong>
+                    </div>
+
+                </section>
+
+
+                <section class="order-information">
+
+                    <h2>Datos del comprador</h2>
+
+                    <div class="order-detail">
+                        <span>Nombre</span>
+                        <strong id="order-customer"></strong>
+                    </div>
+
+                    <div class="order-detail">
+                        <span>Correo electrónico</span>
+                        <strong id="order-email"></strong>
+                    </div>
+
+                </section>
+
+
+                <section class="order-information">
+
+                    <h2>Productos adquiridos</h2>
+
+                    <ul id="order-items" class="order-items"></ul>
+
+                </section>
+
+
+                <section class="order-information">
+
+                    <h2>Resumen de pago</h2>
+
+                    <div class="order-detail">
+                        <span>Subtotal</span>
+                        <strong id="order-subtotal"></strong>
+                    </div>
+
+                    <div class="order-detail">
+                        <span>IVA</span>
+                        <strong id="order-iva"></strong>
+                    </div>
+
+                    <div class="order-detail order-final-total">
+                        <span>Total</span>
+                        <strong id="order-total"></strong>
+                    </div>
+
+                </section>
+
+
+                <div class="confirmation-actions">
+
+                    <a href="store.html" class="confirmation-button">
+                        Volver a la tienda
+                    </a>
+
+                    <a href="index.html" class="confirmation-link">
+                        Ir al inicio
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div id="confirmation-error" hidden>
+
+                <h1>No se encontró el pedido</h1>
+
+                <p>
+                    No hay información de una compra reciente para mostrar.
+                </p>
+
+                <a href="store.html" class="confirmation-button">
+                    Volver a la tienda
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <a href="contact.html">Contacto</a>
+
+        <p>
+            &copy; 2026 Brutal Gaming Argentina.
+            Todos los derechos reservados.
+        </p>
+
+    </footer>
+
+
+    <script src="js/order-confirmation.js"></script>
+
+</body>
+
+</html>

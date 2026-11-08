@@ -1,0 +1,1 @@
+Se creará la confirmación de compra, donde se mostrará el mensaje de compra exitosa, un número de pedido, fecha de compra, datos del comprados,método de pago usado, producto(s) adquirido(s) y total gastado.
