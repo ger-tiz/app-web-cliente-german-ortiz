@@ -1,0 +1,2 @@
+Se creará una primer versión del proceso de checkout para el carrito- Permitirá avanzar desde el carrito hasta una pantalla de resultado y simular distintos resultados de pago.
+El proceso será una SIMULACIÓN. No se procesarán pagos reales ni se conectará con una pasarela de pago.

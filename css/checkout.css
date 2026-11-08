@@ -1,0 +1,704 @@
+/* ========================================
+   CHECKOUT - BRUTAL GAMING ARGENTINA
+======================================== */
+
+
+/* ========================================
+   ESTRUCTURA GENERAL
+======================================== */
+
+.checkout,
+.checkout * {
+    box-sizing: border-box;
+}
+
+.checkout {
+    max-width: 1000px;
+    width: 90%;
+    margin: 40px auto;
+    color: var(--color-text);
+}
+
+.checkout > h1 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+
+/* ========================================
+   AVISO DE DEMOSTRACIÓN
+======================================== */
+
+.checkout-notice {
+    padding: 15px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: var(--color-secondary);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-secondary);
+    border-radius: 8px;
+}
+
+
+/* ========================================
+   SECCIONES DEL CHECKOUT
+======================================== */
+
+.checkout-customer,
+.checkout-payment,
+.checkout-summary {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-primary);
+    border-radius: 10px;
+}
+
+.checkout h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--color-text);
+}
+
+
+/* ========================================
+   DATOS DEL COMPRADOR
+======================================== */
+
+.checkout-customer .form-group {
+    margin-bottom: 20px;
+}
+
+.checkout-customer .form-group:last-child {
+    margin-bottom: 0;
+}
+
+.checkout-customer label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.checkout-customer input {
+    width: 100%;
+    padding: 12px;
+
+    background-color: var(--color-surface-light);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+
+    color: var(--color-text);
+    font-size: 1rem;
+}
+
+.checkout-customer input:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+
+    border-color: var(--color-primary);
+    box-shadow: 0 0 8px var(--color-primary);
+}
+
+
+/* ========================================
+   MÉTODOS DE PAGO
+======================================== */
+
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.payment-methods label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 12px;
+
+    background-color: var(--color-surface-light);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.payment-methods label:hover {
+    border-color: var(--color-secondary);
+}
+
+.payment-methods input {
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+
+.payment-methods label:has(input:checked) {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 8px var(--color-primary);
+}
+
+
+/* ========================================
+   RESUMEN DE COMPRA
+======================================== */
+
+#checkout-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#checkout-items li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+}
+
+#checkout-items li:last-child {
+    border-bottom: none;
+}
+
+
+/* ========================================
+   TOTALES
+======================================== */
+
+.checkout-totals {
+    max-width: 400px;
+    margin: 25px 0 0 auto;
+}
+
+.checkout-totals p {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    margin: 12px 0;
+
+    color: var(--color-text-muted);
+}
+
+.checkout-totals .checkout-total {
+    padding-top: 15px;
+
+    border-top: 1px solid var(--color-primary);
+
+    color: var(--color-text);
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+
+/* ========================================
+   BOTONES Y ACCIONES
+======================================== */
+
+.checkout-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.checkout-actions a,
+.checkout-actions button {
+    display: inline-block;
+
+    padding: 12px 20px;
+
+    border: none;
+    border-radius: 6px;
+
+    font: inherit;
+    font-weight: 600;
+
+    text-decoration: none;
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s,
+        box-shadow 0.2s,
+        opacity 0.2s;
+}
+
+
+/* Volver al carrito */
+
+.checkout-actions a {
+    background-color: var(--color-surface-light);
+    color: var(--color-text);
+
+    border: 1px solid var(--color-border);
+}
+
+.checkout-actions a:hover {
+    border-color: var(--color-secondary);
+}
+
+
+/* Confirmar compra */
+
+.checkout-actions button {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+}
+
+.checkout-actions button:hover {
+    background-color: var(--color-secondary);
+    box-shadow: 0 0 10px var(--color-secondary);
+}
+
+
+/* Botón deshabilitado */
+
+.checkout-actions button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.checkout-actions button:disabled:hover {
+    background-color: var(--color-primary);
+}
+
+
+/* Accesibilidad */
+
+.checkout-actions button:focus-visible,
+.checkout-actions a:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   MENSAJES DEL CHECKOUT
+======================================== */
+
+#checkout-message {
+    margin-top: 20px;
+    text-align: center;
+    color: var(--color-text);
+}
+
+/* Operación aprobada */
+
+#checkout-message.success {
+    color: #00ff88;
+}
+
+/* Operación rechazada o error */
+
+#checkout-message.error {
+    color: #ff5555;
+}
+
+/* Información general */
+
+#checkout-message.info {
+    color: var(--color-secondary);
+}
+
+
+/* ========================================
+   DISEÑO RESPONSIVE
+======================================== */
+
+/* Tablets */
+
+@media (max-width: 768px) {
+
+    .checkout {
+        width: 95%;
+        margin: 30px auto;
+    }
+
+    .checkout-customer,
+    .checkout-payment,
+    .checkout-summary {
+        padding: 18px;
+    }
+
+}
+
+
+/* Celulares */
+
+@media (max-width: 600px) {
+
+    .checkout {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .checkout > h1 {
+        font-size: 1.6rem;
+    }
+
+    .checkout-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .checkout-actions a,
+    .checkout-actions button {
+        width: 100%;
+    }
+
+    #checkout-items li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .checkout-totals {
+        width: 100%;
+    }
+
+}
+
+/* ========================================
+   SELECTOR DE RESULTADO DE DEMOSTRACIÓN
+======================================== */
+
+.demo-payment-result {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.demo-payment-result label {
+    font-weight: 600;
+}
+
+.demo-payment-result select {
+    width: 100%;
+    padding: 12px;
+
+    background-color: var(--color-surface-light);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+
+    color: var(--color-text);
+    font-size: 1rem;
+}
+
+.demo-payment-result select:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}
+
+.demo-payment-result small {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+}
+
+/* ============================================
+   MÉTODOS DE PAGO - PANELES DINÁMICOS
+============================================ */
+
+.payment-details {
+    margin-top: 25px;
+}
+
+.payment-panel {
+    padding: 25px;
+    margin-top: 20px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    animation: paymentPanelAppear 0.3s ease;
+}
+
+/* Evitar que los paneles ocultos se muestren */
+.payment-panel[hidden] {
+    display: none !important;
+}
+
+.payment-panel h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: var(--color-secondary);
+}
+
+.payment-panel > p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.payment-panel small {
+    display: block;
+    margin-top: 15px;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+
+/* ============================================
+   CAMPOS DE LOS FORMULARIOS DE PAGO
+============================================ */
+
+.payment-field {
+    margin-bottom: 18px;
+}
+
+.payment-field label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--color-text);
+}
+
+.payment-field input {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.payment-field input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 8px var(--color-primary);
+}
+
+.card-fields-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+
+/* ============================================
+   REPRESENTACIÓN VISUAL DE LA TARJETA
+============================================ */
+
+.card-preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 25px;
+    width: 100%;
+    max-width: 380px;
+    min-height: 190px;
+    box-sizing: border-box;
+    padding: 25px;
+    margin: 20px auto 30px;
+    background: linear-gradient(135deg, #242424, #111);
+    border: 1px solid var(--color-primary);
+    border-radius: 14px;
+    box-shadow: 0 0 12px rgba(255, 0, 255, 0.25);
+}
+
+.card-preview > span {
+    color: var(--color-secondary);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.card-preview > strong {
+    color: var(--color-text);
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+}
+
+.card-preview > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+}
+
+
+/* ============================================
+   MERCADO PAGO
+============================================ */
+
+.payment-provider-card {
+    padding: 25px;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-secondary);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.payment-provider-card > strong {
+    display: block;
+    margin-bottom: 15px;
+    color: var(--color-secondary);
+    font-size: 1.5rem;
+}
+
+.payment-provider-card p {
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+.payment-provider-card > span {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 15px;
+    border: 1px solid var(--color-secondary);
+    border-radius: 20px;
+    color: var(--color-secondary);
+    font-size: 0.85rem;
+}
+
+
+/* ============================================
+   TRANSFERENCIA BANCARIA
+============================================ */
+
+.bank-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 15px;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+}
+
+.bank-details > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 13px 5px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.bank-details > div:last-child {
+    border-bottom: none;
+}
+
+.bank-details span {
+    color: var(--color-text-muted);
+}
+
+.bank-details strong {
+    color: var(--color-secondary);
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+/* ============================================
+   BOTÓN MERCADO PAGO
+============================================ */
+
+.mercado-pago-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 28px;
+
+    background-color: transparent;
+    color: #00ffff;
+
+    border: 1px solid #00ffff;
+    border-radius: 30px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.mercado-pago-button:hover {
+    background-color: #00ffff;
+    color: #080808;
+
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.35);
+
+    transform: translateY(-2px);
+}
+
+.mercado-pago-button:active {
+    transform: translateY(0);
+}
+
+.mercado-pago-button:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 4px;
+}
+
+
+/* ============================================
+   ANIMACIÓN
+============================================ */
+
+@keyframes paymentPanelAppear {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+
+@media (max-width: 600px) {
+
+    .payment-panel {
+        padding: 18px;
+    }
+
+    .card-fields-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .card-preview {
+        min-height: 165px;
+        padding: 18px;
+    }
+
+    .card-preview > strong {
+        font-size: 1rem;
+    }
+
+    .bank-details > div {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .bank-details strong {
+        text-align: left;
+    }
+
+}

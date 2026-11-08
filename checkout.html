@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Finalizar compra - Brutal Gaming Argentina</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+
+            <a href="index.html" class="brand">
+                <div class="brand-logo">
+                    LOGO
+                </div>
+
+                <span class="brand-name">
+                    Brutal Gaming Argentina
+                </span>
+            </a>
+
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="store.html">Tienda</a></li>
+                    <li><a href="upcoming-releases.html">Próximos lanzamientos</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-actions">
+                <ul>
+                    <li><a href="cart.html">Carrito</a></li>
+                    <li><a href="my-account.html">Mi cuenta</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+
+        <section class="checkout">
+
+            <h1>Finalizar compra</h1>
+
+            <p class="checkout-notice">
+                Estás utilizando una demostración de compra.
+                No se realizarán pagos reales.
+            </p>
+
+            <form id="checkout-form">
+
+                <!-- DATOS DEL COMPRADOR -->
+                <section class="checkout-customer">
+
+                    <h2>Datos del comprador</h2>
+
+                    <div class="form-group">
+                        <label for="customer-name">Nombre completo</label>
+                        <input
+                            type="text"
+                            id="customer-name"
+                            name="customer-name"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customer-email">Correo electrónico</label>
+                        <input
+                            type="email"
+                            id="customer-email"
+                            name="customer-email"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                </section>
+
+                <!-- MÉTODO DE PAGO -->
+                <section class="checkout-payment">
+
+                    <h2>Método de pago</h2>
+
+                    <div class="payment-methods">
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="payment-method"
+                                value="card"
+                                required
+                            >
+                            Tarjeta de crédito / débito
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="payment-method"
+                                value="mercado-pago"
+                            >
+                            Mercado Pago
+                        </label>
+
+
+                    </div>
+                    <!-- ========================================= -->
+                    <!-- DATOS DE PAGO SEGÚN EL MÉTODO ELEGIDO -->
+                    <!-- ========================================= -->
+
+                    <div class="payment-details">
+
+                        <!-- TARJETA -->
+                        <section
+                            class="payment-panel"
+                            id="card-panel"
+                            hidden
+                        >
+
+                            <h3>Datos de la tarjeta</h3>
+
+                            
+
+                            <div class="card-preview">
+
+                                <span>BRUTAL GAMING</span>
+
+                                <strong id="card-preview-number">
+                                    •••• •••• •••• ••••
+                                </strong>
+
+                                <div>
+                                    <span id="card-preview-holder">
+                                        TITULAR
+                                    </span>
+
+                                    <span id="card-preview-expiry">
+                                        MM/AA
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <div class="payment-field">
+
+                                <label for="card-number">
+                                    Número de tarjeta
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="card-number"
+                                    inputmode="numeric"
+                                    autocomplete="off"
+                                    maxlength="19"
+                                    placeholder="0000 0000 0000 0000"
+                                >
+
+                            </div>
+
+                            <div class="payment-field">
+
+                                <label for="card-holder">
+                                    Titular de la tarjeta
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="card-holder"
+                                    autocomplete="off"
+                                    placeholder="Nombre del titular"
+                                >
+
+                            </div>
+
+                            <div class="card-fields-row">
+
+                                <div class="payment-field">
+
+                                    <label for="card-expiry">
+                                        Vencimiento
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="card-expiry"
+                                        autocomplete="off"
+                                        maxlength="5"
+                                        placeholder="MM/AA"
+                                    >
+
+                                </div>
+
+                                <div class="payment-field">
+
+                                    <label for="card-cvv">
+                                        Código de seguridad
+                                    </label>
+
+                                    <input
+                                        type="password"
+                                        id="card-cvv"
+                                        inputmode="numeric"
+                                        autocomplete="off"
+                                        maxlength="4"
+                                        placeholder="CVV"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                            
+
+                        </section>
+
+
+                        <!-- MERCADO PAGO -->
+                        <section
+                            class="payment-panel"
+                            id="mercado-pago-panel"
+                            hidden
+                        >
+
+                            <h3>Mercado Pago</h3>
+
+                            
+
+                            <div class="payment-provider-card">
+
+                                <strong>Mercado Pago</strong>
+
+                                <p>
+                                    Podés seleccionar esta opción para continuar con el proceso de pago.
+                                </p>
+
+                                <button type="button" class="mercado-pago-button">
+                                    Pagar con Mercado Pago
+                                </button>
+
+                            </div>
+
+                        </section>
+
+                    </div>
+                </section>
+
+                <!-- RESUMEN DEL PEDIDO -->
+                <section class="checkout-summary">
+
+                    <h2>Resumen de compra</h2>
+
+                    <ul id="checkout-items">
+                        <!-- Los productos se cargarán dinámicamente -->
+                    </ul>
+
+                    <div class="checkout-totals">
+
+                        <p>
+                            Subtotal:
+                            <span id="checkout-subtotal">$0</span>
+                        </p>
+
+                        <p>
+                            IVA:
+                            <span id="checkout-iva">$0</span>
+                        </p>
+
+                        <p class="checkout-total">
+                            Total:
+                            <strong id="checkout-total">$0</strong>
+                        </p>
+
+                    </div>
+
+                </section>
+
+                <!-- ACCIONES -->
+                <div class="checkout-actions">
+
+                    <a href="cart.html">Volver al carrito</a>
+
+                    <button type="submit" id="checkout-submit">
+                        Confirmar compra
+                    </button>
+
+                </div>
+
+            </form>
+
+            <!-- MENSAJES DEL CHECKOUT -->
+            <p id="checkout-message" role="status" aria-live="polite"></p>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <a href="contact.html">Contacto</a>
+        <p>&copy; 2026 Brutal Gaming Argentina. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+
+    <!-- LÓGICA DEL CHECKOUT -->
+    <script src="js/checkout.js"></script>
+
+</body>
+
+</html>

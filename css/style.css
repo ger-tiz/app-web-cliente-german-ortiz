@@ -753,19 +753,31 @@ footer p {
     font-size: 1.2rem;
 }
 
-.cart-summary button {
+/* Botón Comprar del carrito */
+.cart-summary .cart-checkout {
+    display: block;
     width: 100%;
     margin-top: 20px;
     padding: 10px 20px;
+
     background-color: var(--color-primary);
     color: var(--color-text);
+
     border: none;
     border-radius: 6px;
+
     font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+
     cursor: pointer;
+
+    transition:
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-.cart-summary button:hover {
+.cart-summary .cart-checkout:hover {
     background-color: var(--color-secondary);
     box-shadow: 0 0 10px var(--color-secondary);
 }
