@@ -7,10 +7,17 @@
     <title>Elden Ring - Brutal Gaming Argentina</title>
     <link rel="stylesheet" href="css/style.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Biblioteca de Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+
+    <!-- Inicialización de Supabase -->
     <script src="js/supabase-client.js" defer></script>
+
+    <!-- Funcionalidades principales -->
     <script src="js/script.js" defer></script>
 
+    <!-- Autenticación -->
+    <script src="js/auth.js" defer></script>    
 </head>
 
 <body>
@@ -34,7 +41,7 @@
             <div class="user-actions">
                 <ul>
                     <li><a href="cart.html">Carrito</a></li>
-                    <li><a href="my-account.html">Mi cuenta</a></li>
+                    <li><a href="my-account.html" id="account-link">Mi cuenta</a></li>
                 </ul>
             </div>
 

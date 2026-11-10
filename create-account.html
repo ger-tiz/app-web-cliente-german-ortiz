@@ -7,6 +7,15 @@
     <title>Brutal Gaming Argentina</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" defer></script>
+
+    <!-- Biblioteca de Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+
+    <!-- Conexión con Supabase -->
+    <script src="js/supabase-client.js" defer></script>
+
+    <!-- Autenticación -->
+    <script src="js/auth.js" defer></script>
 </head>
 
 <body>
@@ -35,7 +44,7 @@
             <div class="user-actions">
                 <ul>
                     <li><a href="cart.html">Carrito</a></li>
-                    <li><a href="my-account.html">Mi cuenta</a></li>
+                    <li><a href="my-account.html" id="account-link">Mi cuenta</a></li>
                 </ul>
             </div>
 
@@ -53,7 +62,7 @@
                     <h2>Datos de registro</h2>
                 </header>
 
-                <form method="post">
+                <form id="register-form">
                     <div>
                         <label for="register-username">Nombre de usuario:</label>
                         <input
@@ -111,7 +120,8 @@
                             Acepto los términos y condiciones.
                         </label>
                     </div>
-
+                    
+                    <p id="auth-message" role="status" aria-live="polite"></p>
                     <button type="submit">Crear cuenta</button>
 
                     <p>

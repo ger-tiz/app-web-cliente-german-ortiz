@@ -6,7 +6,19 @@
     <!--el link vincula el archivo de estilo -->
     <title>Brutal Gaming Argentina</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Librería de Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+
+    <!-- Inicialización del cliente de Supabase -->
+    <script src="js/supabase-client.js" defer></script>
+
+    <!-- Funcionalidades generales del sitio -->
     <script src="js/script.js" defer></script>
+
+    <!-- Autenticación y gestión de sesiones -->
+    <script src="js/auth.js" defer></script>
+
+    <script src="js/order-history.js" defer></script>
 </head>
 
 <body>
@@ -35,7 +47,7 @@
             <div class="user-actions">
                 <ul>
                     <li><a href="cart.html">Carrito</a></li>
-                    <li><a href="my-account.html">Mi cuenta</a></li>
+                    <li><a href="my-account.html" id="account-link">Mi cuenta</a></li>
                 </ul>
             </div>
 
@@ -53,7 +65,7 @@
                     <h2>Iniciar sesión</h2>
                 </header>
 
-                <form method="post">
+                <form id="login-form">
                     <div>
                         <label for="login-email">Email:</label>
                         <input
@@ -80,8 +92,9 @@
                             </p>
 
                     </div>
-
+                    <p id="auth-message" role="status" aria-live="polite"></p>
                     <button type="submit">Iniciar sesión</button>
+                    
                 </form>
 
                 <p>
@@ -91,7 +104,27 @@
                     </a>
                 </p>
             </section>
+            <section class="account-dashboard" id="account-dashboard" hidden>
 
+                <header>
+                    <h2>Mi cuenta</h2>
+                    <p>Bienvenido, <strong id="account-username"></strong></p>
+                </header>
+
+                <section class="order-history">
+
+                    <header>
+                        <h2>Mis compras</h2>
+                        <p>Consultá tus pedidos anteriores.</p>
+                    </header>
+
+                    <div id="order-history-list" aria-live="polite">
+                        <p>Cargando historial de compras...</p>
+                    </div>
+
+                </section>
+
+            </section>
         </section>
     </main>
 

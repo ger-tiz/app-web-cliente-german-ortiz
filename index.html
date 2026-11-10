@@ -6,6 +6,18 @@
     <!--el link vincula el archivo de estilo -->
     <title>Brutal Gaming Argentina</title>
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Biblioteca de Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+
+    <!-- Conexión con Supabase -->
+    <script src="js/supabase-client.js" defer></script>
+
+    <!-- JavaScript del proyecto -->
+    <script src="js/script.js" defer></script>
+
+    <!-- Autenticación y gestión de sesiones -->
+    <script src="js/auth.js" defer></script>
 </head>
 <body>
  
@@ -30,7 +42,7 @@
                 <div class="user-actions">
                     <ul>
                         <li><a href="cart.html">Carrito</a></li>
-                        <li><a href="my-account.html">Mi cuenta</a></li>
+                        <li><a href="my-account.html" id="account-link">Mi cuenta</a></li>
                     </ul>
                 </div>
         </div>
@@ -338,13 +350,5 @@
             <p>&copy; 2026 Brutal Gaming Argentina. Todos los derechos reservados.</p>
         </footer>
 
-        <!-- Biblioteca de Supabase -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<!-- Conexión con Supabase -->
-<script src="js/supabase-client.js"></script>
-
-<!-- JavaScript del proyecto -->
-<script src="js/script.js"></script>
 </body>
 </html>

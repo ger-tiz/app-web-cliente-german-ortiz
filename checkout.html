@@ -9,6 +9,20 @@
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/checkout.css">
+
+    <script src="js/script.js" defer></script>
+
+    <!-- Biblioteca de Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+
+    <!-- Conexión con Supabase -->
+    <script src="js/supabase-client.js" defer></script>
+
+    <!-- Autenticación -->
+    <script src="js/auth.js" defer></script>
+
+    <script src="js/checkout.js" defer></script>
+
 </head>
 
 <body>
@@ -37,7 +51,7 @@
             <div class="user-actions">
                 <ul>
                     <li><a href="cart.html">Carrito</a></li>
-                    <li><a href="my-account.html">Mi cuenta</a></li>
+                    <li><a href="my-account.html" id="account-link">Mi cuenta</a></li>
                 </ul>
             </div>
 
@@ -309,13 +323,6 @@
         <a href="contact.html">Contacto</a>
         <p>&copy; 2026 Brutal Gaming Argentina. Todos los derechos reservados.</p>
     </footer>
-
-    <!-- SUPABASE -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/supabase-client.js"></script>
-
-    <!-- LÓGICA DEL CHECKOUT -->
-    <script src="js/checkout.js"></script>
 
 </body>
 

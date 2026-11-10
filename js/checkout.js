@@ -364,6 +364,7 @@ async function loadCheckout() {
         const { data, error } = await window.supabaseClient
             .from("games")
             .select(`
+                id,
                 slug,
                 title,
                 price,
@@ -414,14 +415,13 @@ async function loadCheckout() {
             }
 
             return {
-
                 id: game.slug,
+                gameId: game.id,
                 title: game.title,
                 image: game.image_url,
                 price: price,
                 priceCents: Math.round(price * 100),
                 quantity: cartItem.quantity
-
             };
 
         });
@@ -539,13 +539,33 @@ async function processPayment(event) {
 
         });
 
-        const totals = calculateCheckoutTotals(checkoutGames);
+        // Registrar el pedido en Supabase.
 
-        // Preparar información de la compra.
+        const { data: savedOrder, error: saveError } =
+            await window.supabaseClient.rpc("create_order", {
+                p_customer_name: customerName,
+                p_customer_email: customerEmail,
+                p_payment_method: paymentMethod.value,
+                p_items: checkoutGames.map(function (game) {
+                    return {
+                        game_id: game.gameId,
+                        quantity: game.quantity
+                    };
+                })
+            });
+
+        if (saveError) {
+            throw saveError;
+        }
+
+        if (!savedOrder || !savedOrder.order_id) {
+            throw new Error("Supabase no devolvió el identificador del pedido.");
+        }
+
+        // Preparar los datos para la pantalla de confirmación.
 
         const order = {
-
-            orderId: crypto.randomUUID(),
+            orderId: savedOrder.order_id,
 
             customer: {
                 name: customerName,
@@ -553,19 +573,14 @@ async function processPayment(event) {
             },
 
             paymentMethod: paymentMethod.value,
-
-            status: "approved",
-
+            status: savedOrder.status,
             items: checkoutGames,
 
-            subtotal: totals.subtotal,
-
-            iva: totals.iva,
-
-            total: totals.total,
+            subtotal: Math.round(Number(savedOrder.subtotal) * 100),
+            iva: Math.round(Number(savedOrder.iva) * 100),
+            total: Math.round(Number(savedOrder.total) * 100),
 
             createdAt: new Date().toISOString()
-
         };
 
         // Guardar únicamente el resultado temporal.
@@ -728,7 +743,7 @@ checkoutForm.addEventListener(
 async function initializeCheckout() {
 
     updatePaymentPanel();
-
+    // Comprobar que Supabase esté disponible.
     if (!window.supabaseClient) {
 
         showCheckoutMessage(
@@ -742,8 +757,39 @@ async function initializeCheckout() {
 
     }
 
-    await loadCheckout();
+        try {
 
+        // Recuperar la sesión del usuario.
+        const { data, error } = await window.supabaseClient.auth.getSession();
+
+        if (error) {
+            throw error;
+        }
+
+        // Comprobar si existe una sesión activa.
+        if (!data.session) {
+
+            window.location.replace("my-account.html");
+
+            return;
+
+        }
+
+        // Si está autenticado, cargar el checkout.
+        await loadCheckout();
+
+    } catch (error) {
+
+        console.error("Error al verificar la sesión:", error);
+
+        showCheckoutMessage(
+            "No se pudo verificar tu sesión. Intentá nuevamente.",
+            "error"
+        );
+
+        checkoutSubmit.disabled = true;
+
+    }
 }
 
 initializeCheckout();
