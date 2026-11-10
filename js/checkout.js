@@ -729,6 +729,7 @@ async function initializeCheckout() {
 
     updatePaymentPanel();
 
+    // Comprobar que Supabase esté disponible.
     if (!window.supabaseClient) {
 
         showCheckoutMessage(
@@ -742,7 +743,39 @@ async function initializeCheckout() {
 
     }
 
-    await loadCheckout();
+    try {
+
+        // Recuperar la sesión del usuario.
+        const { data, error } = await window.supabaseClient.auth.getSession();
+
+        if (error) {
+            throw error;
+        }
+
+        // Comprobar si existe una sesión activa.
+        if (!data.session) {
+
+            window.location.replace("my-account.html");
+
+            return;
+
+        }
+
+        // Si está autenticado, cargar el checkout.
+        await loadCheckout();
+
+    } catch (error) {
+
+        console.error("Error al verificar la sesión:", error);
+
+        showCheckoutMessage(
+            "No se pudo verificar tu sesión. Intentá nuevamente.",
+            "error"
+        );
+
+        checkoutSubmit.disabled = true;
+
+    }
 
 }
 

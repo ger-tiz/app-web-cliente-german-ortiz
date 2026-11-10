@@ -130,6 +130,29 @@ main{
     font-weight: 700;
 }
 
+/* Botón para cerrar sesión */
+#logout-button {
+    background: transparent;
+    border: 1px solid #e63946;
+    color: #e63946;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#logout-button:hover {
+    background-color: #e63946;
+    color: #ffffff;
+}
+
+#logout-button:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+
 .hero-banner {
     display: flex;
     flex-direction: column;
@@ -1417,6 +1440,17 @@ min-width: 0;
 
 .hero-carousel .hero-image img.is-changing {
     opacity: 0;
+}
+
+/* ============================================
+   MENSAJES DE AUTENTICACIÓN
+============================================ */
+
+#auth-message {
+    color: #ffffff;
+    font-size: 14px;
+    margin: 12px 0;
+    text-align: center;
 }
 
 @media (prefers-reduced-motion: reduce) {

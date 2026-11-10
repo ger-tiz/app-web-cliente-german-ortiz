@@ -9,6 +9,21 @@
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/order-confirmation.css">
+
+    <script src="js/script.js" defer></script>
+
+    <!-- Biblioteca de Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+
+    <!-- Conexión con Supabase -->
+    <script src="js/supabase-client.js" defer></script>
+
+    <!-- Autenticación -->
+    <script src="js/auth.js" defer></script>
+
+    <!-- Lógica de confirmación -->
+    <script src="js/order-confirmation.js" defer></script>
+
 </head>
 
 <body>
@@ -33,7 +48,7 @@
             <div class="user-actions">
                 <ul>
                     <li><a href="cart.html">Carrito</a></li>
-                    <li><a href="my-account.html">Mi cuenta</a></li>
+                    <li><a href="my-account.html" id="account-link">Mi cuenta</a></li>
                 </ul>
             </div>
 
@@ -180,9 +195,6 @@
         </p>
 
     </footer>
-
-
-    <script src="js/order-confirmation.js"></script>
 
 </body>
 
