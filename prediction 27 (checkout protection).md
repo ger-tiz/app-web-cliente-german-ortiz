@@ -1,0 +1,1 @@
+Se implementará la persistencia de los pedidos en Supabase y permitir que cada usuario autenticado consulte su propio historial de compras.

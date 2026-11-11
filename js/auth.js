@@ -258,6 +258,8 @@ if (loginForm) {
 
             console.log("Usuario autenticado:", data.user.id);
 
+            // Redirigir al inicio después de iniciar sesión.
+            window.location.href = "index.html";
         } catch (error) {
 
             console.error("Error inesperado:", error);
