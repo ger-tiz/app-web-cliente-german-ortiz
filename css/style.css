@@ -1455,7 +1455,6 @@ min-width: 0;
     text-align: center;
 }
 
-
 @media (prefers-reduced-motion: reduce) {
     .hero-carousel .hero-image img {
         transition: none;
