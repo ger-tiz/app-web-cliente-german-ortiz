@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Próximos lanzamientos - Brutal Gaming Argentina</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="header-container">
+
+        <a href="index.html" class="brand">
+            <div class="brand-logo">LOGO</div>
+            <span class="brand-name">Brutal Gaming Argentina</span>
+        </a>
+
+        <nav class="navigation">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="store.html">Tienda</a></li>
+                <li>
+                    <a href="upcoming-releases.html" aria-current="page">
+                        Próximos lanzamientos
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="user-actions">
+            <ul>
+                <li><a href="cart.html">Carrito</a></li>
+                <li><a href="my-account.html" id="account-link">Mi cuenta</a></li>
+            </ul>
+        </div>
+
+    </div>
+</header>
+
+<main>
+
+    <section class="store-page">
+
+        <header>
+            <h1>Próximos lanzamientos</h1>
+            <p>Descubrí los videojuegos que llegarán próximamente.</p>
+        </header>
+
+        <div class="store-layout">
+
+            <section class="game-filters">
+
+                <header>
+                    <h2>Buscar lanzamientos</h2>
+                </header>
+
+                <div class="game-search">
+
+                    <label for="upcoming-search">
+                        Nombre:
+                    </label>
+
+                    <input
+                        type="search"
+                        id="upcoming-search"
+                        placeholder="Buscá un juego por nombre">
+
+                </div>
+
+                <aside class="filter-options">
+
+                    <fieldset class="category-filter">
+
+                        <legend>Categorías</legend>
+
+                        <div>
+                            <input type="checkbox" id="upcoming-action"
+                                name="upcoming-category" value="acción">
+                            <label for="upcoming-action">Acción</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="upcoming-rpg"
+                                name="upcoming-category" value="rpg">
+                            <label for="upcoming-rpg">RPG</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="upcoming-horror"
+                                name="upcoming-category" value="terror">
+                            <label for="upcoming-horror">Terror</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="upcoming-strategy"
+                                name="upcoming-category" value="estrategia">
+                            <label for="upcoming-strategy">Estrategia</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="upcoming-simulation"
+                                name="upcoming-category" value="simulación">
+                            <label for="upcoming-simulation">Simulación</label>
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset class="date-filter">
+
+                        <legend>Fecha de lanzamiento</legend>
+
+                        <label for="upcoming-month">Mes:</label>
+
+                        <select id="upcoming-month">
+                            <option value="">Todos los meses</option>
+                            <option value="1">Enero</option>
+                            <option value="2">Febrero</option>
+                            <option value="3">Marzo</option>
+                            <option value="4">Abril</option>
+                            <option value="5">Mayo</option>
+                            <option value="6">Junio</option>
+                            <option value="7">Julio</option>
+                            <option value="8">Agosto</option>
+                            <option value="9">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                        </select>
+
+                        <label for="upcoming-year">Año:</label>
+
+                        <select id="upcoming-year">
+                            <option value="">Todos los años</option>
+                        </select>
+
+                    </fieldset>
+
+                </aside>
+
+            </section>
+
+            <div class="store-content">
+
+                <section class="store-catalog">
+
+                    <header>
+                        <h2>Próximamente</h2>
+                    </header>
+
+                    <p id="upcoming-no-results" hidden>
+                        No se encontraron próximos lanzamientos.
+                        Probá cambiar los filtros.
+                    </p>
+
+                    <ul class="game-list" id="upcoming-game-list">
+
+                        <!-- JavaScript cargará los lanzamientos desde Supabase -->
+
+                    </ul>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <a href="contact.html">Contacto</a>
+
+    <p>© 2026 Brutal Gaming Argentina</p>
+
+</footer>
+
+<!-- Biblioteca oficial de Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Conexión con Supabase -->
+<script src="js/supabase-client.js"></script>
+
+<!-- Próximos lanzamientos -->
+<script src="js/upcoming-releases.js"></script>
+
+<!-- Autenticación -->
+<script src="js/auth.js" defer></script>
+
+</body>
+
+</html>

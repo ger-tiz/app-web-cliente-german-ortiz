@@ -388,6 +388,46 @@ async function loadCheckout() {
 
         }
 
+        // Comprobar si algún producto es un próximo lanzamiento.
+const gameIds = data.map(function (game) {
+    return game.id;
+});
+
+const { data: upcomingData, error: upcomingError } =
+    await window.supabaseClient
+        .from("upcoming_releases")
+        .select("game_id")
+        .in("game_id", gameIds)
+        .eq("is_active", true);
+
+if (upcomingError) {
+    throw upcomingError;
+}
+
+// Si hay próximos lanzamientos, impedir continuar.
+if (upcomingData.length > 0) {
+
+    const upcomingIds = new Set(
+        upcomingData.map(function (item) {
+            return item.game_id;
+        })
+    );
+
+    const upcomingTitles = data
+        .filter(function (game) {
+            return upcomingIds.has(game.id);
+        })
+        .map(function (game) {
+            return game.title;
+        });
+
+    throw new Error(
+        "Estos juegos todavía no están disponibles para comprar: " +
+        upcomingTitles.join(", ") +
+        ". Volvé al carrito para actualizarlo."
+    );
+}
+
         checkoutGames = checkoutCart.map(function (cartItem) {
 
             const game = data.find(function (item) {
@@ -753,7 +793,7 @@ async function initializeCheckout() {
 
         checkoutSubmit.disabled = true;
 
-        return;
+        return; 
 
     }
 
