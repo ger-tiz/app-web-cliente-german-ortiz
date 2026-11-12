@@ -35,15 +35,41 @@ async function cargarCatalogoSupabase() {
 
     console.log("Cargando catálogo desde Supabase...");
 
+    // Obtener los videojuegos registrados en próximos lanzamientos.
+const { data: upcomingData, error: upcomingError } =
+    await window.supabaseClient
+        .from("upcoming_releases")
+        .select("game_id")
+        .eq("is_active", true);
+
+// Si falla la consulta, no continuamos para evitar duplicados.
+if (upcomingError) {
+    console.error(
+        "No se pudieron consultar los próximos lanzamientos:",
+        upcomingError.message
+    );
+
+    return;
+}
+
+// Crear un conjunto con los IDs de los próximos lanzamientos.
+const upcomingGameIds = new Set(
+    upcomingData.map(function (release) {
+        return release.game_id;
+    })
+);
+
     const { data, error } = await window.supabaseClient
         .from("games")
         .select(`
+            id,
             slug,
             title,
             intro,
             price,
             image_url,
-            categories
+            categories,
+            release_date
         `)
         .eq("is_published", true)
         .order("title");
@@ -59,15 +85,23 @@ async function cargarCatalogoSupabase() {
         return;
     }
 
-    console.log("Videojuegos recibidos:", data.length);
-    console.table(data);
+    // Excluir los videojuegos que aparecen en próximos lanzamientos.
+const storeGames = data.filter(function (game) {
+    return !upcomingGameIds.has(game.id);
+});
+
+    console.log("Videojuegos disponibles en tienda:", storeGames.length);
+    console.table(storeGames);
 
     // Evitar duplicar tarjetas al volver a ejecutar la función.
     gameList.replaceChildren();
 
     // Generar una tarjeta por cada videojuego.
-    data.forEach(function (game) {
+    storeGames.forEach(function (game) {
         const listItem = document.createElement("li");
+        
+        // Guardar la fecha de lanzamiento en la tarjeta.
+        listItem.dataset.releaseDate = game.release_date || "";
 
         const article = document.createElement("article");
         article.classList.add("game-card");
@@ -149,12 +183,12 @@ async function cargarCatalogoSupabase() {
         window.filterGames();
     }
 
-    // Informar si no hay juegos publicados.
+    // Informar si no hay juegos disponibles en la tienda.
     const noResults = document.querySelector("#no-results");
 
     if (noResults) {
-        noResults.hidden = data.length > 0;
-    }
+    noResults.hidden = storeGames.length > 0;
+}
 }
 
 // Cargar el catálogo cuando el documento ya está disponible.

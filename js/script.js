@@ -581,6 +581,7 @@ async function cargarFichaJuego() {
     const { data, error } = await window.supabaseClient
         .from("games")
         .select(`
+            id,
             slug,
             title,
             intro,
@@ -592,7 +593,8 @@ async function cargarFichaJuego() {
             platform,
             genre,
             categories,
-            release_date
+            release_date,
+            release_status
         `)
         .eq("slug", gameId)
         .eq("is_published", true)
@@ -610,9 +612,31 @@ async function cargarFichaJuego() {
         return;
     }
 
+        // Comprobar si es un próximo lanzamiento.
+    const { data: upcomingData, error: upcomingError } =
+        await window.supabaseClient
+            .from("upcoming_releases")
+            .select("id")
+            .eq("game_id", data.id)
+            .eq("is_active", true)
+            .maybeSingle();
+
+    if (upcomingError) {
+        console.error(
+            "Error al comprobar el próximo lanzamiento:",
+            upcomingError.message
+        );
+
+        mostrarError();
+        return;
+    }
+
+    const isUpcoming = Boolean(upcomingData);
+
     // Guardamos el juego seleccionado para el carrito.
     selectedGame = {
         id: data.slug,
+        isUpcoming: isUpcoming,
         title: data.title,
         image: data.image_url || "",
         intro: data.intro || "",
@@ -658,12 +682,27 @@ async function cargarFichaJuego() {
 
     // Precio.
     const productPrice = document.querySelector("#game-price");
-    if (productPrice) {
+    const priceContainer = document.querySelector(".game-price");
+
+    if (priceContainer) {
+        priceContainer.hidden = selectedGame.isUpcoming;
+    }
+
+    if (productPrice && !selectedGame.isUpcoming) {
         productPrice.textContent = new Intl.NumberFormat("es-AR", {
             style: "currency",
             currency: "ARS",
             maximumFractionDigits: 0
-        }).format(selectedGame.price);
+    }).format(selectedGame.price);
+    }
+
+    // Estado del botón de compra.
+    const addToCartButton = document.querySelector("#add-to-cart");
+    const upcomingLabel = document.querySelector("#upcoming-label");
+
+    if (addToCartButton && upcomingLabel) {
+        addToCartButton.hidden = selectedGame.isUpcoming;
+        upcomingLabel.hidden = !selectedGame.isUpcoming;
     }
 
     // Plataforma.
@@ -782,6 +821,13 @@ if (addToCartButton) {
             return;
         }
 
+        if (selectedGame.isUpcoming) {
+        console.warn(
+            "Este juego todavía no está disponible para la compra."
+        );
+        return;
+    }
+
         const cart = getCart();
 
         const existingItem = cart.find(function (item) {
@@ -813,7 +859,7 @@ if (addToCartButton) {
 // 7. CARRITO: MOSTRAR PRODUCTOS
 // ==================================================
 
-function renderCart() {
+async function renderCart() {
     // Obtener los elementos del HTML.
     const cartList = document.querySelector(".cart-list");
     const cartSubtotal = document.querySelector(".cart-subtotal");
@@ -834,7 +880,34 @@ function renderCart() {
     }
 
     // Obtener los productos guardados.
-    const cart = getCart();
+let cart = getCart();
+
+// Consultar los próximos lanzamientos activos.
+const { data: upcomingData, error: upcomingError } =
+    await window.supabaseClient
+        .from("upcoming_releases")
+        .select("games(slug)")
+        .eq("is_active", true);
+
+if (upcomingError) {
+    console.error(
+        "Error al comprobar próximos lanzamientos:",
+        upcomingError.message
+    );
+} else {
+    const upcomingSlugs = new Set(
+        upcomingData.map(function (item) {
+            return item.games.slug;
+        })
+    );
+
+    // Retirar del carrito los juegos que aún no están disponibles.
+    cart = cart.filter(function (item) {
+        return !upcomingSlugs.has(item.id);
+    });
+
+    saveCart(cart);
+}
 
     // Limpiar la lista antes de mostrar los productos.
     cartList.innerHTML = "";
@@ -1032,7 +1105,10 @@ const noResults = document.querySelector("#no-results");
 
 const categoryCheckboxes = document.querySelectorAll(
     'input[name="category"]'
+
 );
+const storeMonth = document.querySelector("#store-month");
+const storeYear = document.querySelector("#store-year");
 
 if (gameSearch && gameList && priceRange && priceValue) {
 
@@ -1100,10 +1176,41 @@ if (gameSearch && gameList && priceRange && priceValue) {
         const maxPrice = Number(priceRange.value);
         const selectedCategories = getSelectedCategories();
 
+        const selectedMonth = storeMonth.value;
+        const selectedYear = storeYear.value;
+
         let visibleGames = 0;
 
         // Buscamos las tarjetas actuales cada vez que se ejecutan los filtros. Así también detectamos las creadas por Supabase.
         const gameItems = gameList.querySelectorAll(":scope > li");
+        // Cargar los años disponibles en el selector.
+        if (storeYear.options.length === 1) {
+            const availableYears = new Set();
+
+            gameItems.forEach(function (item) {
+                const releaseDate = item.dataset.releaseDate || "";
+
+                if (releaseDate) {
+                    const year = releaseDate.split("-")[0];
+
+                    if (/^\d{4}$/.test(year)) {
+                        availableYears.add(year);
+                    }
+                }
+            });
+
+            Array.from(availableYears)
+                .sort(function (a, b) {
+                    return Number(b) - Number(a);
+                })
+                .forEach(function (year) {
+                    const option = document.createElement("option");
+                    option.value = year;
+                    option.textContent = year;
+
+                    storeYear.appendChild(option);
+                });
+        }
 
         gameItems.forEach(function (item) {
 
@@ -1130,10 +1237,26 @@ if (gameSearch && gameList && priceRange && priceValue) {
                 selectedCategories
             );
 
+            // Obtener la fecha de lanzamiento de la tarjeta.
+            const releaseDate = item.dataset.releaseDate || "";
+            const releaseParts = releaseDate.split("-");
+
+            const releaseMonth = releaseParts[1] || "";
+            const releaseYear = releaseParts[0] || "";
+
+            // Comprobar si coincide con el mes y año seleccionados.
+            const matchesMonth =
+                !selectedMonth || releaseMonth === selectedMonth;
+
+            const matchesYear =
+                !selectedYear || releaseYear === selectedYear;
+
             const matchesAllFilters =
                 matchesName &&
                 matchesPrice &&
-                matchesCategories;
+                matchesCategories &&
+                matchesMonth &&
+                matchesYear;
 
             // Mostrar u ocultar la tarjeta.
             item.hidden = !matchesAllFilters;
@@ -1166,6 +1289,10 @@ if (gameSearch && gameList && priceRange && priceValue) {
     categoryCheckboxes.forEach(function (checkbox) {
         checkbox.addEventListener("change", filterGames);
     });
+
+    // Eventos de los filtros de fecha.
+    storeMonth.addEventListener("change", filterGames);
+    storeYear.addEventListener("change", filterGames);
 
     // Inicializar los filtros.
     updatePriceLabel();

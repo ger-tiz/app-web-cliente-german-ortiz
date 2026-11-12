@@ -1832,6 +1832,69 @@ filter: brightness(1.1);
     margin-bottom: 12px;
 }
 
+/* Fecha de lanzamiento */
+.release-date {
+    color: #a0a0a0;
+    text-align: center;
+}
+
+/* Filtro de fecha de lanzamiento */
+.date-filter {
+    color: #f1f1f1;
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 12px 14px 14px;
+}
+
+/* Título del filtro */
+.date-filter legend {
+    color: #f1f1f1;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0 8px;
+}
+
+/* Etiquetas Mes y Año */
+.date-filter label {
+    display: block;
+    color: #bdbdbd;
+    font-size: 0.9rem;
+    margin: 10px 0 5px;
+}
+
+/* Menús desplegables */
+.date-filter select {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: #202020;
+    color: #f1f1f1;
+    border: 1px solid #505050;
+    border-radius: 7px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+/* Opciones de los menús */
+.date-filter select option {
+    background-color: #202020;
+    color: #f1f1f1;
+}
+
+/* Aviso de próximos lanzamientos en la ficha del juego */
+.game-actions #upcoming-label:not([hidden]) {
+    display: inline-block;
+    background-color: #e600e6;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 0 12px rgba(230, 0, 230, 0.5);
+}
+
 /* Adaptación para celulares */
 @media (max-width: 480px) {
     .cart-item {
