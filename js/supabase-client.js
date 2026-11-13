@@ -194,11 +194,13 @@ const storeGames = data.filter(function (game) {
 // Cargar el catálogo cuando el documento ya está disponible.
 cargarCatalogoSupabase();
 
+
 // ============================================
-// CARGAR MÁS VENDIDOS DESDE SUPABASE
+// CARGAR VIDEOJUEGOS DESTACADOS DESDE SUPABASE
 // ============================================
 
 async function cargarMasVendidosSupabase() {
+
     const bestSellersList = document.querySelector(
         "#best-sellers-list"
     );
@@ -211,27 +213,25 @@ async function cargarMasVendidosSupabase() {
         "#best-sellers-error"
     );
 
-    const featuredSlugs = [
-        "elden-ring",
-        "cyberpunk-2077",
-        "hades"
-    ];
-
     const { data, error } = await window.supabaseClient
-        .from("games")
+        .from("featured_games")
         .select(`
-            slug,
-            title,
-            price,
-            image_url,
-            categories
+            position,
+            games (
+                slug,
+                title,
+                price,
+                image_url,
+                categories
+            )
         `)
-        .in("slug", featuredSlugs)
-        .eq("is_published", true);
+        .eq("is_active", true)
+        .order("position", { ascending: true });
 
+    // Controlar errores de consulta.
     if (error) {
         console.error(
-            "Error al cargar los más vendidos:",
+            "Error al cargar videojuegos destacados:",
             error.message
         );
 
@@ -242,23 +242,39 @@ async function cargarMasVendidosSupabase() {
         return;
     }
 
-    // Mantener el orden definido para los destacados.
-    const orderedGames = featuredSlugs
-        .map(function (slug) {
-            return data.find(function (game) {
-                return game.slug === slug;
-            });
+    // Obtener los juegos relacionados.
+    const featuredGames = data
+        .map(function (item) {
+            return item.games;
         })
-        .filter(Boolean);
+        .filter(function (game) {
+            return game && game.slug;
+        });
 
+    // Limpiar las tarjetas anteriores.
     bestSellersList.replaceChildren();
 
-    orderedGames.forEach(function (game) {
+    // Comprobar si existen destacados.
+    if (featuredGames.length === 0) {
+        bestSellersList.textContent =
+            "No hay videojuegos destacados disponibles.";
+
+        if (errorMessage) {
+            errorMessage.hidden = true;
+        }
+
+        return;
+    }
+
+    // Crear una tarjeta por cada videojuego destacado.
+    featuredGames.forEach(function (game) {
+
         const listItem = document.createElement("li");
 
         const article = document.createElement("article");
         article.classList.add("game-card");
 
+        // Portada.
         const cover = document.createElement("div");
         cover.classList.add("game-cover");
 
@@ -269,6 +285,7 @@ async function cargarMasVendidosSupabase() {
 
         cover.appendChild(image);
 
+        // Información.
         const information = document.createElement("div");
         information.classList.add("game-information");
 
@@ -284,10 +301,11 @@ async function cargarMasVendidosSupabase() {
             style: "currency",
             currency: "ARS",
             maximumFractionDigits: 0
-        }).format(Number(game.price));
+        }).format(Number(game.price) || 0);
 
         price.appendChild(priceValue);
 
+        // Categorías.
         const categoriesList = document.createElement("ul");
         categoriesList.classList.add("game-categories");
 
@@ -296,8 +314,10 @@ async function cargarMasVendidosSupabase() {
             : [];
 
         categories.forEach(function (category) {
+
             const categoryItem = document.createElement("li");
             categoryItem.textContent = category;
+
             categoriesList.appendChild(categoryItem);
         });
 
@@ -307,16 +327,20 @@ async function cargarMasVendidosSupabase() {
             categoriesList
         );
 
+        // Acción.
         const actions = document.createElement("div");
         actions.classList.add("game-actions");
 
         const link = document.createElement("a");
+
         link.href = "game.html?game=" +
             encodeURIComponent(game.slug);
+
         link.textContent = "Ver juego";
 
         actions.appendChild(link);
 
+        // Montar tarjeta.
         article.append(
             cover,
             information,
@@ -327,16 +351,18 @@ async function cargarMasVendidosSupabase() {
         bestSellersList.appendChild(listItem);
     });
 
+    // Ocultar mensaje de error si la carga fue correcta.
     if (errorMessage) {
-        errorMessage.hidden = orderedGames.length > 0;
+        errorMessage.hidden = true;
     }
 
     console.log(
-        "Más vendidos cargados:",
-        orderedGames.length
+        "Videojuegos destacados cargados:",
+        featuredGames.length
     );
 }
 
 // Ejecutar la carga de destacados.
 cargarMasVendidosSupabase();
+
 

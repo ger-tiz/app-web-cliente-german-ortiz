@@ -1176,15 +1176,15 @@ if (gameSearch && gameList && priceRange && priceValue) {
         const maxPrice = Number(priceRange.value);
         const selectedCategories = getSelectedCategories();
 
-        const selectedMonth = storeMonth.value;
-        const selectedYear = storeYear.value;
+        const selectedMonth = storeMonth ? storeMonth.value : "";
+        const selectedYear = storeYear ? storeYear.value : "";
 
         let visibleGames = 0;
 
         // Buscamos las tarjetas actuales cada vez que se ejecutan los filtros. Así también detectamos las creadas por Supabase.
         const gameItems = gameList.querySelectorAll(":scope > li");
         // Cargar los años disponibles en el selector.
-        if (storeYear.options.length === 1) {
+        if (storeYear && storeYear.options.length === 1) {
             const availableYears = new Set();
 
             gameItems.forEach(function (item) {
@@ -1278,24 +1278,31 @@ if (gameSearch && gameList && priceRange && priceValue) {
     window.filterGames = filterGames;
 
     // Eventos de búsqueda y precio.
+if (gameSearch) {
     gameSearch.addEventListener("input", filterGames);
+}
 
+if (priceRange) {
     priceRange.addEventListener("input", function () {
         updatePriceLabel();
         filterGames();
     });
+}
 
-    // Eventos de las categorías.
-    categoryCheckboxes.forEach(function (checkbox) {
-        checkbox.addEventListener("change", filterGames);
-    });
+// Eventos de las categorías.
+categoryCheckboxes.forEach(function (checkbox) {
+    checkbox.addEventListener("change", filterGames);
+});
 
-    // Eventos de los filtros de fecha.
+// Eventos de los filtros de fecha.
+if (storeMonth && storeYear) {
     storeMonth.addEventListener("change", filterGames);
     storeYear.addEventListener("change", filterGames);
+}
 
-    // Inicializar los filtros.
-    updatePriceLabel();
-    filterGames();
+// Inicializar los filtros.
+updatePriceLabel();
+filterGames();
+
 }
 

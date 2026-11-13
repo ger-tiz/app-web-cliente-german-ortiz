@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administración - Brutal Gaming Argentina</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <div class="admin-layout">
+
+        <!-- Navegación lateral -->
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <h2>BRUTAL GAMING</h2>
+                <span>Administración</span>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="#dashboard" class="active">Dashboard</a></li>
+                    <li><a href="#games">Videojuegos</a></li>
+                    <li><a href="#upcoming">Próximos lanzamientos</a></li>
+                    <li><a href="#featured">Destacados</a></li>
+                </ul>
+            </nav>
+
+            <button id="logout-button">Cerrar sesión</button>
+
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="admin-content">
+
+            <header class="admin-header">
+                <div>
+                    <h1>Panel de administración</h1>
+                    <p>Gestión de Brutal Gaming Argentina</p>
+                </div>
+
+                <div id="admin-user">
+                    Verificando usuario...
+                </div>
+            </header>
+
+            <!-- Dashboard -->
+            <section id="dashboard">
+                <h2>Dashboard</h2>
+                <p>Bienvenido al panel de administración.</p>
+            </section>
+
+            <!-- Gestión de videojuegos -->
+            <section id="games">
+
+                <h2>Gestión de videojuegos</h2>
+
+                <button id="show-game-form">
+                    Agregar videojuego
+                </button>
+
+                <form id="game-form" hidden>
+
+                    <h3>Nuevo videojuego</h3>
+
+                    <label for="game-title">Título:</label>
+                    <input type="text" id="game-title" required>
+
+                    <label for="game-slug">Slug:</label>
+                    <input type="text" id="game-slug" required>
+
+                    <label for="game-intro">Introducción:</label>
+                    <textarea id="game-intro"></textarea>
+
+                    <label for="game-description">Descripción:</label>
+                    <textarea id="game-description"></textarea>
+
+                    <label for="game-developer">Desarrolladora:</label>
+                    <input type="text" id="game-developer">
+
+                    <label for="game-price">Precio:</label>
+                    <input type="number" id="game-price" min="0" step="1" required>
+
+                    <label for="game-original-price">Precio original:</label>
+                    <input type="number" id="game-original-price" min="0" step="1">
+
+                    <label for="game-image">URL de portada:</label>
+                    <input type="url" id="game-image">
+
+                    <label for="game-platform">Plataforma:</label>
+                    <input type="text" id="game-platform">
+
+                    <label for="game-genre">Género:</label>
+                    <input type="text" id="game-genre">
+
+                    <label for="game-categories">Categorías (separadas por comas):</label>
+                    <input type="text" id="game-categories"
+                        placeholder="Acción, RPG, Aventura">
+
+                    <label for="game-release-status">Estado del lanzamiento:</label>
+                    <select id="game-release-status" required>
+                        <option value="confirmed">Fecha confirmada</option>
+                        <option value="tba">Por confirmar</option>
+                    </select>
+
+                    <label for="game-release-date">Fecha de lanzamiento:</label>
+                    <input type="date" id="game-release-date">
+
+                    <label>
+                        <input type="checkbox" id="game-published" checked>
+                        Publicar videojuego
+                    </label>
+
+                    <button type="submit">Guardar videojuego</button>
+
+                    <button type="button" id="cancel-game-form">
+                        Cancelar
+                    </button>
+
+                </form>
+
+                <div id="game-message"></div>
+
+                <div id="game-list">
+                    Cargando videojuegos...
+                </div>
+
+            </section>
+
+            <!-- Próximos lanzamientos -->
+            <section id="upcoming">
+
+                <h2>Gestión de próximos lanzamientos</h2>
+
+                <div class="upcoming-controls">
+
+                    <label for="upcoming-game-select">
+                        Seleccionar videojuego:
+                    </label>
+
+                    <select id="upcoming-game-select">
+                        <option value="">Seleccionar videojuego</option>
+                    </select>
+
+                    <button type="button" id="add-upcoming-game">
+                        Agregar a próximos lanzamientos
+                    </button>
+
+                </div>
+
+                <div id="upcoming-message"></div>
+
+                <div id="upcoming-list">
+                    Cargando próximos lanzamientos...
+                </div>
+
+            </section>
+
+            <!-- Juegos destacados -->
+            <section id="featured">
+                <h2>Gestión de videojuegos destacados</h2>
+
+                <div class="featured-controls">
+                    <label for="featured-game-select">
+                        Seleccionar videojuego:
+                    </label>
+
+                    <select id="featured-game-select">
+                        <option value="">Seleccionar videojuego</option>
+                    </select>
+
+                    <button type="button" id="add-featured-game">
+                        Agregar a destacados
+                    </button>
+                </div>
+
+                <div id="featured-message"></div>
+
+                <div id="featured-list">
+                    Cargando videojuegos destacados...
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Conexión existente -->
+    <script src="../js/supabase-client.js"></script>
+
+    <!-- Administración -->
+    <script src="admin.js"></script>
+
+</body>
+</html>
