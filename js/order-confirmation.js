@@ -59,9 +59,6 @@ function getSavedOrder() {
 }
 
 
-// ========================================
-// MOSTRAR INFORMACIÓN DEL PEDIDO
-// ========================================
 
 function displayOrder(order) {
 
@@ -75,10 +72,10 @@ function displayOrder(order) {
         getPaymentMethod(order.paymentMethod);
 
     document.getElementById("order-customer").textContent =
-    order.customer.name || "No disponible";
+        order.customer.name || "No disponible";
 
     document.getElementById("order-email").textContent =
-    order.customer.email || "No disponible";
+        order.customer.email || "No disponible";
 
 
     // ========================================
@@ -89,22 +86,52 @@ function displayOrder(order) {
 
     orderItems.innerHTML = "";
 
-    order.items.forEach(item => {
+    order.items.forEach(function (item) {
 
         const listItem = document.createElement("li");
+        listItem.classList.add("order-item");
+
+        // Imagen del producto.
+        const productImage = document.createElement("img");
+
+        productImage.src = item.image || "images/default-game.png";
+        productImage.alt = item.title;
+        productImage.classList.add("order-item-image");
+
+        // Información del producto.
+        const productInformation = document.createElement("div");
+        productInformation.classList.add("order-item-information");
 
         const productName = document.createElement("span");
+
         productName.textContent =
             `${item.title} x ${item.quantity}`;
 
+        const productType = document.createElement("small");
+
+        productType.textContent =
+            item.item_type === "special_product"
+                ? "Producto especial"
+                : "Videojuego";
+
         const productPrice = document.createElement("strong");
+
         productPrice.textContent =
             formatPrice(item.priceCents * item.quantity);
 
-        listItem.appendChild(productName);
-        listItem.appendChild(productPrice);
+        productInformation.append(
+            productName,
+            productType,
+            productPrice
+        );
+
+        listItem.append(
+            productImage,
+            productInformation
+        );
 
         orderItems.appendChild(listItem);
+
     });
 
 
@@ -121,6 +148,7 @@ function displayOrder(order) {
     document.getElementById("order-total").textContent =
         formatPrice(order.total);
 }
+
 
 
 // ========================================

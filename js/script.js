@@ -1089,6 +1089,159 @@ function formatPrice(amount) {
     }).format(amount);
 }
 
+// ==================================================
+// 8. CATÁLOGO DE MYSTERY KEYS
+// ==================================================
+
+async function loadMysteryProducts() {
+    const mysteryList = document.querySelector("#mystery-list");
+
+    // Si esta página no contiene el catálogo, no hacemos nada.
+    if (!mysteryList) {
+        return;
+    }
+
+    mysteryList.innerHTML = "<li>Cargando productos...</li>";
+
+    try {
+        const { data: products, error } = await window.supabaseClient
+            .from("special_products")
+            .select("id, slug, title, description, product_type, key_quantity, price, image_url")
+            .eq("is_published", true)
+            .order("price", { ascending: true });
+
+        if (error) {
+            throw error;
+        }
+
+        mysteryList.innerHTML = "";
+
+        if (!products || products.length === 0) {
+            mysteryList.innerHTML = `
+                <li class="mystery-message">
+                    Actualmente no hay Mystery Keys disponibles.
+                </li>
+            `;
+            return;
+        }
+
+        products.forEach(function (product) {
+            // Elemento de la lista.
+            const listItem = document.createElement("li");
+
+            // Tarjeta del producto.
+            const card = document.createElement("article");
+            card.classList.add("mystery-card");
+
+            if (product.product_type === "mystery_box") {
+                card.classList.add("mystery-special");
+            }
+
+            // Imagen.
+            const imageContainer = document.createElement("div");
+            imageContainer.classList.add("mystery-image");
+
+            const image = document.createElement("img");
+            image.src = product.image_url;
+            image.alt = product.title;
+
+            image.onerror = function () {
+                this.onerror = null;
+                this.src = "images/games/fallback_image.webp";
+            };
+
+            imageContainer.appendChild(image);
+
+            // Información.
+            const information = document.createElement("div");
+            information.classList.add("mystery-information");
+
+            const title = document.createElement("h3");
+            title.textContent = product.title;
+
+            const priceContainer = document.createElement("div");
+            priceContainer.classList.add("mystery-price");
+
+            const price = document.createElement("strong");
+            price.textContent = formatPrice(Number(product.price));
+
+            priceContainer.appendChild(price);
+            information.append(title, priceContainer);
+
+            // Acción de compra.
+            const actions = document.createElement("div");
+            actions.classList.add("mystery-actions");
+
+            const buyButton = document.createElement("button");
+            buyButton.type = "button";
+            buyButton.classList.add("mystery-buy-button");
+
+            buyButton.textContent = "Comprar";
+            buyButton.dataset.productId = product.id;
+
+            // Agregar el producto especial al carrito.
+            buyButton.addEventListener("click", function () {
+                const cart = getCart();
+
+                // Identificador único para diferenciarlo de los videojuegos.
+                const cartItemId = "special-" + product.id;
+
+                const existingItem = cart.find(function (item) {
+                    return item.id === cartItemId;
+                });
+
+                if (existingItem) {
+                    if (existingItem.quantity >= 99) {
+                        alert("Alcanzaste el máximo de unidades permitidas.");
+                        return;
+                    }
+
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id: cartItemId,
+                        item_type: "special_product",
+                        special_product_id: product.id,
+                        title: product.title,
+                        image: product.image_url,
+                        price: Number(product.price),
+                        quantity: 1
+                    });
+                }
+
+                saveCart(cart);
+
+                buyButton.textContent = "¡Agregado!";
+                buyButton.disabled = true;
+
+                setTimeout(function () {
+                    buyButton.textContent = "Comprar";
+                    buyButton.disabled = false;
+                }, 1200);
+            });
+
+            actions.appendChild(buyButton);
+
+            // Construir tarjeta.
+            card.append(imageContainer, information, actions);
+            listItem.appendChild(card);
+            mysteryList.appendChild(listItem);
+        });
+
+        } catch (error) {
+        console.error("Error al cargar Mystery Keys:", error);
+
+        mysteryList.innerHTML = `
+            <li class="mystery-message">
+                No se pudieron cargar los productos. Intentá nuevamente más tarde.
+            </li>
+        `;
+    }
+}
+
+// Cargar los productos al iniciar la página.
+loadMysteryProducts();
+
 // Ejecutar el renderizado al cargar la página.
 renderCart();
 
