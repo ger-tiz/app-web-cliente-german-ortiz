@@ -1,0 +1,1 @@
+Se añadirán las imágenes de mystery keys y se llevará a cabo su proceso de compra hasta el proceso de registro en el perfil del usuario.
