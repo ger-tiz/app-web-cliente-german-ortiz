@@ -300,59 +300,57 @@ function renderCheckout(games) {
 
 }
 
-
-// ============================================
-// CARGAR PRODUCTOS DESDE SUPABASE
-// ============================================
-
+//Cargar productos desde Supabase.
 async function loadCheckout() {
-
     checkoutCart = getCheckoutCart();
 
     if (checkoutCart.length === 0) {
-
         showCheckoutMessage(
             "Tu carrito está vacío. Agregá productos antes de continuar.",
             "error"
         );
 
         checkoutSubmit.disabled = true;
-
         return;
-
     }
 
+    // Validar la estructura general del carrito.
     const validCart = checkoutCart.every(function (item) {
+        if (
+            !item ||
+            typeof item.id !== "string" ||
+            !Number.isSafeInteger(item.quantity) ||
+            item.quantity < 1 ||
+            item.quantity > 99
+        ) {
+            return false;
+        }
 
-        return (
-            item &&
-            typeof item.id === "string" &&
-            Number.isSafeInteger(item.quantity) &&
-            item.quantity > 0
-        );
+        if (item.item_type === "special_product") {
+            return typeof item.special_product_id === "string";
+        }
 
+        return true;
     });
 
     if (!validCart) {
-
         showCheckoutMessage(
             "El carrito contiene productos o cantidades inválidas.",
             "error"
         );
 
         checkoutSubmit.disabled = true;
-
         return;
-
     }
 
-    const gameSlugs = [
-        ...new Set(
-            checkoutCart.map(function (item) {
-                return item.id;
-            })
-        )
-    ];
+    // Separar videojuegos y productos especiales.
+    const gameCart = checkoutCart.filter(function (item) {
+        return item.item_type !== "special_product";
+    });
+
+    const specialCart = checkoutCart.filter(function (item) {
+        return item.item_type === "special_product";
+    });
 
     showCheckoutMessage(
         "Verificando productos y precios...",
@@ -360,113 +358,205 @@ async function loadCheckout() {
     );
 
     try {
+        let checkoutItems = [];
 
-        const { data, error } = await window.supabaseClient
-            .from("games")
-            .select(`
-                id,
-                slug,
-                title,
-                price,
-                image_url,
-                is_published
-            `)
-            .in("slug", gameSlugs)
-            .eq("is_published", true);
+        // ========================================
+        // VERIFICAR VIDEOJUEGOS
+        // ========================================
 
-        if (error) {
+        if (gameCart.length > 0) {
+            const gameSlugs = [
+                ...new Set(
+                    gameCart.map(function (item) {
+                        return item.id;
+                    })
+                )
+            ];
 
-            throw error;
+            const { data: gamesData, error: gamesError } =
+                await window.supabaseClient
+                    .from("games")
+                    .select(`
+                        id,
+                        slug,
+                        title,
+                        price,
+                        image_url,
+                        is_published
+                    `)
+                    .in("slug", gameSlugs)
+                    .eq("is_published", true);
 
-        }
+            if (gamesError) {
+                throw gamesError;
+            }
 
-        if (!data || data.length !== gameSlugs.length) {
+            if (!gamesData || gamesData.length !== gameSlugs.length) {
+                throw new Error(
+                    "Uno o más videojuegos ya no están disponibles."
+                );
+            }
 
-            throw new Error(
-                "Uno o más productos ya no están disponibles."
-            );
-
-        }
-
-        // Comprobar si algún producto es un próximo lanzamiento.
-const gameIds = data.map(function (game) {
-    return game.id;
-});
-
-const { data: upcomingData, error: upcomingError } =
-    await window.supabaseClient
-        .from("upcoming_releases")
-        .select("game_id")
-        .in("game_id", gameIds)
-        .eq("is_active", true);
-
-if (upcomingError) {
-    throw upcomingError;
-}
-
-// Si hay próximos lanzamientos, impedir continuar.
-if (upcomingData.length > 0) {
-
-    const upcomingIds = new Set(
-        upcomingData.map(function (item) {
-            return item.game_id;
-        })
-    );
-
-    const upcomingTitles = data
-        .filter(function (game) {
-            return upcomingIds.has(game.id);
-        })
-        .map(function (game) {
-            return game.title;
-        });
-
-    throw new Error(
-        "Estos juegos todavía no están disponibles para comprar: " +
-        upcomingTitles.join(", ") +
-        ". Volvé al carrito para actualizarlo."
-    );
-}
-
-        checkoutGames = checkoutCart.map(function (cartItem) {
-
-            const game = data.find(function (item) {
-
-                return item.slug === cartItem.id;
-
+            // Comprobar próximos lanzamientos.
+            const gameIds = gamesData.map(function (game) {
+                return game.id;
             });
 
-            if (!game) {
+            const { data: upcomingData, error: upcomingError } =
+                await window.supabaseClient
+                    .from("upcoming_releases")
+                    .select("game_id")
+                    .in("game_id", gameIds)
+                    .eq("is_active", true);
 
-                throw new Error(
-                    "No se encontró un producto del carrito."
-                );
-
+            if (upcomingError) {
+                throw upcomingError;
             }
 
-            const price = Number(game.price);
-
-            if (!Number.isFinite(price) || price < 0) {
-
-                throw new Error(
-                    "Uno de los productos tiene un precio inválido."
+            if (upcomingData && upcomingData.length > 0) {
+                const upcomingIds = new Set(
+                    upcomingData.map(function (item) {
+                        return item.game_id;
+                    })
                 );
 
+                const upcomingTitles = gamesData
+                    .filter(function (game) {
+                        return upcomingIds.has(game.id);
+                    })
+                    .map(function (game) {
+                        return game.title;
+                    });
+
+                throw new Error(
+                    "Estos juegos todavía no están disponibles para comprar: " +
+                    upcomingTitles.join(", ") +
+                    ". Volvé al carrito para actualizarlo."
+                );
             }
 
-            return {
-                id: game.slug,
-                gameId: game.id,
-                title: game.title,
-                image: game.image_url,
-                price: price,
-                priceCents: Math.round(price * 100),
-                quantity: cartItem.quantity
-            };
+            gameCart.forEach(function (cartItem) {
+                const game = gamesData.find(function (item) {
+                    return item.slug === cartItem.id;
+                });
 
-        });
+                if (!game) {
+                    throw new Error(
+                        "No se encontró un videojuego del carrito."
+                    );
+                }
+
+                const price = Number(game.price);
+
+                if (!Number.isFinite(price) || price < 0) {
+                    throw new Error(
+                        "Uno de los videojuegos tiene un precio inválido."
+                    );
+                }
+
+                checkoutItems.push({
+                    id: game.slug,
+                    item_type: "game",
+                    gameId: game.id,
+                    specialProductId: null,
+                    title: game.title,
+                    image: game.image_url,
+                    price: price,
+                    priceCents: Math.round(price * 100),
+                    quantity: cartItem.quantity
+                });
+            });
+        }
+
+        // ========================================
+        // VERIFICAR MYSTERY KEYS Y MYSTERY BOX
+        // ========================================
+
+        if (specialCart.length > 0) {
+            const specialIds = [
+                ...new Set(
+                    specialCart.map(function (item) {
+                        return item.special_product_id;
+                    })
+                )
+            ];
+
+            const { data: specialData, error: specialError } =
+                await window.supabaseClient
+                    .from("special_products")
+                    .select(`
+                        id,
+                        title,
+                        description,
+                        price,
+                        image_url,
+                        is_published
+                    `)
+                    .in("id", specialIds)
+                    .eq("is_published", true);
+
+            if (specialError) {
+                throw specialError;
+            }
+
+            if (!specialData || specialData.length !== specialIds.length) {
+                throw new Error(
+                    "Uno o más productos especiales ya no están disponibles."
+                );
+            }
+
+            specialCart.forEach(function (cartItem) {
+                const product = specialData.find(function (item) {
+                    return item.id === cartItem.special_product_id;
+                });
+
+                if (!product) {
+                    throw new Error(
+                        "No se encontró un producto especial del carrito."
+                    );
+                }
+
+                const price = Number(product.price);
+
+                if (!Number.isFinite(price) || price < 0) {
+                    throw new Error(
+                        "Uno de los productos especiales tiene un precio inválido."
+                    );
+                }
+
+                checkoutItems.push({
+                    id: "special-" + product.id,
+                    item_type: "special_product",
+                    gameId: null,
+                    specialProductId: product.id,
+                    title: product.title,
+                    image: product.image_url,
+                    price: price,
+                    priceCents: Math.round(price * 100),
+                    quantity: cartItem.quantity
+                });
+            });
+        }
+
+        // Guardar todos los productos verificados.
+        checkoutGames = checkoutItems;
 
         renderCheckout(checkoutGames);
+
+        console.log(
+    "PRODUCTOS PREPARADOS PARA LA COMPRA:",
+    checkoutGames.map(function (item) {
+        return {
+            title: item.title,
+            item_type: item.item_type,
+            specialProductId: item.specialProductId,
+            price: item.price,
+            quantity: item.quantity
+        };
+    })
+);
+
+        checkoutSubmit.disabled = false;
 
         showCheckoutMessage(
             "Productos verificados correctamente.",
@@ -474,7 +564,6 @@ if (upcomingData.length > 0) {
         );
 
     } catch (error) {
-
         console.error("Error al cargar el checkout:", error);
 
         showCheckoutMessage(
@@ -483,9 +572,7 @@ if (upcomingData.length > 0) {
         );
 
         checkoutSubmit.disabled = true;
-
     }
-
 }
 
 
@@ -581,18 +668,35 @@ async function processPayment(event) {
 
         // Registrar el pedido en Supabase.
 
-        const { data: savedOrder, error: saveError } =
-            await window.supabaseClient.rpc("create_order", {
-                p_customer_name: customerName,
-                p_customer_email: customerEmail,
-                p_payment_method: paymentMethod.value,
-                p_items: checkoutGames.map(function (game) {
-                    return {
-                        game_id: game.gameId,
-                        quantity: game.quantity
-                    };
-                })
-            });
+        const orderItemsPayload = checkoutGames.map(function (item) {
+
+    if (item.item_type === "special_product") {
+        return {
+            item_type: "special_product",
+            special_product_id: item.specialProductId,
+            quantity: item.quantity
+        };
+    }
+
+    return {
+        item_type: "game",
+        game_id: item.gameId,
+        quantity: item.quantity
+    };
+
+});
+
+console.log("DATOS ENVIADOS A CREATE_ORDER:", orderItemsPayload);
+
+const { data: savedOrder, error: saveError } =
+    await window.supabaseClient.rpc("create_order", {
+
+        p_customer_name: customerName,
+        p_customer_email: customerEmail,
+        p_payment_method: paymentMethod.value,
+        p_items: orderItemsPayload
+
+    });
 
         if (saveError) {
             throw saveError;

@@ -1895,6 +1895,164 @@ filter: brightness(1.1);
     box-shadow: 0 0 12px rgba(230, 0, 230, 0.5);
 }
 
+/* Mensajes del catálogo Mystery Keys */
+.mystery-message {
+    list-style: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    margin: 20px auto;
+    color: #ffffff;
+    background-color: #252525;
+    border: 1px solid #555555;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1rem;
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(100%, 325px);
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* ========================================
+   PRODUCTOS EN CONFIRMACIÓN DE PEDIDO
+======================================== */
+
+.order-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+}
+
+.order-item-image {
+    width: 75px;
+    height: 90px;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.order-item-information {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.order-item-information small {
+    color: #aaa;
+    font-size: 0.85rem;
+}
+
+/* ============================================
+   CÓDIGOS MYSTERY KEYS - HISTORIAL
+============================================ */
+
+.order-keys {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #101010;
+    border: 1px solid #00e5ff;
+    border-radius: 8px;
+}
+
+.order-keys > strong {
+    color: #00e5ff;
+}
+
+.order-key-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.order-key-row code {
+    color: #ffffff;
+    overflow-wrap: anywhere;
+}
+
+.copy-key-button {
+    padding: 7px 12px;
+    border: 1px solid #00e5ff;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #00e5ff;
+    cursor: pointer;
+}
+
+.copy-key-button:hover {
+    background-color: #00e5ff;
+    color: #000000;
+}
+
+/* ============================================
+   PRODUCTOS DEL HISTORIAL DE COMPRAS
+============================================ */
+
+.order-history-product {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 15px 0;
+    line-height: 1.5;
+}
+
+.order-history-product > span {
+    font-size: 1rem;
+}
+
+.order-history-product > small {
+    color: #aaa;
+}
+
+.order-history-product > strong {
+    color: #00e5ff;
+    font-size: 1.05rem;
+}
+
+.order-key-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 0;
+}
+
+.order-key-row strong {
+    min-width: 0;
+}
+
+.order-key-row code {
+    white-space: nowrap;
+}
+
+.order-key-row button {
+    white-space: nowrap;
+}
+
+.brand-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .order-key-row {
+        grid-template-columns: 1fr auto;
+    }
+
+    .order-key-row strong {
+        grid-column: 1 / -1;
+    }
+}
+
 /* Adaptación para celulares */
 @media (max-width: 480px) {
     .cart-item {

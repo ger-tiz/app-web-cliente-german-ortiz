@@ -59,7 +59,10 @@ async function loadOrderHistory(user) {
                 payment_method,
                 total,
                 order_items (
+                    id,
                     game_title,
+                    item_type,
+                    delivery_status,
                     unit_price,
                     quantity,
                     line_total
@@ -72,7 +75,87 @@ async function loadOrderHistory(user) {
             throw error;
         }
 
-        renderOrderHistory(orders);
+        // Recuperar los identificadores de los artículos comprados.
+
+const orderItemIds = orders.flatMap(function (order) {
+
+    return (order.order_items || []).map(function (item) {
+        return item.id;
+    });
+
+});
+
+
+// Consultar las claves asignadas a esos artículos.
+
+let assignedKeys = [];
+
+if (orderItemIds.length > 0) {
+
+    const { data: keys, error: keysError } = await window.supabaseClient
+        .from("mystery_key_inventory")
+        .select("id, order_item_id, key_code, game_id, assigned_at")
+        .in("order_item_id", orderItemIds)
+        .order("assigned_at", { ascending: true });
+
+    if (keysError) {
+        throw keysError;
+    }
+
+    assignedKeys = keys || [];
+    // Recuperar los nombres de los videojuegos asociados a las claves.
+
+const gameIds = [...new Set(
+    assignedKeys
+        .map(function (key) {
+            return key.game_id;
+        })
+        .filter(Boolean)
+)];
+
+if (gameIds.length > 0) {
+
+    const { data: games, error: gamesError } =
+        await window.supabaseClient
+            .from("games")
+            .select("id, title")
+            .in("id", gameIds);
+
+    if (gamesError) {
+        throw gamesError;
+    }
+
+    assignedKeys.forEach(function (key) {
+
+        const game = games.find(function (game) {
+            return game.id === key.game_id;
+        });
+
+        key.game_title = game ? game.title : "Videojuego no encontrado";
+
+    });
+
+}
+
+}
+
+
+// Asociar las claves con sus respectivos artículos.
+
+orders.forEach(function (order) {
+
+    (order.order_items || []).forEach(function (item) {
+
+        item.assignedKeys = assignedKeys.filter(function (key) {
+            return key.order_item_id === item.id;
+        });
+
+    });
+
+});
+
+
+renderOrderHistory(orders);
 
     } catch (error) {
 
@@ -114,7 +197,6 @@ function renderOrderHistory(orders) {
         const orderArticle = document.createElement("article");
         orderArticle.className = "order-card";
 
-        // Identificador corto.
         const orderTitle = document.createElement("h3");
 
         orderTitle.textContent =
@@ -183,19 +265,174 @@ function renderOrderHistory(orders) {
 
         const orderItems = order.order_items || [];
 
+
+        // ========================================
+        // RECORRER PRODUCTOS
+        // ========================================
+
         orderItems.forEach(function (item) {
 
             const listItem = document.createElement("li");
+            listItem.className = "order-history-product";
 
-            listItem.textContent =
-                item.game_title +
-                " x " + item.quantity +
-                " — " + formatOrderPrice(item.line_total);
+
+            // Tipo de producto.
+
+            const productType =
+                item.item_type === "special_product"
+                    ? "Producto especial"
+                    : "Videojuego";
+
+
+            // Nombre y cantidad.
+
+            const productName = document.createElement("span");
+
+            productName.textContent =
+                item.game_title + " x " + item.quantity;
+
+
+            // Etiqueta del tipo.
+
+            const productTypeLabel = document.createElement("small");
+
+            productTypeLabel.textContent = productType;
+
+
+            // Precio.
+
+            const productPrice = document.createElement("strong");
+
+            productPrice.textContent =
+                formatOrderPrice(item.line_total);
+
+
+            listItem.append(
+                productName,
+                productTypeLabel,
+                productPrice
+            );
+
+
+            // ====================================
+            // ENTREGA DE PRODUCTOS ESPECIALES
+            // ====================================
+
+            if (item.item_type === "special_product") {
+
+                const deliveryStatus = document.createElement("small");
+
+                deliveryStatus.textContent =
+                    item.delivery_status === "delivered"
+                        ? "Entrega: Entregado"
+                        : "Entrega: Pendiente";
+
+                listItem.appendChild(deliveryStatus);
+
+
+                const assignedKeys = item.assignedKeys || [];
+
+
+                if (assignedKeys.length > 0) {
+
+                    const keysContainer = document.createElement("div");
+
+                    keysContainer.className = "order-keys";
+
+
+                    const keysTitle = document.createElement("strong");
+
+                    keysTitle.textContent =
+                        "Tus códigos de activación:";
+
+                    keysContainer.appendChild(keysTitle);
+
+
+                    assignedKeys.forEach(function (key) {
+
+                        const keyRow = document.createElement("div");
+
+                        keyRow.className = "order-key-row";
+
+
+                        const gameTitle = document.createElement("strong");
+
+                        gameTitle.textContent = key.game_title || "Videojuego";
+
+
+                        const keyCode = document.createElement("code");
+
+                        keyCode.textContent = key.key_code;
+
+
+                        const copyButton = document.createElement("button");
+
+                        copyButton.type = "button";
+                        copyButton.textContent = "Copiar";
+                        copyButton.className = "copy-key-button";
+
+
+                        copyButton.addEventListener("click", async function () {
+
+                            try {
+
+                                await navigator.clipboard.writeText(key.key_code);
+
+                                copyButton.textContent = "¡Copiado!";
+
+                                setTimeout(function () {
+                                    copyButton.textContent = "Copiar";
+                                }, 2000);
+
+                            } catch (error) {
+
+                                console.error(
+                                    "Error al copiar la clave:",
+                                    error
+                                );
+
+                                copyButton.textContent = "No se pudo copiar";
+
+                            }
+
+                        });
+
+
+                        keyRow.append(
+                            gameTitle,
+                            keyCode,
+                            copyButton
+                        );
+
+                        keysContainer.appendChild(keyRow);
+
+                    });
+
+
+                    listItem.appendChild(keysContainer);
+
+                } else {
+
+                    const pendingMessage = document.createElement("small");
+
+                    pendingMessage.textContent =
+                        "Todavía no hay códigos asignados a esta compra.";
+
+                    listItem.appendChild(pendingMessage);
+
+                }
+
+            }
+
+
+            // Agregar producto a la lista.
 
             itemsList.appendChild(listItem);
 
         });
 
+
+        // Agregar título y lista al contenedor.
 
         orderDetails.append(itemsTitle, itemsList);
 
@@ -239,9 +476,7 @@ function renderOrderHistory(orders) {
         orderHistoryList.appendChild(orderArticle);
 
     });
-
 }
-
 
 // ============================================
 // TRADUCIR ESTADOS

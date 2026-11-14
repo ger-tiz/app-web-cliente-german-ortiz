@@ -26,9 +26,12 @@
         <div class="header-container">
             <!-- div es un elemento genérico de agrupación. Se utiliza para agrupar elementos que no tienen un significado semántico específico. -->
             <a href="index.html" class="brand">
-                <div class="brand-logo">
-                    LOGO
-                </div>
+                <img
+                    src="images/branding/logo-brutal-gaming.png"
+                    alt="Logo de Brutal Gaming Argentina"
+                    class="brand-logo"
+                >
+
                 <span class="brand-name">Brutal Gaming Argentina</span>
             </a>
             <!-- nav es un elemento semantico, sirve para agrupar enlaces de navegacion, en este caso los enlaces a las diferentes secciones de la pagina web. -->
@@ -248,103 +251,10 @@
             </div>
         </div>
         <section class="mystery-keys">
-            <h2>Mistery keys</h2>
+            <h2>Mystery Keys</h2>
 
-            <ul class="mystery-list">
-                <li>
-                    <article class="mystery-card">
-                        <div class="mystery-image">
-                            <img src="images/mystery-keys/mystery-key.jpg" alt="Mystery Key">
-                        </div>
-
-                    <div class="mystery-information">
-                        <h3>1 Mystery Key</h3>
-                        <div class="mystery-price">
-                            <strong>$2500</strong>
-                        </div>
-                    </div>
-
-                        <div class="mystery-actions">
-                            <a href="#">Comprar</a>
-                        </div>
-                    </article>
-                </li>
-
-                <li>
-                    <article class="mystery-card">
-                        <div class="mystery-image">
-                            <img src="images/mystery-keys/mystery-key.jpg" alt="Mystery Keys">
-                        </div>
-
-                        <div class="mystery-information">
-                            <h3>3 Mystery Keys</h3>
-                            <div class="mystery-price">
-                                <strong>$7000</strong>
-                            </div>
-                        </div>
-
-                        <div class="mystery-actions">
-                            <a href="#">Comprar</a>
-                        </div>
-                    </article>
-                </li>
-
-                <li>
-                    <article class="mystery-card">
-                        <div class="mystery-image">
-                            <img src="images/mystery-keys/mystery-key.jpg" alt="Mystery Keys">
-                        </div>
-
-                        <div class="mystery-information">
-                            <h3>5 Mystery Keys</h3>
-                            <div class="mystery-price">
-                                <strong>$11000</strong>
-                            </div>
-                        </div>
-
-                        <div class="mystery-actions">
-                            <a href="#">Comprar</a>
-                        </div>
-                    </article>
-                </li>
-
-                <li>
-                    <article class="mystery-card">
-                        <div class="mystery-image">
-                            <img src="images/mystery-keys/mystery-key.jpg" alt="Mystery Keys" onerror="this.onerror=null; this.src='/images/games/fallback_image.webp';">
-                        </div>
-
-                        <div class="mystery-information">
-                            <h3>10 Mystery Keys</h3>
-                            <div class="mystery-price">
-                                <strong>$20000</strong>
-                            </div>
-                        </div>
-
-                        <div class="mystery-actions">
-                            <a href="#">Comprar</a>
-                        </div>
-                    </article>
-                </li>
-
-                <li>
-                    <article class="mystery-card mystery-special">
-                        <div class="mystery-image">
-                            <img src="images/mystery-keys/mystery-box.jpg" alt="Mystery Box">
-                        </div>
-
-                        <div class="mystery-information">
-                            <h3>Mystery Box</h3>
-                            <div class="mystery-price">
-                                <strong>$25000</strong>
-                            </div>
-                        </div>
-
-                        <div class="mystery-actions">
-                            <a href="#">Comprar</a>
-                        </div>
-                    </article>
-                </li>
+            <ul class="mystery-list" id="mystery-list">
+                <!-- Los productos se cargarán dinámicamente desde Supabase -->
             </ul>
         </section>
 
