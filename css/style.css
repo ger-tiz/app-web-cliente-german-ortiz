@@ -2043,6 +2043,67 @@ filter: brightness(1.1);
     display: block;
 }
 
+/* ========================================
+   BOTONES MYSTERY KEYS
+======================================== */
+
+.mystery-buy-button {
+    display: inline-block;
+    min-width: 150px;
+    padding: 12px 24px;
+
+    background-color: #111;
+    color: #00ffff;
+
+    border: 1px solid #00ffff;
+    border-radius: 8px;
+
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+/* Efecto al pasar el cursor */
+
+.mystery-buy-button:hover:not(:disabled) {
+    background-color: #00ffff;
+    color: #111;
+
+    box-shadow: 0 0 12px #00ffff,
+                0 0 24px rgba(0, 255, 255, 0.5);
+
+    transform: translateY(-3px);
+}
+
+/* Efecto al presionar */
+
+.mystery-buy-button:active:not(:disabled) {
+    transform: scale(0.96);
+}
+
+/* Estado después de agregar al carrito */
+
+.mystery-buy-button:disabled {
+    background-color: #00aa88;
+    color: white;
+    border-color: #00aa88;
+    cursor: default;
+    opacity: 0.9;
+}
+
+/* Accesibilidad: navegación mediante teclado */
+
+.mystery-buy-button:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 4px;
+}
+
 @media (max-width: 600px) {
     .order-key-row {
         grid-template-columns: 1fr auto;
